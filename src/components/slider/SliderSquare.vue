@@ -1,8 +1,8 @@
 <template>
 	<a v-on:click="handleClick" class="link">
-		<li class="slider-square" 
+		<div class="slider-square" 
 			v-bind:class="size">
-		</li>
+		</div>
 	</a>
 </template>
 
@@ -26,47 +26,42 @@ export default {
 <style lang="scss" scoped>
   @import '~sass/main.scss';
   	.link:hover > .slider-square{
+  		background-color:red;
   		&.default-size{
-			//@include transform(scale(1.2))
+			height:20px;
   		}
   		&.small-size{
-			//@include transform(scale(1.5))
+			height:25px;
   		}
   		&.big-size{
-			//@include transform(scale(1.8))
+			height:35px;
+  		}
+  		&.maxi-size{
+  			background-color:#000;
   		}
 	}
 
 	.slider-square{
 		background-color:#e6e6e6;
-		@include transition(all 250ms ease-in-out) 
-		width:15px;
-		height:15px;
-		margin:	2px;
+		@include transition(all 100ms ease-out) 
+		width:2px;
+		height:10px;
+		margin:	0 4px;
+		cursor: pointer;
 		
-		&.default-size{
-			//@include transform(scale(1))
-		}
 		&.small-size{
-			//@include transform(scale(1.3))
-			
-			width:20px;
+			//width:20px;
 			height:20px;
-			//margin:	3px;
 
 		}
 		&.big-size{
-			//@include transform(scale(1.6))
-			//margin:	4px;
-			width:25px;
-			height:25px;
+			//width:25px;
+			height:30px;
 		}
 		&.maxi-size{
-			//@include transform(scale(2))
-			//margin:	5px;		
-			background-color:red;
-			width:30px;
-			height:30px;
+			background-color:#000;
+			//width:30px;
+			height:40px;
 		}
 	}
 </style>

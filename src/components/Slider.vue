@@ -62,7 +62,7 @@ export default {
       let delta = id - oldId;
       const coef = delta>0 ? 1 : -1;
       delta = Math.abs(delta);
-      const speed = 100-delta*0.4;
+      const speed = 50-delta*0.4;
 
       for (let i=0; i<delta; i++){
         setTimeout(() =>{
