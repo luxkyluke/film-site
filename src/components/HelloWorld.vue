@@ -43,7 +43,7 @@
         </a>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
+    <h2 class='bite'>Ecosystem</h2>
     <ul>
       <li>
         <a
@@ -86,33 +86,38 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js Asqqdzapp'
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 
-body{
-  h1, h2 {
-    font-weight: normal;
-  }
-}
+    body{
+      h1, h2 {
+        font-weight: 100px;
+      }
+      h2{
+        &.bite{
+          color:red;
+        }
+      }
+    }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    li {
+      display: inline-block;
+      margin: 0 10px;
+    }
 
-a {
-  color: #42b983;
-}
+    a {
+      color: #42b983;
+    }
 
 </style>
