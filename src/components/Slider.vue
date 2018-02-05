@@ -84,6 +84,7 @@ export default {
     &__list{
       display: flex;
       align-items: center;
+      min-height: 40px;
     }
   }
 </style>
