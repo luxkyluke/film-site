@@ -1,4 +1,5 @@
 @import './_mixins.scss';
+@import './constantes';
 
 .background_img{
 	background-size: cover;
@@ -7,7 +8,11 @@
 	height: 100vh;
 }
 
-
+.center{
+	position:absolute;
+	left: 50%;
+	@include transform(translateX(-50%));
+}
 .center_center{
 	text-align: center;
 	margin: auto;

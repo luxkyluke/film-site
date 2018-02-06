@@ -37,5 +37,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-  //@import '../utilities/utility';
+  @import '~sass/main';
+  .gallery{
+
+    &__title{
+      display: flex;
+      justify-content:center;
+      margin-top: $generalMargin;
+    }
+  }
 </style>

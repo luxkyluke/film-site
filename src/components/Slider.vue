@@ -78,8 +78,9 @@ export default {
 <style lang="scss" >
   @import "~sass/main";
   .slider{
-    display: flex;
-    justify-content: center;
+    @extend .center;
+    position: fixed;
+    bottom: $generalMargin;
 
     &__list{
       display: flex;

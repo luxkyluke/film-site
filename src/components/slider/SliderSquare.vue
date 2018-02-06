@@ -24,9 +24,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  @import '~sass/main.scss';
+  	@import '~sass/main.scss';
+	$colorMax : #fff;
+	$colorDefault : #949494;
+	$colorHover : $colorMax;
+
   	.link:hover > .slider-square{
-  		background-color:red;
+  		background-color:$colorHover;
   		&.default-size{
 			height:20px;
   		}
@@ -37,14 +41,14 @@ export default {
 			height:35px;
   		}
   		&.maxi-size{
-  			background-color:#000;
+  			background-color:$colorMax;
   		}
 	}
 
 	.slider-square{
-		background-color:#e6e6e6;
+		background-color:$colorDefault;
 		@include transition(all 100ms ease-out) 
-		width:2px;
+		width:1.5px;
 		height:10px;
 		margin:	0 4px;
 		cursor: pointer;
@@ -59,7 +63,7 @@ export default {
 			height:30px;
 		}
 		&.maxi-size{
-			background-color:#000;
+			background-color:$colorMax;
 			//width:30px;
 			height:40px;
 		}
