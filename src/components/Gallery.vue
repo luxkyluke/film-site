@@ -2,10 +2,10 @@
 <template>
   <div class="gallery">
     <h1 class="gallery__title">{{ title }}</h1>
-    <photo-library
+    <photos
       v-bind:photos ="photos"
       :currentId = "currentPhotoId"
-    ></photo-library>
+    ></photos>
     <slider
       v-bind:photos ="photos"
       :currentId = "currentPhotoId"
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import PhotoLibrary from '@/components/PhotoLibrary'
+import Photos from '@/components/Photos'
 import Slider from '@/components/Slider'
 import PhotoApi from '@/api/PhotoApi.js'
 
@@ -29,7 +29,7 @@ export default {
     }
   },
   components: {
-    'photo-library': PhotoLibrary,
+    'photos': Photos,
     'slider': Slider
   }
 }

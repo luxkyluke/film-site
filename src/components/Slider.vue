@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <ul class="slider__list">
+    <div class="slider__list">
       <slider-square
           v-for="p in sizedPhotos"
         v-bind:id="p.id"
@@ -8,7 +8,7 @@
         :size = "p.size"
         v-on:changeId = "changeCurrentId"
       ></slider-square>
-    </ul>
+    </div>
   </div>
 </template>
 

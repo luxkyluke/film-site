@@ -3,142 +3,179 @@ const PhotoApi = {
   photos:
     [
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "begin"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "middle"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
-      },{
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
-      },
-
-      {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
-      },{
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
-      },{
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       },
       {
-        src: './data/alpes.jpg',
-        name: 'Alpes'
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
+      },
+      {
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
+      },
+      {
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
+      },
+      {
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
+      },
+      {
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end"
       }
     ],
   nbPhoto: function () { return this.photos.length },
