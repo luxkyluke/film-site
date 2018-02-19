@@ -48,7 +48,7 @@ export default {
 	.slider-square{
 		background-color:$colorDefault;
 		@include transition(all 100ms ease-out) 
-		width:1.5px;
+		width:1px;
 		height:10px;
 		margin:	0 4px;
 		cursor: pointer;

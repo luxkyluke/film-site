@@ -36,11 +36,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" >
   @import '~sass/main';
   .gallery{
-
     &__title{
+      font-weight: 200;
       display: flex;
       justify-content:center;
       margin-top: $generalMargin;
