@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"cl",
+				"clip"
+			],
+			[
+				"trans",
+				"translate"
+			],
+			[
+				"class",
+				"classPortrait"
+			],
+			[
+				"prot",
+				"portrait"
+			],
+			[
 				"sin",
 				"Sinesthésie"
 			],
@@ -58,14 +74,6 @@
 			[
 				"bac",
 				"backgroundImg"
-			],
-			[
-				"trans",
-				"transition"
-			],
-			[
-				"class",
-				"className"
 			],
 			[
 				"im",
@@ -506,14 +514,6 @@
 			[
 				"Date",
 				"Date.now(): Date\tDate"
-			],
-			[
-				"prop",
-				"props"
-			],
-			[
-				"pre",
-				"preRender"
 			]
 		]
 	},
@@ -525,6 +525,34 @@
 			{
 				"buffer_size": 271,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<template>\n  <div class=\"photo\">\n    <div class=\"photo__container\">\n      <img  :id=\"idName\"\n            class=\"photo__container__img\" \n            :src=\"img\"\n            :style=\"myStyle\"\n            :class=\"classPortrait\"\n            @mouseover=\"mouseOver\"\n            @mouseleave=\"mouseLeave\"\n      >\n      </img>  \n    </div>\n  </div>\n</template>\n\n<script>\nimport imgTest from '@/assets/test.jpg'\nimport imgPortrait from '@/assets/test2.jpg'\nexport default {\n  name: 'Photo',\n  props: {\n    photo: Object,\n    isCurrent: {\n      type: Boolean,\n      default: false\n    }\n  },\n  data (){\n    return {\n      img : imgPortrait,\n      myStyle : null,\n      idName : \"photo_img_\"+this.photo.id,\n      clip : null,\n      translate: null,\n      translateMargin: 0\n    }\n  },\n  computed: {\n    classPortrait (){\n      return (this.photo.portrait) ? \"portrait\" : \"\"\n    }\n  },\n\n  methods:{\n    getClip: function(img){\n      const width = img.clientWidth;\n      const height = img.clientHeight;\n      const position = this.photo.mask;\n      let w = width;\n      let h = height;\n\n      if(position === \"begin\"){\n         //si c'est un portrait on inverse\n        if(height > width){\n            w = height;\n            h = width;\n        }\n        const tmp = `polygon(0px 0px, ${h}px 0px, ${h}px ${h}px, 0px ${h}px)`;\n        return tmp;\n      }\n\n      w = width;\n      h = height;\n      if(height>width){// si portrait\n        let min, max;\n        if(position === \"middle\"){ // si portrait et middle\n          min = h*0.5-w*0.5;\n          max = h*0.5+w*0.5;\n        }else {//portait et end\n          min = h-w;\n          max = h;\n        }\n        this.translate = this.transform(`translateY(-${max})`)\n        const tmp = `polygon(0px ${min}px, ${w}px ${min}px, ${w}px ${max}px, 0px ${max}px)`\n        return tmp;\n      }\n      else{//SI PAYSAGE\n        let min, max;\n        if(position === \"middle\"){ // si paysage et middle\n          min = w*0.5-h*0.5;\n          max = w*0.5+h*0.5;\n        }else{ //si paysage et end\n          min = w-h;\n          max = w;\n        }\n        const tmp = `polygon(${min}px 0px, ${max}px 0px, ${max}px ${h}px, ${min}px ${max}px)`;\n        return tmp;\n      }\n    },\n    mask :function (){\n      const img = this.$el.querySelector(\"#\"+this.idName);\n      const clip = this.getClip(img);\n      this.clip = clip;\n      this.myStyle = {\n        'clip-path':clip,\n        '-webkit-clip-path':clip\n      }\n    },\n    mouseOver : function(){\n      this.myStyle = {\n        'clip-path':null,\n        '-webkit-clip-path':null\n      }\n    },\n    mouseLeave : function(){\n      this.myStyle = {\n        'clip-path':this.clip,\n        '-webkit-clip-path':this.clip\n      }\n    },\n\n    transform: function(transforms){\n      return {\n         '-moz-transform': transforms,\n           '-o-transform': transforms,\n          '-ms-transform': transforms,\n      '-webkit-transform': transforms,\n              'transform': transforms\n      }\n    }\n  },\n  mounted () {\n    setTimeout(this.mask, 0);\n  }\n}\n</script>\n\n<!-- Add \"scoped\" attribute to limit CSS to this component only -->\n<style lang=\"scss\">\n  @import '~sass/main.scss';\n  \n  .photo{\n      width:40%;\n      height:100%;  \n      display:inline-block;\n    &__container{\n      &__img{\n        height:25vh;\n        width:auto;\n        position:absolute;\n\n        &.portrait{\n          width:25vh;\n          height: auto;\n        }\n      }\n    }\n  }\n</style>\n",
+			"file": "src/components/photos/Photo.vue",
+			"file_size": 3631,
+			"file_write_time": 131635138292965498,
+			"settings":
+			{
+				"buffer_size": 3426,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/api/PhotoApi.js",
+			"settings":
+			{
+				"buffer_size": 635,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/sass/_mixins.scss",
+			"settings":
+			{
+				"buffer_size": 1371,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -611,11 +639,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src",
-		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/test"
+		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src",
+		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/api",
+		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/components",
+		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photos"
 	],
 	"file_history":
 	[
+		"/C/Users/TonioDeMoreno/Desktop/tshjf.vbs",
+		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_1676_44.py",
+		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_4496_50.py",
+		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text2__td_4496_52.py",
+		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/td_4496_51.str",
 		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/README.md",
 		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/maquette/film-site/.eslintrc.js",
 		"/Users/antoine/Documents/Portfolio/Site_v2/src/utilities/utility.js",
@@ -738,16 +773,11 @@
 		"/E/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/E/Sublime Text 3/Packages/User/textsync.sublime-settings",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/index.jsx",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/components/Header.js",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/components/Footer.js",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/components/Banniere.js",
-		"/D/wamp64/www/Challenger/src/app/components/assets/DeleteBtn.jsx",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/components/assets/Button.js",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/index.js"
+		"/D/Documents/Portfolio/SitePorfolio/src/app/components/Header.js"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 31.0
 	},
 	"find_in_files":
 	{
@@ -761,6 +791,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"mouseOver",
+			"mouseover",
+			"mouseOver",
+			"clipStyle",
+			"transforms",
+			"clip",
+			"uniquename",
+			"console"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -778,7 +816,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -806,7 +844,103 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/components/photos/Photo.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3426,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2867,
+								2867
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 213.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "src/api/PhotoApi.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 635,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								161
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/sass/_mixins.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								431,
+								252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -814,7 +948,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -829,11 +963,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.644613583138,
 			1.0
 		],
 		"rows":
@@ -851,7 +992,7 @@
 	"project": "film.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -860,6 +1001,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"mi",
+				"src\\sass\\_mixins.scss"
+			],
 			[
 				"utili",
 				"src/utilities/utility.js"
@@ -1367,10 +1512,6 @@
 			[
 				"ci",
 				"include/Collision.h"
-			],
-			[
-				"coli",
-				"src/Collision.c"
 			]
 		],
 		"width": 0.0

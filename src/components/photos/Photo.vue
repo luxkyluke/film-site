@@ -4,7 +4,8 @@
       <img  :id="idName"
             class="photo__container__img" 
             :src="img"
-            :style="clipStyle"
+            :style="myStyle"
+            :class="myClass"
             @mouseover="mouseOver"
             @mouseleave="mouseLeave"
       >
@@ -28,14 +29,42 @@ export default {
   data (){
     return {
       img : imgTest,
-      clipStyle : null,
+      myStyle : null,
       idName : "photo_img_"+this.photo.id,
-      clip : null
+      clip : null,
+      //translate: 'translate(0px)',
+      translateY: 0,
+      translateX: 0
     }
   },
   computed: {
-    uniquename (){
-      return `photo_${this.photo.id}`
+    isEven (){
+      return this.photo.id%2 == 0;
+    },
+    myClass (){
+      let c = (this.photo.portrait) ? "portrait" : "";
+      c +=(this.isEven) ? " even" : " odd";
+      return c;
+    },
+    translate (){
+      let x=0, y=0;
+      let value = 0;
+
+      if(this.isEven){//si la photo est en bas
+        if(this.photo.mask === "begin" || this.photo.mask === "middle"){
+          value = this.translateY;
+        }
+      }else{//si la photo est en haut
+        if(this.photo.mask === "end" || this.photo.mask === "middle")
+          value = -this.translateY;
+      }
+
+      if(this.photo.portrait)
+        y=value;
+      else
+        x=this.translateX;
+
+      return `translate(${x}px, ${y}px)`;
     }
   },
 
@@ -49,26 +78,32 @@ export default {
 
       if(position === "begin"){
          //si c'est un portrait on inverse
-        if(height > width){
-            w = height;
-            h = width;
+        if(height > width){ 
+          w = height;
+          h = width;
+          this.translateY = height-width;
+        }else{
+          this.translateX = (w-h)*0.5;
         }
-        return `polygon(0px 0px, ${h}px 0px, ${h}px ${h}px, 0px ${h}px)`;
+        const tmp = `polygon(0px 0px, ${h}px 0px, ${h}px ${h}px, 0px ${h}px)`;
+        return tmp;
       }
 
       w = width;
       h = height;
-
       if(height>width){// si portrait
         let min, max;
         if(position === "middle"){ // si portrait et middle
-          min = h*0.5-w*0.5;
-          max = h*0.5+w*0.5;
+          min = (h-w)*0.5;
+          max = (h+w)*0.5;
         }else {//portait et end
           min = h-w;
           max = h;
         }
-        return `polygon(0px ${min}px, ${w}px ${min}px, ${w}px ${max}px, 0px ${max}px)`;
+        //this.translate = this.transform(`translateY(-${max}px)`)
+        this.translateY = min;
+        const tmp = `polygon(0px ${min}px, ${w}px ${min}px, ${w}px ${max}px, 0px ${max}px)`
+        return tmp;
       }
       else{//SI PAYSAGE
         let min, max;
@@ -78,35 +113,43 @@ export default {
         }else{ //si paysage et end
           min = w-h;
           max = w;
+          this.translateX = -min*0.5;
         }
-        return `polygon(${min}px 0px, ${max}px 0px, ${max}px ${h}px, ${min}px ${max}px)`;
+        const tmp = `polygon(${min}px 0px, ${max}px 0px, ${max}px ${h}px, ${min}px ${max}px)`;
+        return tmp;
       }
     },
     mask :function (){
       const img = this.$el.querySelector("#"+this.idName);
       const clip = this.getClip(img);
-      this.clipStyle = {
+      this.clip = clip;
+      this.myStyle = {
         'clip-path':clip,
-        '-webkit-clip-path':clip
+        '-webkit-clip-path':clip,
+        '-webkit-transform': this.translate,
+        'transform': this.translate
       }
     },
     mouseOver : function(){
-      this.clipStyle = {
+      this.myStyle = {
         'clip-path':null,
-        '-webkit-clip-path':null
+        '-webkit-clip-path':null,
+        '-webkit-transform': 'translate(0px)',
+        'transform': 'translate(0px)'
       }
     },
     mouseLeave : function(){
-      if(!this.clip)
-        return this.mask();
-      this.clipStyle = {
+      this.myStyle = {
         'clip-path':this.clip,
-        '-webkit-clip-path':this.clip
+        '-webkit-clip-path':this.clip,
+        '-webkit-transform': this.translate,
+        'transform': this.translate
       }
-    }
+    },
+    
   },
   mounted () {
-    this.mask();
+    setTimeout(this.mask, 0);
   }
 }
 </script>
@@ -116,17 +159,27 @@ export default {
   @import '~sass/main.scss';
   
   .photo{
-      width:40%;
+      width:33.33%;
       height:100%;  
       display:inline-block;
+
     &__container{
+      @extend .full;
+      display: flex;
+      justify-content: center;
+
       &__img{
-        @extend .background_img;
         height:25vh;
         width:auto;
-
+        position:absolute;
+        
         &.portrait{
           width:25vh;
+          height: auto;
+        }
+
+        &.even{
+          align-self:flex-end;
         }
       }
     }
