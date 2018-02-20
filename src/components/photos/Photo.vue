@@ -64,7 +64,7 @@ export default {
       else
         x=this.translateX;
 
-      return `translate(${x}px, ${y}px)`;
+      return `translate3d(${x}px, ${y}px, 0)`;
     }
   },
 
@@ -132,10 +132,10 @@ export default {
     },
     mouseOver : function(){
       this.myStyle = {
-        'clip-path':null,
-        '-webkit-clip-path':null,
+        'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+        '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
         '-webkit-transform': 'translate(0px)',
-        'transform': 'translate(0px)'
+        'transform': 'translate3d(0px)'
       }
     },
     mouseLeave : function(){
@@ -169,6 +169,7 @@ export default {
       justify-content: center;
 
       &__img{
+        @include transition(all 350ms ease-in-out);
         height:25vh;
         width:auto;
         position:absolute;

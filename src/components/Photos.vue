@@ -32,6 +32,10 @@ export default {
   .photos{
     height:50vh;
     white-space: nowrap;
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
+    width: 100%;
   }
 
 </style>
