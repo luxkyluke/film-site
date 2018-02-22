@@ -1,5 +1,9 @@
 <template>
-  <div class="photos">
+  <div 
+    class="photos"
+    @scroll="handleScroll"
+    :style="myStyle"
+  >
     <photo
         v-for= "p in photos"
         v-bind:key= "p.id"
@@ -11,6 +15,7 @@
 
 <script>
 import Photo from '@/components/photos/Photo'
+import Utility from '@/addons/utility'
 
 export default {
   name: 'Photos',
@@ -21,8 +26,37 @@ export default {
       default: 0
     }
   },
+  data (){
+    return {
+      offset:0,
+      width:0
+    }
+  },
   components: {
     'photo': Photo
+  },
+  computed:{
+    myStyle (){
+      return {
+        'transform' : `translate(-${this.offset}px, -50%)`
+      }
+    }
+  },
+  methods:{
+    handleScroll: function(e){
+      this.offset = Utility.clamp(this.offset+e.deltaY, 0, this.width)
+    }
+  },
+  created () {
+    window.addEventListener('wheel', this.handleScroll);
+  },
+  mounted(){
+    this.width = this.$el.querySelector('.photo').clientWidth*this.photos.length// - this.$el.clientWidth
+    console.log(this.$el.clientWidth)
+    console.log(this.width)
+  },
+  destroyed () {
+    window.removeEventListener('wheel', this.handleScroll);
   }
 }
 </script>

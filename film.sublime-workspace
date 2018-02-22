@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"wi",
+				"width"
+			],
+			[
+				"img",
+				"imgTest"
+			],
+			[
+				"tran",
+				"translateX"
+			],
+			[
+				"translateV",
+				"translateValue"
+			],
+			[
+				"po",
+				"portrait"
+			],
+			[
+				"cli",
+				"clipStyle"
+			],
+			[
 				"cl",
 				"clip"
 			],
@@ -236,10 +260,6 @@
 				"transX"
 			],
 			[
-				"tran",
-				"translateX"
-			],
-			[
 				"di",
 				"display"
 			],
@@ -360,10 +380,6 @@
 				"handleImgError"
 			],
 			[
-				"wi",
-				"width: "
-			],
-			[
 				"lisT",
 				"listItems"
 			],
@@ -402,10 +418,6 @@
 			[
 				"top",
 				"top\t = 'inherit' Style CSS"
-			],
-			[
-				"po",
-				"position\t = 'relative' Style CSS"
 			],
 			[
 				"console",
@@ -502,18 +514,6 @@
 			[
 				"ne",
 				"newPath"
-			],
-			[
-				"defau",
-				"defaultState"
-			],
-			[
-				"Rout",
-				"Route"
-			],
-			[
-				"Date",
-				"Date.now(): Date\tDate"
 			]
 		]
 	},
@@ -528,13 +528,41 @@
 			}
 		},
 		{
-			"contents": "<template>\n  <div class=\"photo\">\n    <div class=\"photo__container\">\n      <img  :id=\"idName\"\n            class=\"photo__container__img\" \n            :src=\"img\"\n            :style=\"myStyle\"\n            :class=\"classPortrait\"\n            @mouseover=\"mouseOver\"\n            @mouseleave=\"mouseLeave\"\n      >\n      </img>  \n    </div>\n  </div>\n</template>\n\n<script>\nimport imgTest from '@/assets/test.jpg'\nimport imgPortrait from '@/assets/test2.jpg'\nexport default {\n  name: 'Photo',\n  props: {\n    photo: Object,\n    isCurrent: {\n      type: Boolean,\n      default: false\n    }\n  },\n  data (){\n    return {\n      img : imgPortrait,\n      myStyle : null,\n      idName : \"photo_img_\"+this.photo.id,\n      clip : null,\n      translate: null,\n      translateMargin: 0\n    }\n  },\n  computed: {\n    classPortrait (){\n      return (this.photo.portrait) ? \"portrait\" : \"\"\n    }\n  },\n\n  methods:{\n    getClip: function(img){\n      const width = img.clientWidth;\n      const height = img.clientHeight;\n      const position = this.photo.mask;\n      let w = width;\n      let h = height;\n\n      if(position === \"begin\"){\n         //si c'est un portrait on inverse\n        if(height > width){\n            w = height;\n            h = width;\n        }\n        const tmp = `polygon(0px 0px, ${h}px 0px, ${h}px ${h}px, 0px ${h}px)`;\n        return tmp;\n      }\n\n      w = width;\n      h = height;\n      if(height>width){// si portrait\n        let min, max;\n        if(position === \"middle\"){ // si portrait et middle\n          min = h*0.5-w*0.5;\n          max = h*0.5+w*0.5;\n        }else {//portait et end\n          min = h-w;\n          max = h;\n        }\n        this.translate = this.transform(`translateY(-${max})`)\n        const tmp = `polygon(0px ${min}px, ${w}px ${min}px, ${w}px ${max}px, 0px ${max}px)`\n        return tmp;\n      }\n      else{//SI PAYSAGE\n        let min, max;\n        if(position === \"middle\"){ // si paysage et middle\n          min = w*0.5-h*0.5;\n          max = w*0.5+h*0.5;\n        }else{ //si paysage et end\n          min = w-h;\n          max = w;\n        }\n        const tmp = `polygon(${min}px 0px, ${max}px 0px, ${max}px ${h}px, ${min}px ${max}px)`;\n        return tmp;\n      }\n    },\n    mask :function (){\n      const img = this.$el.querySelector(\"#\"+this.idName);\n      const clip = this.getClip(img);\n      this.clip = clip;\n      this.myStyle = {\n        'clip-path':clip,\n        '-webkit-clip-path':clip\n      }\n    },\n    mouseOver : function(){\n      this.myStyle = {\n        'clip-path':null,\n        '-webkit-clip-path':null\n      }\n    },\n    mouseLeave : function(){\n      this.myStyle = {\n        'clip-path':this.clip,\n        '-webkit-clip-path':this.clip\n      }\n    },\n\n    transform: function(transforms){\n      return {\n         '-moz-transform': transforms,\n           '-o-transform': transforms,\n          '-ms-transform': transforms,\n      '-webkit-transform': transforms,\n              'transform': transforms\n      }\n    }\n  },\n  mounted () {\n    setTimeout(this.mask, 0);\n  }\n}\n</script>\n\n<!-- Add \"scoped\" attribute to limit CSS to this component only -->\n<style lang=\"scss\">\n  @import '~sass/main.scss';\n  \n  .photo{\n      width:40%;\n      height:100%;  \n      display:inline-block;\n    &__container{\n      &__img{\n        height:25vh;\n        width:auto;\n        position:absolute;\n\n        &.portrait{\n          width:25vh;\n          height: auto;\n        }\n      }\n    }\n  }\n</style>\n",
-			"file": "src/components/photos/Photo.vue",
-			"file_size": 3631,
-			"file_write_time": 131635138292965498,
+			"file": "src/App.vue",
 			"settings":
 			{
-				"buffer_size": 3426,
+				"buffer_size": 361,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<template>\n  <div \n    class=\"photos\"\n    @scroll=\"handleScroll\"\n    :style=\"myStyle\"\n  >\n    <photo\n        v-for= \"p in photos\"\n        v-bind:key= \"p.id\"\n        :photo=\"p\"\n        :isCurrent= \"p.id === currentId\"\n      ></photo>\n  </div>\n</template>\n\n<script>\nimport Photo from '@/components/photos/Photo'\nimport Utility from '@/addons/utility'\n\nexport default {\n  name: 'Photos',\n  props: {\n    photos: Array,\n    currentId: {\n      type: Number,\n      default: 0\n    }\n  },\n  data (){\n    return {\n      offset:0,\n      width:0\n    }\n  },\n  components: {\n    'photo': Photo\n  },\n  computed:{\n    myStyle (){\n      return {\n        'transform' : `translate(-${this.offset}px, -50%)`\n      }\n    }\n  },\n  methods:{\n    handleScroll: function(e){\n      this.offset = Utility.clamp(this.offset+e.deltaY, 0, this.width)\n    }\n  },\n  created () {\n    window.addEventListener('wheel', this.handleScroll);\n  },\n  mounted(){\n    this.width = this.$el.querySelector('.photo').clientWidth*this.photos.length// - this.$el.clientWidth\n    console.log(this.$el.clientWidth)\n    console.log(this.width)\n  },\n  destroyed () {\n    window.removeEventListener('wheel', this.handleScroll);\n  }\n}\n</script>\n\n<!-- Add \"scoped\" attribute to limit CSS to this component only -->\n<style lang=\"scss\">\n  .photos{\n    height:50vh;\n    white-space: nowrap;\n    transform: translateY(-50%);\n    top: 50%;\n    position: absolute;\n    width: 100%;\n    padding: \n  }\n\n</style>\n",
+			"file": "src/components/Photos.vue",
+			"file_size": 1511,
+			"file_write_time": 131636948897823369,
+			"settings":
+			{
+				"buffer_size": 1450,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/photos/Photo.vue",
+			"settings":
+			{
+				"buffer_size": 4512,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/addons/utility.js",
+			"settings":
+			{
+				"buffer_size": 197,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -542,7 +570,7 @@
 			"file": "src/api/PhotoApi.js",
 			"settings":
 			{
-				"buffer_size": 635,
+				"buffer_size": 638,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -563,10 +591,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 167.0,
-		"last_filter": "remoc",
+		"height": 354.0,
+		"last_filter": "inst",
 		"selected_items":
 		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
 			[
 				"remoc",
 				"Package Control: Remove Package"
@@ -582,10 +614,6 @@
 			[
 				"",
 				"Package Control: Advanced Install Package"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			],
 			[
 				"range",
@@ -646,6 +674,8 @@
 	],
 	"file_history":
 	[
+		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/addons/utility.js",
+		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/utility.js",
 		"/C/Users/TonioDeMoreno/Desktop/tshjf.vbs",
 		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_1676_44.py",
 		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_4496_50.py",
@@ -734,7 +764,6 @@
 		"/D/Documents/Portfolio/SitePorfolio/src/app/components/projects/ProjectMin.jsx",
 		"/D/Documents/Portfolio/SitePorfolio/maquettes/exports/Rectangle 24.svg",
 		"/D/Documents/Portfolio/SitePorfolio/data/monaco_porcelaine/imgonline-com-ua-ColorPalette-luT6JnGabEr.jpg",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/utility.js",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/components/project/Footer.jsx",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/Animation.js",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/components/assets/Button.jsx",
@@ -772,8 +801,7 @@
 		"/E/Sublime Text 3/Packages/User/Package Control.sublime-settings",
 		"/E/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/E/Sublime Text 3/Packages/User/textsync.sublime-settings",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/index.jsx",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/components/Header.js"
+		"/D/Documents/Portfolio/SitePorfolio/src/app/index.jsx"
 	],
 	"find":
 	{
@@ -791,6 +819,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"wheel",
+			"scroll",
+			"true",
+			"translate3d",
+			"Alpes",
+			"false",
+			"0% 100%,",
+			" 0% 100%",
+			"null",
+			"true",
+			"5",
+			"false",
+			"translateValue",
+			"true",
+			"classPortrait",
+			"transform",
 			"mouseOver",
 			"mouseover",
 			"mouseOver",
@@ -816,7 +860,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -849,19 +893,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/components/photos/Photo.vue",
+					"file": "src/App.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3426,
+						"buffer_size": 361,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2867,
-								2867
+								197,
+								197
 							]
 						],
 						"settings":
@@ -871,33 +915,129 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 213.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 2,
-					"file": "src/api/PhotoApi.js",
+					"file": "src/components/Photos.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 635,
+						"buffer_size": 1450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								161,
-								161
+								1291,
+								1291
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1104.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/components/photos/Photo.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4512,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4062,
+								4062
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3589.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/addons/utility.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								45
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "src/api/PhotoApi.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								145,
+								145
+							],
+							[
+								265,
+								265
+							],
+							[
+								382,
+								382
 							]
 						],
 						"settings":
@@ -910,11 +1050,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "src/sass/_mixins.scss",
 					"semi_transient": false,
 					"settings":
@@ -926,8 +1066,8 @@
 						"selection":
 						[
 							[
-								431,
-								252
+								7,
+								7
 							]
 						],
 						"settings":
@@ -940,7 +1080,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1001,6 +1141,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"photos",
+				"src\\components\\Photos.vue"
+			],
 			[
 				"mi",
 				"src\\sass\\_mixins.scss"
@@ -1508,10 +1652,6 @@
 			[
 				"ge",
 				"src/geometry.c"
-			],
-			[
-				"ci",
-				"include/Collision.h"
 			]
 		],
 		"width": 0.0

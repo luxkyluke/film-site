@@ -149,7 +149,7 @@ export default {
     
   },
   mounted () {
-    setTimeout(this.mask, 0);
+    setTimeout(this.mask, 100);
   }
 }
 </script>
@@ -159,7 +159,7 @@ export default {
   @import '~sass/main.scss';
   
   .photo{
-      width:33.33%;
+      width:30%;
       height:100%;  
       display:inline-block;
 
