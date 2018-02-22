@@ -29,16 +29,18 @@ export default {
   data (){
     return {
       offset:0,
-      width:0
+      width:0,
+      photoWidth:0
     }
   },
   components: {
-    'photo': Photo
+    'photo': Photo,
   },
   computed:{
     myStyle (){
       return {
-        'transform' : `translate(-${this.offset}px, -50%)`
+        'transform' : `translate(-${this.offset}px, -50%)`,
+        //'width' : `${this.photoWidth}px`
       }
     }
   },
@@ -51,9 +53,16 @@ export default {
     window.addEventListener('wheel', this.handleScroll);
   },
   mounted(){
-    this.width = this.$el.querySelector('.photo').clientWidth*this.photos.length// - this.$el.clientWidth
-    console.log(this.$el.clientWidth)
-    console.log(this.width)
+    // setTimeout(() =>{
+      const windowWidth = this.$el.clientWidth;
+      console.log(this.$el.querySelector('.photo').clientWidth)
+      this.photoWidth =  this.$el.querySelector('.photo').clientWidth*this.photos.length;
+
+      const paddings = windowWidth*0.4*2;//les deux paddding autour des photos
+      this.width = this.photoWidth*this.photos.length + paddings - windowWidth;
+      console.log(this.$el.clientWidth)
+      console.log(this.width)
+    //}, 0)
   },
   destroyed () {
     window.removeEventListener('wheel', this.handleScroll);
@@ -70,6 +79,7 @@ export default {
     top: 50%;
     position: absolute;
     width: 100%;
+    padding: 0 40%
   }
 
 </style>

@@ -19,6 +19,23 @@ const PhotoApi = {
         name: 'Alpes',
         mask: "end",
         portrait: false
+      },{
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "begin",
+        portrait: false
+      },
+      {
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "middle",
+        portrait: false
+      },
+      {
+        src: '/data/alpes.jpg',
+        name: 'Alpes',
+        mask: "end",
+        portrait: false
       }
     ],
   nbPhoto: function () { return this.photos.length },
