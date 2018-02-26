@@ -159,7 +159,7 @@ export default {
   @import '~sass/main.scss';
   
   .photo{
-      width:40%;
+      width:400px;
       height:100%;  
       display:inline-block;
 

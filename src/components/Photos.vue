@@ -29,7 +29,7 @@ export default {
   data (){
     return {
       offset:0,
-      width:0,
+      width:null,
       photoWidth:0
     }
   },
@@ -38,10 +38,12 @@ export default {
   },
   computed:{
     myStyle (){
-      return {
+      let s ={
         'transform' : `translate(-${this.offset}px, -50%)`,
-        //'width' : `${this.photoWidth}px`
       }
+     // if(this.width)
+       //  s.width =  `${this.width}px`
+      return s
     }
   },
   methods:{
@@ -54,13 +56,15 @@ export default {
   },
   mounted(){
     // setTimeout(() =>{
-      const windowWidth = this.$el.clientWidth;
+      const windowWidth = window.innerWidth;
       console.log(this.$el.querySelector('.photo').clientWidth)
-      this.photoWidth =  this.$el.querySelector('.photo').clientWidth*this.photos.length;
+      this.width =  this.$el.clientWidth  - windowWidth;
 
-      const paddings = windowWidth*0.4*2;//les deux paddding autour des photos
-      this.width = this.photoWidth*this.photos.length + paddings - windowWidth;
-      console.log(this.$el.clientWidth)
+      //this.offset = this.photos.length;
+      /*const paddings = windowWidth*0.4*2;//les deux paddding autour des photos
+      this.width = this.photoWidth*this.photos.length + paddings  - windowWidth;
+      console.log(this.photos.length)
+      console.log(this.photoWidth)*/
       console.log(this.width)
     //}, 0)
   },
@@ -75,11 +79,10 @@ export default {
   .photos{
     height:50vh;
     white-space: nowrap;
-    transform: translateY(-50%);
     top: 50%;
     position: absolute;
-    width: 100%;
-    padding: 0 40%
+    //width: 100%;
+    padding: 0 33.33%;
   }
 
 </style>
