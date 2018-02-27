@@ -9,6 +9,7 @@
         v-bind:key= "p.id"
         :photo="p"
         :isCurrent= "p.id === currentId"
+        :changeCurrentId = "changeCurrentId"
       ></photo>
   </div>
 </template>
@@ -24,13 +25,14 @@ export default {
     currentId: {
       type: Number,
       default: 0
-    }
+    },
+    changeCurrentId : Function
   },
   data (){
     return {
       offset:0,
       width:null,
-      photoWidth:0
+      idPhoto:0
     }
   },
   components: {
@@ -41,35 +43,31 @@ export default {
       let s ={
         'transform' : `translate(-${this.offset}px, -50%)`,
       }
-     // if(this.width)
-       //  s.width =  `${this.width}px`
       return s
     }
   },
   methods:{
     handleScroll: function(e){
-      this.offset = Utility.clamp(this.offset+e.deltaY, 0, this.width)
+      let delta = e.deltaY
+      if(Utility.isFirefox())
+        delta *= 20
+      this.offset = Utility.clamp(this.offset+delta, 0, this.width)
+    },
+    initWidth: function(){
+      this.width =  this.$el.clientWidth  - window.innerWidth;
+      console.log(this.width)
     }
   },
   created () {
     window.addEventListener('wheel', this.handleScroll);
+    window.addEventListener('resize', this.initWidth);
   },
   mounted(){
-    // setTimeout(() =>{
-      const windowWidth = window.innerWidth;
-      console.log(this.$el.querySelector('.photo').clientWidth)
-      this.width =  this.$el.clientWidth  - windowWidth;
-
-      //this.offset = this.photos.length;
-      /*const paddings = windowWidth*0.4*2;//les deux paddding autour des photos
-      this.width = this.photoWidth*this.photos.length + paddings  - windowWidth;
-      console.log(this.photos.length)
-      console.log(this.photoWidth)*/
-      console.log(this.width)
-    //}, 0)
+      this.initWidth();
   },
   destroyed () {
     window.removeEventListener('wheel', this.handleScroll);
+    window.removeEventListener('resize', this.initWidth);
   }
 }
 </script>
@@ -81,7 +79,6 @@ export default {
     white-space: nowrap;
     top: 50%;
     position: absolute;
-    //width: 100%;
     padding: 0 33.33%;
   }
 

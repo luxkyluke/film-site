@@ -19,10 +19,8 @@ export default {
   name: 'Slider',
   props: {
     photos: Array,
-    currentId: {
-      type: Number,
-      default: 0
-    }
+    changeId : Function,
+    currentId: Number
   },
   data () {
     return {
@@ -55,6 +53,7 @@ export default {
   },
   methods: {    
     changeCurrentId: function(id) {
+      console.log(this.currentId)
       if(id === this.id)
         return;
       //interpolation entre les 2 ids 
@@ -69,7 +68,11 @@ export default {
           this.id += coef;
         }, speed*i);
       }
+      this.changeId(id);
     }
+  },
+  beforeUpdate (){
+    console.log("slider update")
   }
 }
 </script>

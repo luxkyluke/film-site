@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import 'intersection-observer';
+import '@/addons/wheel-event-polyfill'
 export default {
   name: 'App'
 }

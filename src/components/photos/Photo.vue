@@ -24,7 +24,8 @@ export default {
     isCurrent: {
       type: Boolean,
       default: false
-    }
+    },
+    changeCurrentId: Function
   },
   data (){
     return {
@@ -34,7 +35,8 @@ export default {
       clip : null,
       //translate: 'translate(0px)',
       translateY: 0,
-      translateX: 0
+      translateX: 0,
+      observer: null
     }
   },
   computed: {
@@ -146,10 +148,36 @@ export default {
         'transform': this.translate
       }
     },
-    
+    intersect : function(entries){
+      const image = entries[0];
+      if (image.isIntersecting) {
+        console.log("intersect")
+        this.changeCurrentId(this.photo.id);
+      } 
+    },
+    initObserver: function(){
+      let observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1.0]
+      };
+
+      this.observer = new IntersectionObserver((entries)=>{
+        const image = entries[0];
+        if (image.isIntersecting && image.intersectionRatio > 0.9999) {
+          this.changeCurrentId(this.photo.id);
+        } 
+      }, observerOptions);
+
+      this.observer.observe(this.$el);
+    }
   },
   mounted () {
-    setTimeout(this.mask, 100);
+    setTimeout(this.mask, 300);
+    this.initObserver();
+  },
+  destroy(){
+    this.observer.disconnect();
   }
 }
 </script>
@@ -159,7 +187,7 @@ export default {
   @import '~sass/main.scss';
   
   .photo{
-      width:400px;
+      width:500px;
       height:100%;  
       display:inline-block;
 

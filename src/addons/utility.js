@@ -5,6 +5,9 @@ const utility = {
         if(value <min)
             return min;
         return value;
+    },
+    isFirefox(){
+    	return typeof InstallTrigger !== 'undefined';
     }
 }
 
