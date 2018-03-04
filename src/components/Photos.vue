@@ -9,7 +9,7 @@
         v-bind:key= "p.id"
         :photo="p"
         :isCurrent= "p.id === currentId"
-        :changeCurrentId = "changeCurrentId"
+        @changeCurrentId = "changeCurrentId"
       ></photo>
   </div>
 </template>
@@ -25,37 +25,60 @@ export default {
     currentId: {
       type: Number,
       default: 0
-    },
-    changeCurrentId : Function
+    }
   },
   data (){
     return {
-      offset:0,
-      width:null,
-      idPhoto:0
+      photoWidth:0,
+      width:0,
+      offset:0
     }
   },
   components: {
     'photo': Photo,
   },
   computed:{
+    scrollArea(){
+      return this.width - window.innerWidth;
+    },
+    padding(){
+      return (this.width-this.photoWidth*this.photos.length)*0.5
+    },
+    
     myStyle (){
-      let s ={
+      let s ={  
         'transform' : `translate(-${this.offset}px, -50%)`,
       }
       return s
     }
   },
+  watch: {
+    currentId: function(newId, oldId){
+      if(this.currentId != newId)
+        this.scrollToCurrentPhoto()
+    }
+  },
   methods:{
+    scrollToCurrentPhoto () {
+      const offsetCurrentPhoto = this.padding + this.currentId*this.photoWidth
+      const delta = this.offset - offsetCurrentPhoto
+      const offsetMiddle = window.innerWidth*0.5-this.photoWidth*0.5
+
+      this.offset = this.offset - delta - offsetMiddle
+    },
+    changeCurrentId:function(id){
+      this.currentId = id;
+      this.$emit('changeCurrentId', id)
+    },
     handleScroll: function(e){
       let delta = e.deltaY
       if(Utility.isFirefox())
         delta *= 20
-      this.offset = Utility.clamp(this.offset+delta, 0, this.width)
+      this.offset = Utility.clamp(this.offset+delta, 0, this.scrollArea)
     },
     initWidth: function(){
-      this.width =  this.$el.clientWidth  - window.innerWidth;
-      console.log(this.width)
+      this.width =  this.$el.clientWidth ;
+      this.photoWidth = this.$el.querySelector('.photo').clientWidth;
     }
   },
   created () {

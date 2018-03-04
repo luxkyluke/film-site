@@ -24,8 +24,7 @@ export default {
     isCurrent: {
       type: Boolean,
       default: false
-    },
-    changeCurrentId: Function
+    }
   },
   data (){
     return {
@@ -152,7 +151,7 @@ export default {
       const image = entries[0];
       if (image.isIntersecting) {
         console.log("intersect")
-        this.changeCurrentId(this.photo.id);
+        this.$emit("changeCurrentId", this.photo.id);
       } 
     },
     initObserver: function(){
@@ -165,7 +164,7 @@ export default {
       this.observer = new IntersectionObserver((entries)=>{
         const image = entries[0];
         if (image.isIntersecting && image.intersectionRatio > 0.9999) {
-          this.changeCurrentId(this.photo.id);
+          this.$emit("changeCurrentId", this.photo.id);
         } 
       }, observerOptions);
 
@@ -200,6 +199,7 @@ export default {
         @include transition(all 350ms ease-in-out);
         height:25vh;
         width:auto;
+        cursor: pointer;
         position:absolute;
         
         &.portrait{

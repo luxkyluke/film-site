@@ -4,14 +4,15 @@
     <h1 class="gallery__title">{{ title }}</h1>
     <photos
       v-bind:photos ="photos"
-      :currentId = "currentPhotoId"
-      :changeCurrentId ="changeCurrentPhoto"
+      v-bind:currentId = "currentPhotoId"
+      v-on:changeCurrentId ="changeCurrentPhoto"
     ></photos>
     <slider
       v-bind:photos ="photos"
-      :currentId = "currentPhotoId"
-      :changeId = "changeCurrentPhoto"
+      v-bind:currentId = "currentPhotoId"
+      v-on:changeId = "changeCurrentPhoto"
     ></slider>
+    {{currentPhotoId}}
   </div>
 </template>
 
@@ -26,23 +27,31 @@ export default {
     return {
       photos: PhotoApi.all(),
       title: 'Film Photography',
-      currentPhotoId: 0
+      idPhoto : 0
     }
+  },
+  computed:{
+    currentPhotoId: {
+      get: function(){
+        return  this.idPhoto
+      },
+      set: function(id){
+        this.idPhoto = id
+      }
+    }
+    
   },
   components: {
     'photos': Photos,
     'slider': Slider
   },
   methods:{
-    changeCurrentPhoto : (id) => {
-      if(id !== this.currentPhotoId){
-        console.log("change id "+id)
+    changeCurrentPhoto : function (id) {
+      if(id != this.currentPhotoId){
+        console.log("change "+ id)
         this.currentPhotoId = id;
       }
     }
-  },
-  beforeUpdate(){
-    console.log("gallery update")
   }
 }
 </script>

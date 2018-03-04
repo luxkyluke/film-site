@@ -19,12 +19,10 @@ export default {
   name: 'Slider',
   props: {
     photos: Array,
-    changeId : Function,
     currentId: Number
   },
   data () {
     return {
-      id : this.currentId,
       defaultSize: 'default-size',
       smallSize: 'small-size',
       bigSize: 'big-size',
@@ -39,11 +37,11 @@ export default {
     sizedPhotos: function () {
       return this.photos.map((p, i) => {
         let size = 'default-size'
-        if (i === this.id - 1 || i === this.id + 1) {
+        if (i === this.currentId - 1 || i === this.currentId + 1) {
           size = 'big-size'
-        } else if (i === this.id - 2 || i === this.id + 2) {
+        } else if (i === this.currentId - 2 || i === this.currentId + 2) {
           size = 'small-size'
-        } else if (i === this.id) {
+        } else if (i === this.currentId) {
           size = 'maxi-size'
         }
         p.size = size
@@ -68,11 +66,8 @@ export default {
           this.id += coef;
         }, speed*i);
       }
-      this.changeId(id);
+      this.$emit("changeId", id);
     }
-  },
-  beforeUpdate (){
-    console.log("slider update")
   }
 }
 </script>
