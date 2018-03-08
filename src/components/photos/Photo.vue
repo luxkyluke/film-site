@@ -6,10 +6,21 @@
             :src="img"
             :style="myStyle"
             :class="myClass"
+      />
+      <img  class="photo__container__area" 
+            :src="img"
+            :style="myStyle"
+            :class="myClass"
             @mouseover="mouseOver"
             @mouseleave="mouseLeave"
-      >
-      </img>  
+      />
+      <photo-info
+        :photo="photo"
+        :class="classInfo"
+        @mouseover="mouseOver"
+        @mouseleave="mouseLeave"
+        :isActive = "active"
+      ></photo-info>
     </div>
   </div>
 </template>
@@ -17,6 +28,8 @@
 <script>
 import imgTest from '@/assets/test.jpg'
 import imgPortrait from '@/assets/test2.jpg'
+import PhotoInfo from './PhotoInfo'
+
 export default {
   name: 'Photo',
   props: {
@@ -25,6 +38,9 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  components: {
+    'photo-info': PhotoInfo,
   },
   data (){
     return {
@@ -35,7 +51,8 @@ export default {
       //translate: 'translate(0px)',
       translateY: 0,
       translateX: 0,
-      observer: null
+      observer: null,
+      active : false,
     }
   },
   computed: {
@@ -46,6 +63,9 @@ export default {
       let c = (this.photo.portrait) ? "portrait" : "";
       c +=(this.isEven) ? " even" : " odd";
       return c;
+    },
+    classInfo(){
+      return (this.active) ? this.myClass + " active" : this.myClass
     },
     translate (){
       let x=0, y=0;
@@ -138,6 +158,7 @@ export default {
         '-webkit-transform': 'translate(0px)',
         'transform': 'translate3d(0px)'
       }
+      this.active = true;
     },
     mouseLeave : function(){
       this.myStyle = {
@@ -146,6 +167,7 @@ export default {
         '-webkit-transform': this.translate,
         'transform': this.translate
       }
+      this.active = false;
     },
     intersect : function(entries){
       const image = entries[0];
@@ -210,6 +232,11 @@ export default {
         &.even{
           align-self:flex-end;
         }
+      }
+      &__area{
+        @extend .photo__container__img;
+        z-index:2;
+        opacity:0;
       }
     }
   }

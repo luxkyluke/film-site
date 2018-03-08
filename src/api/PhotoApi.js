@@ -5,35 +5,53 @@ const PhotoApi = {
       {
         src: '/data/alpes.jpg',
         name: 'Alpes',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
         mask: "begin",
         portrait: false
       },
       {
         src: '/data/alpes.jpg',
         name: 'Alpes',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
         mask: "middle",
         portrait: false
       },
       {
         src: '/data/alpes.jpg',
         name: 'Alpes',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
         mask: "end",
         portrait: false
       },{
         src: '/data/alpes.jpg',
         name: 'Alpes',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
         mask: "begin",
         portrait: false
       },
       {
         src: '/data/alpes.jpg',
         name: 'Alpes',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
         mask: "middle",
         portrait: false
       },
       {
         src: '/data/alpes.jpg',
         name: 'Alpes',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
         mask: "end",
         portrait: false
       }

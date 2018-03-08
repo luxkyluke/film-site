@@ -70,6 +70,7 @@ export default {
       display: flex;
       justify-content:center;
       margin-top: $generalMargin;
+      font-size:2.5em;
     }
     &__center{
       width: 33.33vw;

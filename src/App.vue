@@ -13,17 +13,21 @@ export default {
 </script>
 
 <style>
-  body{
-    background-color: #303030;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #app {
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #fff;
-  }
+	body{
+		background-color: #303030;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+	}
+
+	#app {
+		font-family: 'Karla', sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #fff;
+	}
+
+  	h1{
+		font-family: 'Montserrat', sans-serif;
+	}
 </style>
