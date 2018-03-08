@@ -2,6 +2,7 @@
 <template>
   <div class="gallery">
     <h1 class="gallery__title">{{ title }}</h1>
+    <div class="middle"></div>
     <photos
       v-bind:photos ="photos"
       v-bind:currentId = "idPhoto"
@@ -54,6 +55,16 @@ export default {
 <style lang="scss" >
   @import '~sass/main';
   .gallery{
+    .middle{
+      width: 2px;
+      position: absolute;
+      height: 100vh;
+      top:0;
+      transform: translateX(-50%);
+      left: 50%;
+      background-color: red;
+      display: none;
+    }
     &__title{
       font-weight: 200;
       display: flex;

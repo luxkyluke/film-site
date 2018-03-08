@@ -55,20 +55,20 @@ export default {
   },
   watch: {
     currentId: function(newId, oldId){
-      //if(this.id != newId)
-        this.id = this.currentId;
-        this.scrollToCurrentPhoto()
+      this.id = this.currentId;
+      this.scrollToCurrentPhoto()
     }
   },
   methods:{
     scrollToCurrentPhoto () {
       const offsetCurrentPhoto = this.padding + this.id*this.photoWidth
       const delta = this.offset - offsetCurrentPhoto
-      const offsetMiddle = window.innerWidth*0.5-this.photoWidth*0.5
+      const offsetMiddle = window.innerWidth*0.5 - this.photoWidth*0.5
 
-      //this.offset = this.offset - delta - offsetMiddle
-      const nextVal = this.offset - delta - offsetMiddle;
-      TweenMax.to(this, 0.8, {offset:nextVal, ease:Quint.easeInOut, onStart:this.disableChangeId, onComplete:this.enableChangeId});
+      const nextVal = this.offset - delta - offsetMiddle
+      console.log(delta)
+      TweenMax.to(this, 0.8, {offset:nextVal, ease:Quint.easeInOut, 
+        onStart:this.disableChangeId, onComplete:this.enableChangeId});
 
     },
     disableChangeId:function(){
@@ -90,8 +90,8 @@ export default {
       this.offset = Utility.clamp(this.offset+delta, 0, this.scrollArea)
     },
     initWidth: function(){
-      this.width =  this.$el.clientWidth ;
-      this.photoWidth = this.$el.querySelector('.photo').clientWidth;
+      this.width =  this.$el.clientWidth
+      this.photoWidth = this.$el.querySelector('.photo').clientWidth
     }
   },
   created () {

@@ -16,6 +16,8 @@ export default {
   body{
     background-color: #303030;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
   }
   
   #app {
