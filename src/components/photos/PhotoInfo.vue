@@ -27,7 +27,6 @@
 </template> 
 
 <script>
-import Icon from '@/components/Icon'
 import iconCamera from '@/assets/icon/photo.svg'
 import iconFilm from '@/assets/icon/film.svg'
 import iconLens from '@/assets/icon/lens.svg'
@@ -40,9 +39,6 @@ export default {
       iconFilm,
       iconCamera
     }
-  },
-  components: {
-    Icon,
   },
   props:{
     photo: Object,
@@ -69,12 +65,12 @@ export default {
     height : 250px;
     padding: 40px;
     position:absolute;
-    @include transform(translateX(-50%));
+    @include transform(translateX(-60%));
     @include transition(opacity 300ms ease-in);
     @include transition(transform 300ms ease-in);
     bottom:0;
     opacity:0;
-    text-shadow: black 2px 2px 3px;
+    text-shadow: $bodyBG 2px 2px 3px;
 
 
     &.even{
@@ -89,8 +85,7 @@ export default {
     }
 
     &.active{
-      @include transition(opacity 300ms ease-out 350ms);
-      @include transition(all 300ms ease-out 500ms);
+      @include transition(all 250ms ease-out 400ms);
       @include transform(translateX(-40%));
       opacity: 1;
     }

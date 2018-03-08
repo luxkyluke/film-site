@@ -14,7 +14,7 @@ export default {
 
 <style>
 	body{
-		background-color: #303030;
+		background-color: #252525;
 		overflow: hidden;
 		margin: 0;
 		padding: 0;

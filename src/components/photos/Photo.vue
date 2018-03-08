@@ -159,6 +159,7 @@ export default {
         'transform': 'translate3d(0px)'
       }
       this.active = true;
+      this.$emit("showFullImg", this.photo.id);
     },
     mouseLeave : function(){
       this.myStyle = {
@@ -168,11 +169,12 @@ export default {
         'transform': this.translate
       }
       this.active = false;
+      this.$emit('hideFullImg')
+
     },
     intersect : function(entries){
       const image = entries[0];
       if (image.isIntersecting) {
-        console.log("intersect")
         this.$emit("changeCurrentId", this.photo.id);
       } 
     },

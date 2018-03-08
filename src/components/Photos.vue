@@ -10,6 +10,8 @@
         :photo="p"
         :isCurrent= "p.id === id"
         @changeCurrentId = "changeId"
+        @showFullImg="showFullImg"
+        @hideFullImg="hideFullImg"
       ></photo>
   </div>
 </template>
@@ -60,6 +62,12 @@ export default {
     }
   },
   methods:{
+    showFullImg:function(id){
+      this.$emit('showFullImg', id)
+    },
+    hideFullImg:function(){
+      this.$emit('hideFullImg')
+    },
     scrollToCurrentPhoto () {
       const offsetCurrentPhoto = this.padding + this.id*this.photoWidth
       const delta = this.offset - offsetCurrentPhoto
@@ -67,7 +75,7 @@ export default {
 
       const nextVal = this.offset - delta - offsetMiddle
       console.log(delta)
-      TweenMax.to(this, 0.8, {offset:nextVal, ease:Quint.easeInOut, 
+      TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeInOut, 
         onStart:this.disableChangeId, onComplete:this.enableChangeId});
 
     },

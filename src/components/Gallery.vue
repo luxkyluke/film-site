@@ -3,10 +3,19 @@
   <div class="gallery">
     <h1 class="gallery__title">{{ title }}</h1>
     <div class="middle"></div>
+    <photo-full
+      :src="this.currentImg.src"
+      :isVisible="fullImgVisible"
+      :isActive="false"
+      :isPortrait="this.currentImg.portrait"
+    >
+    </photo-full>
     <photos
       v-bind:photos ="photos"
       v-bind:currentId = "idPhoto"
       v-on:changeCurrentId ="changeCurrentSlider"
+      @showFullImg="showFullImg"
+      @hideFullImg="hideFullImg"
     ></photos>
     <slider
       v-bind:photos ="photos"
@@ -19,6 +28,7 @@
 <script>
 import Photos from '@/components/Photos'
 import Slider from '@/components/Slider'
+import PhotoFull from '@/components/photos/PhotoFull'
 import PhotoApi from '@/api/PhotoApi.js'
 
 export default {
@@ -28,12 +38,20 @@ export default {
       photos: PhotoApi.all(),
       title: 'Film Photography',
       idPhoto : 0,
-      idSlider : 0
+      idSlider : 0,
+      fullImgVisible:false,
+      idFullImg : 0
     }
+  },
+  computed:{
+    currentImg(){
+      return this.photos[this.idFullImg]
+    } 
   },
   components: {
     'photos': Photos,
-    'slider': Slider
+    'slider': Slider,
+    'photo-full':PhotoFull,
   },
   methods:{
     changeCurrentPhoto : function (id) {
@@ -46,6 +64,14 @@ export default {
       if(id != this.idSlider){
         this.idSlider = id;
       }
+    },
+    showFullImg:function(id){
+      this.idFullImg = id;
+      this.fullImgVisible = true;
+    },
+    hideFullImg:function(){
+      this.idFullImg = 0;
+      this.fullImgVisible = false;
     }
   }
 }
