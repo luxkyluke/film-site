@@ -9,7 +9,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "begin",
-        portrait: true
+        portrait: false
       },
       {
         src: '/data/alpes.jpg',
@@ -18,7 +18,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "middle",
-        portrait: true
+        portrait: false
       },
       {
         src: '/data/alpes.jpg',
@@ -27,7 +27,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "end",
-        portrait: true
+        portrait: false
       },{
         src: '/data/alpes.jpg',
         name: 'Alpes',
@@ -35,7 +35,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "begin",
-        portrait: true
+        portrait: false
       },
       {
         src: '/data/alpes.jpg',
@@ -44,7 +44,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "middle",
-        portrait: true
+        portrait: false
       },
       {
         src: '/data/alpes.jpg',
@@ -53,7 +53,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "end",
-        portrait: true
+        portrait: false
       }
     ],
   nbPhoto: function () { return this.photos.length },

@@ -14,7 +14,7 @@ export default {
   name: 'PhotoFull',
   data () {
     return{
-      img :imgPortrait
+      img :imgTest
     }
   },
   props:{
@@ -22,6 +22,7 @@ export default {
     isVisible: Boolean,
     isActive:Boolean,
     isPortrait: Boolean,
+    position: String
   },
   computed:{
     myClass (){
@@ -31,7 +32,9 @@ export default {
       return c;
     },
     photoClass(){
-      return (this.isPortrait) ? " portrait" : ""
+      let c = this.position
+      c += (this.isPortrait) ? " portrait" : ""
+      return c;
     }
   },
   methods:{
@@ -74,9 +77,24 @@ export default {
     &__img{
       width: auto;
       height: 100%;
+      position: absolute;
       &.portrait{
         width: 100%;
         height: auto;
+        &.middle{
+          @include transform(translateY(-50%));
+          top:50%;
+        }
+        &.end{
+          bottom:0%;
+        }
+      }
+      &.middle{
+        @include transform(translateX(-50%));
+        left:50%;
+      }
+      &.end{
+        right:0;
       }
     }
   }

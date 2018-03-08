@@ -8,6 +8,7 @@
       :isVisible="fullImgVisible"
       :isActive="false"
       :isPortrait="this.currentImg.portrait"
+      :position="currentImg.mask"
     >
     </photo-full>
     <photos
@@ -70,7 +71,6 @@ export default {
       this.fullImgVisible = true;
     },
     hideFullImg:function(){
-      this.idFullImg = 0;
       this.fullImgVisible = false;
     }
   }
@@ -81,7 +81,7 @@ export default {
 <style lang="scss" >
   @import '~sass/main';
   .gallery{
-    .middle{
+    &>.middle{
       width: 2px;
       position: absolute;
       height: 100vh;
@@ -92,7 +92,7 @@ export default {
       display: none;
     }
     &__title{
-      font-weight: 200;
+      font-weight: 400;
       display: flex;
       justify-content:center;
       margin-top: $generalMargin;
