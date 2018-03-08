@@ -42,16 +42,25 @@ export default {
   },
   props:{
     photo: Object,
-    myClass: Object,
+    photoClass: Object,
     isActive: Boolean,
+    isFull:Boolean
+  },
+  computed:{
+    myClass(){
+      let c = (!this.isFull) ? this.photoClass : "full"
+      c += (this.isActive) ? " active" : "";
+      return c;
+    }
   },
   methods:{
     over: function(e){
-      if(this.isActive)
-      this.$emit("mouseover", e);
+      if(this.isActive && !this.isFull)
+        this.$emit("mouseover", e);
     },
     leave: function(e){
-      this.$emit("mouseleave", e);
+      if(!this.isFull)
+        this.$emit("mouseleave", e);
     }
   }
 }
@@ -66,12 +75,24 @@ export default {
     padding: 40px;
     position:absolute;
     @include transform(translateX(-60%));
-    @include transition(opacity 300ms ease-in);
-    @include transition(transform 300ms ease-in);
+    @include transition(all 300ms ease-in-out);
     bottom:0;
     opacity:0;
     text-shadow: $bodyBG 2px 2px 3px;
 
+    &.full{
+      background-color:rgba(0, 0, 0, 0.75);
+      bottom: 0;
+      right: 0;
+      margin: 15px;
+      @include transform(translateX(60%));
+      @include transition(all 200ms ease-in-out);
+
+      &.active{
+        @include transform(translateX(0%));
+      }
+
+    }
 
     &.even{
       top:5vh;
@@ -97,6 +118,8 @@ export default {
     } 
     &__list{
       font-size: 1.25em;
+      font-weight:400;
+
       padding:0;
       &__item{
         list-style:none;

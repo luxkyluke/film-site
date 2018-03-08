@@ -13,6 +13,7 @@
             :class="myClass"
             @mouseover="mouseOver"
             @mouseleave="mouseLeave"
+            @click="click"
       />
       <photo-info
         :photo="photo"
@@ -20,6 +21,7 @@
         @mouseover="mouseOver"
         @mouseleave="mouseLeave"
         :isActive = "active"
+        :isFull="false"
       ></photo-info>
     </div>
   </div>
@@ -34,6 +36,7 @@ export default {
   name: 'Photo',
   props: {
     photo: Object,
+    isBlocked:Boolean,
     isCurrent: {
       type: Boolean,
       default: false
@@ -44,7 +47,7 @@ export default {
   },
   data (){
     return {
-      img : imgTest,
+      img : imgPortrait,
       myStyle : null,
       idName : "photo_img_"+this.photo.id,
       clip : null,
@@ -90,6 +93,10 @@ export default {
   },
 
   methods:{
+    click: function(){
+      if(!this.isBlocked)
+        this.$emit('click', this.photo.id)
+    },
     getClip: function(img){
       const width = img.clientWidth;
       const height = img.clientHeight;
@@ -152,16 +159,22 @@ export default {
       }
     },
     mouseOver : function(){
-      this.myStyle = {
-        'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-        '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-        '-webkit-transform': 'translate(0px)',
-        'transform': 'translate3d(0px)'
-      }
-      this.active = true;
-      this.$emit("showFullImg", this.photo.id);
+      if(this.isBlocked)
+        return;
+      //setTimeout(() =>{
+        this.myStyle = {
+          'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+          '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+          '-webkit-transform': 'translate(0px)',
+          'transform': 'translate3d(0px)'
+        }
+        this.active = true;
+        this.$emit("showFullImg", this.photo.id);
+      //}, 200)
     },
     mouseLeave : function(){
+      if(this.isBlocked)
+        return;
       this.myStyle = {
         'clip-path':this.clip,
         '-webkit-clip-path':this.clip,
@@ -174,7 +187,7 @@ export default {
     },
     intersect : function(entries){
       const image = entries[0];
-      if (image.isIntersecting) {
+      if (image.isIntersecting && !this.isBlocked) {
         this.$emit("changeCurrentId", this.photo.id);
       } 
     },

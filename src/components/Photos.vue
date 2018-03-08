@@ -9,9 +9,11 @@
         v-bind:key= "p.id"
         :photo="p"
         :isCurrent= "p.id === id"
+        :isBlocked="isBlocked"
         @changeCurrentId = "changeId"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
+        @click="openImg"
       ></photo>
   </div>
 </template>
@@ -24,6 +26,7 @@ export default {
   name: 'Photos',
   props: {
     photos: Array,
+    isBlocked:Boolean,
     currentId: {
       type: Number,
       default: 0
@@ -68,6 +71,9 @@ export default {
     hideFullImg:function(){
       this.$emit('hideFullImg')
     },
+    openImg:function(id){
+      this.$emit('openFullImg', id)
+    },
     scrollToCurrentPhoto () {
       const offsetCurrentPhoto = this.padding + this.id*this.photoWidth
       const delta = this.offset - offsetCurrentPhoto
@@ -75,7 +81,7 @@ export default {
 
       const nextVal = this.offset - delta - offsetMiddle
       console.log(delta)
-      TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeInOut, 
+      TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeOut, 
         onStart:this.disableChangeId, onComplete:this.enableChangeId});
 
     },
@@ -92,6 +98,8 @@ export default {
       }
     },
     handleScroll: function(e){
+      if(this.isBlocked)
+        return;
       let delta = e.deltaY
       if(Utility.isFirefox())
         delta *= 20
