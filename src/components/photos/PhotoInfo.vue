@@ -81,6 +81,13 @@ export default {
       top:5vh;
     }
 
+    &.even.portrait{
+      top:0;
+    }
+    &.portrait{
+      bottom: -5vh;
+    }
+
     &.active{
       @include transition(opacity 300ms ease-out 350ms);
       @include transition(all 300ms ease-out 500ms);
