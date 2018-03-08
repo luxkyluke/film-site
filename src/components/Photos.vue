@@ -8,8 +8,8 @@
         v-for= "p in photos"
         v-bind:key= "p.id"
         :photo="p"
-        :isCurrent= "p.id === currentId"
-        @changeCurrentId = "changeCurrentId"
+        :isCurrent= "p.id === id"
+        @changeCurrentId = "changeId"
       ></photo>
   </div>
 </template>
@@ -30,8 +30,10 @@ export default {
   data (){
     return {
       photoWidth:0,
+      id : this.currentId,
       width:0,
-      offset:0
+      offset:0,
+      sentBlocked: false
     }
   },
   components: {
@@ -44,7 +46,6 @@ export default {
     padding(){
       return (this.width-this.photoWidth*this.photos.length)*0.5
     },
-    
     myStyle (){
       let s ={  
         'transform' : `translate(-${this.offset}px, -50%)`,
@@ -54,21 +55,33 @@ export default {
   },
   watch: {
     currentId: function(newId, oldId){
-      if(this.currentId != newId)
+      //if(this.id != newId)
+        this.id = this.currentId;
         this.scrollToCurrentPhoto()
     }
   },
   methods:{
     scrollToCurrentPhoto () {
-      const offsetCurrentPhoto = this.padding + this.currentId*this.photoWidth
+      const offsetCurrentPhoto = this.padding + this.id*this.photoWidth
       const delta = this.offset - offsetCurrentPhoto
       const offsetMiddle = window.innerWidth*0.5-this.photoWidth*0.5
 
-      this.offset = this.offset - delta - offsetMiddle
+      //this.offset = this.offset - delta - offsetMiddle
+      const nextVal = this.offset - delta - offsetMiddle;
+      TweenMax.to(this, 0.8, {offset:nextVal, ease:Quint.easeInOut, onStart:this.disableChangeId, onComplete:this.enableChangeId});
+
     },
-    changeCurrentId:function(id){
-      this.currentId = id;
-      this.$emit('changeCurrentId', id)
+    disableChangeId:function(){
+      this.sentBlocked = true;
+    },
+    enableChangeId:function(){
+      this.sentBlocked = false;
+    },
+    changeId:function(id){
+      if(!this.sentBlocked){
+        this.id = id;
+        this.$emit('changeCurrentId', id)
+      }
     },
     handleScroll: function(e){
       let delta = e.deltaY
@@ -97,6 +110,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+  @import '~sass/main.scss';
   .photos{
     height:50vh;
     white-space: nowrap;
