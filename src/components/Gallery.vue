@@ -85,6 +85,7 @@ export default {
     },
     closeFullImg:function(){
       this.fullImgActivated = false;
+      this.hideFullImg();
       TweenMax.to(this.$refs.content, 0.75, {css:{opacity:1, display:'block'}})
     },
     handleKeyUp:function(e){

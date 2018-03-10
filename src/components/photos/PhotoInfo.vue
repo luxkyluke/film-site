@@ -1,7 +1,5 @@
 <template>
-  <div class="photo-info" :class="myClass" 
-      @mouseover="over"
-      @mouseleave="leave">
+  <div class="photo-info" :class="myClass">
     <h2  class="photo-info__title">{{photo.name}}</h2>
     <ul class="photo-info__list">
       <li class="photo-info__list__item">
@@ -51,16 +49,6 @@ export default {
       let c = (!this.isFull) ? this.photoClass : "full"
       c += (this.isActive) ? " active" : "";
       return c;
-    }
-  },
-  methods:{
-    over: function(e){
-      if(this.isActive && !this.isFull)
-        this.$emit("mouseover", e);
-    },
-    leave: function(e){
-      if(!this.isFull)
-        this.$emit("mouseleave", e);
     }
   }
 }
