@@ -47,7 +47,7 @@ export default {
   },
   data (){
     return {
-      img : imgPortrait,
+      img : imgTest,
       myStyle : null,
       idName : "photo_img_"+this.photo.id,
       clip : null,

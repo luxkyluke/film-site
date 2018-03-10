@@ -87,13 +87,29 @@ export default {
       this.idFullImg = id;
       this.fullImgVisible = this.fullImgActivated = true;
       TweenMax.to(this.$refs.content, 0.75, {css:{opacity:0, display:'none'}})
-
     },
     closeFullImg:function(){
       this.fullImgActivated = false;
       TweenMax.to(this.$refs.content, 0.75, {css:{opacity:1, display:'block'}})
+    },
+    handleKeyUp:function(e){
+      console.log("key")
+      if(e.keyCode == 39){//right arrow
+        this.changeCurrentPhoto(this.idPhoto +1)
+        return;
+      }
+      if(e.keyCode == 37){//left arrow
+        this.changeCurrentPhoto(this.idPhoto -1)
+        return;
+      }
     }
   },
+  created(){
+    window.addEventListener('keyup', this.handleKeyUp);
+  },
+  destroyed(){
+    window.removeEventListener('keyup', this.handleKeyUp);
+  }
 }
 </script>
 

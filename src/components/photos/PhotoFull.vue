@@ -34,7 +34,7 @@ export default {
   name: 'PhotoFull',
   data () {
     return{
-      img :imgPortrait,
+      img :imgTest,
       infoActive:false,
       cross, 
       info,
@@ -134,8 +134,8 @@ export default {
     handleMouseMove:function(e){
       this.isMoving = true 
       this.mouse = {
-        x : e.clientX,//* window.innerWidth*0.5,
-        y : e.clientY,//* window.innerHeight*0.5
+        x : e.clientX,
+        y : e.clientY,
       }
     }
   },
