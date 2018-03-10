@@ -1,7 +1,9 @@
 <template>
 	<a v-on:click="handleClick" class="link">
 		<div class="slider-square" 
-			v-bind:class="size">
+			v-bind:class="size"
+			v-on:click="handleClick"
+			>
 		</div>
 	</a>
 </template>
