@@ -34,7 +34,7 @@ export default {
   name: 'PhotoFull',
   data () {
     return{
-      img :imgTest,
+      img :imgPortrait,
       infoActive:false,
       cross, 
       info,
@@ -62,7 +62,9 @@ export default {
     },
     photoClass(){
       let c = this.position
-      c += (this.photo.portrait) ? " portrait" : ""
+      const ratioImg = (this.height !== 0) ? this.width/this.height:0;
+      const ratioWindow = window.innerWidth / window.innerHeight
+      c += (this.photo.portrait || (ratioWindow+0.1)>ratioImg) ? " portrait" : ""
       return c;
     },
     translate(){
@@ -86,18 +88,14 @@ export default {
       return trans;
     },
     nextPos(){
-      const margin = 200;
       let next = {x:0, y:0}
-      if(this.photo.portrait){
-        const relativePointer = this.mouse.y/window.innerHeight
-        const remap = relativePointer*140/100 - 0.2
-        next.y = Utility.clamp(remap * (this.height-window.innerHeight), 0, this.height-window.innerHeight)
-        return next;
-      }
+      const relativePointerY = this.mouse.y/window.innerHeight
+      const remapY = relativePointerY*140/100 - 0.2
+      next.y = Utility.clamp(remapY * (this.height-window.innerHeight), 0, this.height-window.innerHeight)
 
-      const relativePointer = this.mouse.x/window.innerWidth
-      const remap = relativePointer*140/100 - 0.2
-      next.x = Utility.clamp(remap * (this.width-window.innerWidth), 0, this.width-window.innerWidth)
+      const relativePointerX = this.mouse.x/window.innerWidth
+      const remapX = relativePointerX*140/100 - 0.2
+      next.x = Utility.clamp(remapX * (this.width-window.innerWidth), 0, this.width-window.innerWidth)
       return next;
     },
     myStyle(){
@@ -140,8 +138,8 @@ export default {
     }
   },
   mounted(){
-    this.height = this.$refs.img.clientHeight
-    this.width =  this.$refs.img.clientWidth
+    //this.height = this.$refs.img.clientHeight
+    //this.width =  this.$refs.img.clientWidth
   },
   watch:{
     isVisible:function(isVisible){
