@@ -51,8 +51,7 @@ export default {
   },
   methods: {    
     changeCurrentId: function(id) {
-      console.log(this.currentId)
-      if(id === this.id)
+      if(id === this.currentId)
         return;
       //interpolation entre les 2 ids 
       const oldId = this.id;

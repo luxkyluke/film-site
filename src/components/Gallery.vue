@@ -16,7 +16,7 @@
       <photos
         v-bind:photos ="photos"
         v-bind:currentId = "idPhoto"
-        v-on:changeCurrentId ="changeCurrentSlider"
+        v-on:changeCurrentId ="changeCurrentPhoto"
         :isBocked = "fullImgActivated"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
@@ -25,7 +25,7 @@
       ></photos>
       <slider
         v-bind:photos ="photos"
-        v-bind:currentId = "idSlider"
+        v-bind:currentId = "idPhoto"
         v-on:changeId = "changeCurrentPhoto"
       ></slider>
     </div>
@@ -37,6 +37,7 @@ import Photos from '@/components/Photos'
 import Slider from '@/components/Slider'
 import PhotoFull from '@/components/photos/PhotoFull'
 import PhotoApi from '@/api/PhotoApi.js'
+import Utility from '@/addons/utility.js'
 
 export default {
   name: 'Gallery',
@@ -45,7 +46,6 @@ export default {
       photos: PhotoApi.all(),
       title: 'Film Photography',
       idPhoto : 0,
-      idSlider : 0,
       fullImgVisible:false,
       idFullImg : 0,
       fullImgActivated:false
@@ -65,15 +65,10 @@ export default {
     'photo-full':PhotoFull,
   },
   methods:{
-    changeCurrentPhoto : function (id) {
+    changeCurrentPhoto : function (i) {
+      const id = Utility.clamp(i, 0, this.photos.length-1)
       if(id != this.idPhoto && !this.fullImgActivated){
         this.idPhoto = id;
-        this.idSlider = id;
-      }
-    },
-    changeCurrentSlider : function (id) {
-      if(id != this.idSlider && !this.fullImgActivated){
-        this.idSlider = id;
       }
     },
     showFullImg:function(id){
@@ -93,7 +88,6 @@ export default {
       TweenMax.to(this.$refs.content, 0.75, {css:{opacity:1, display:'block'}})
     },
     handleKeyUp:function(e){
-      console.log("key")
       if(e.keyCode == 39){//right arrow
         this.changeCurrentPhoto(this.idPhoto +1)
         return;

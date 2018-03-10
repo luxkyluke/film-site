@@ -8,7 +8,7 @@
         v-for= "p in photos"
         v-bind:key= "p.id"
         :photo="p"
-        :isCurrent= "p.id === id"
+        :isCurrent= "p.id === currentId"
         :isBlocked="isBlocked"
         @changeCurrentId = "changeId"
         @showFullImg="showFullImg"
@@ -28,15 +28,14 @@ export default {
     photos: Array,
     isBlocked:Boolean,
     currentId: {
-      type: Number,
-      default: 0
+      type: Number
     }
   },
   data (){
     return {
       photoWidth:0,
-      id : this.currentId,
       width:0,
+      id : 0,
       offset:0,
       sentBlocked: false
     }
@@ -59,9 +58,11 @@ export default {
     }
   },
   watch: {
-    currentId: function(newId, oldId){
-      this.id = this.currentId;
-      this.scrollToCurrentPhoto()
+    currentId: function(newId){
+      if(this.id != newId){
+        this.scrollToCurrentPhoto()
+        this.id = newId 
+      }
     }
   },
   methods:{
@@ -75,12 +76,11 @@ export default {
       this.$emit('openFullImg', id)
     },
     scrollToCurrentPhoto () {
-      const offsetCurrentPhoto = this.padding + this.id*this.photoWidth
+      const offsetCurrentPhoto = this.padding + this.currentId*this.photoWidth
       const delta = this.offset - offsetCurrentPhoto
       const offsetMiddle = window.innerWidth*0.5 - this.photoWidth*0.5
 
       const nextVal = this.offset - delta - offsetMiddle
-      console.log(delta)
       TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeOut, 
         onStart:this.disableChangeId, onComplete:this.enableChangeId});
 
