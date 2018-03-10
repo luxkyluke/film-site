@@ -97,6 +97,10 @@ export default {
         this.changeCurrentPhoto(this.idPhoto -1)
         return;
       }
+      if(e.keyCode == 13){//enter key
+        this.openFullImg(this.idPhoto)
+        return;
+      }
     }
   },
   created(){
