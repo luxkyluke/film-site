@@ -10,6 +10,7 @@
         :photo="p"
         :isCurrent= "p.id === currentId"
         :isBlocked="isBlocked"
+        :displayInfo="p.id === idInfo"
         @changeCurrentId = "changeId"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
@@ -27,6 +28,7 @@ export default {
   props: {
     photos: Array,
     isBlocked:Boolean,
+    showInfo:Boolean,
     currentId: {
       type: Number
     }
@@ -36,6 +38,7 @@ export default {
       photoWidth:0,
       width:0,
       id : 0,
+      idInfo:-1,
       offset:0,
       sentBlocked: false
     }
@@ -52,6 +55,7 @@ export default {
     },
     myStyle (){
       let s ={  
+        '-webkit-transform': `translate(-${this.offset}px, -50%)`,
         'transform' : `translate(-${this.offset}px, -50%)`,
       }
       return s
@@ -63,6 +67,12 @@ export default {
         this.scrollToCurrentPhoto()
         this.id = newId 
       }
+    },
+    showInfo:function(show){
+      if(show){
+        this.idInfo = this.id
+      }else
+        this.idInfo = -1
     }
   },
   methods:{
@@ -82,8 +92,7 @@ export default {
 
       const nextVal = this.offset - delta - offsetMiddle
       TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeOut, 
-        onStart:this.disableChangeId, onComplete:this.enableChangeId});
-
+        onStart:this.disableChangeId, onComplete:this.enableChangeId});  
     },
     disableChangeId:function(){
       this.sentBlocked = true;

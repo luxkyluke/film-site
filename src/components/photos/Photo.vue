@@ -2,10 +2,16 @@
   <div class="photo">
     <div class="photo__container">
       <img  :id="idName"
+            class="photo__container__shadow " 
+            :src="shadow"
+            :class="shadowClass"
+      />
+      <img  :id="idName"
             class="photo__container__img" 
             :src="img"
             :style="myStyle"
             :class="myClass"
+            ref="image"
       />
       <img  class="photo__container__area" 
             :src="img"
@@ -30,6 +36,7 @@
 <script>
 import imgTest from '@/assets/test.jpg'
 import imgPortrait from '@/assets/test2.jpg'
+import shadow from '@/assets/shadow.png'
 import PhotoInfo from './PhotoInfo'
 
 export default {
@@ -37,6 +44,7 @@ export default {
   props: {
     photo: Object,
     isBlocked:Boolean,
+    displayInfo:Boolean,
     isCurrent: {
       type: Boolean,
       default: false
@@ -51,6 +59,7 @@ export default {
       myStyle : null,
       idName : "photo_img_"+this.photo.id,
       clip : null,
+      shadow,
       //translate: 'translate(0px)',
       translateY: 0,
       translateX: 0,
@@ -89,9 +98,20 @@ export default {
         x=this.translateX;
 
       return `translate3d(${x}px, ${y}px, 0)`;
+    },
+    shadowClass(){
+      return (this.active) ? this.myClass+' hide' : this.myClass;
     }
   },
-
+  watch: {
+    displayInfo: function(isDisplay){
+      if(isDisplay){
+        this.showInfo()
+      }else{
+        this.hideInfo()
+      }
+    }
+  },
   methods:{
     click: function(){
       if(!this.isBlocked)
@@ -148,7 +168,7 @@ export default {
       }
     },
     mask :function (){
-      const img = this.$el.querySelector("#"+this.idName);
+      const img = this.$refs.image;
       const clip = this.getClip(img);
       this.clip = clip;
       this.myStyle = {
@@ -158,21 +178,20 @@ export default {
         'transform': this.translate
       }
     },
-    mouseOver : function(){
+    showInfo:function(){
       if(this.isBlocked)
         return;
       //setTimeout(() =>{
-        this.myStyle = {
-          'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-          '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-          '-webkit-transform': 'translate(0px)',
-          'transform': 'translate3d(0px)'
-        }
-        this.active = true;
-        this.$emit("showFullImg", this.photo.id);
+      this.myStyle = {
+        'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+        '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+        '-webkit-transform': 'translate(0px)',
+        'transform': 'translate3d(0px)'
+      }
+      this.active = true;
       //}, 200)
     },
-    mouseLeave : function(){
+    hideInfo:function(){
       if(this.isBlocked)
         return;
       this.myStyle = {
@@ -182,8 +201,14 @@ export default {
         'transform': this.translate
       }
       this.active = false;
+    },
+    mouseOver : function(){
+      this.showInfo();
+      this.$emit("showFullImg", this.photo.id);
+    },
+    mouseLeave : function(){
+      this.hideInfo();
       this.$emit('hideFullImg')
-
     },
     intersect : function(entries){
       const image = entries[0];
@@ -223,14 +248,26 @@ export default {
   @import '~sass/main.scss';
   
   .photo{
-      width:500px;
-      height:100%;  
-      display:inline-block;
+    width:500px;
+    height:100%;  
+    display:inline-block;
+    @include transition(all 350ms ease-in-out);
 
     &__container{
       @extend .full;
-      display: flex;
-      justify-content: center;
+         display: flex;
+        justify-content: center;
+     
+      
+      &__shadow{
+        @extend .photo__container__img;
+        box-shadow: rgba(0, 0, 0, 0.6) 40px 40px 120px ;
+        @include transition(opacity 350ms ease-in-out);
+        opacity: 1;
+        &.hide{
+          opacity:0;
+        }
+      }
 
       &__img{
         @include transition(all 350ms ease-in-out);
@@ -238,7 +275,9 @@ export default {
         width:auto;
         cursor: pointer;
         position:absolute;
+
         
+
         &.portrait{
           width:25vh;
           height: auto;

@@ -105,6 +105,7 @@ export default {
       }
 
       const style = {
+        '-webkit-transform': `translate(-${trans.x}px, -${trans.y}px)`,
         'transform': `translate(-${trans.x}px, -${trans.y}px)`
       }
 
@@ -229,28 +230,12 @@ export default {
       width: auto;
       height: 100%;
       position: absolute;
-      @include transition(transform 100ms linear)
+      @include transition(transform 200ms linear)
 
       &.portrait{
         width: 100%;
         height: auto;
       }
-      //   &.middle{
-      //     @include transform(translateY(-50%));
-      //     top:50%;
-      //     left:0;
-      //   }
-      //   &.end{
-      //     bottom:0%;
-      //   }
-      // }
-      // &.middle{
-      //   @include transform(translateX(-50%));
-      //   left:50%;
-      // }
-      // &.end{
-      //   right:0;
-      // }
     }
   }
 </style>

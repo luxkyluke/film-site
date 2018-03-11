@@ -18,10 +18,11 @@
         v-bind:currentId = "idPhoto"
         v-on:changeCurrentId ="changeCurrentPhoto"
         :isBocked = "fullImgActivated"
+        :showInfo = "showInfoImg"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
         @openFullImg="openFullImg"
-
+        
       ></photos>
       <slider
         v-bind:photos ="photos"
@@ -47,6 +48,7 @@ export default {
       title: 'Film Photography',
       idPhoto : 0,
       fullImgVisible:false,
+      showInfoImg:false,
       idFullImg : 0,
       fullImgActivated:false
     }
@@ -91,10 +93,12 @@ export default {
     handleKeyUp:function(e){
       if(e.keyCode == 39){//right arrow
         this.changeCurrentPhoto(this.idPhoto +1)
+        this.showInfo = true;
         return;
       }
       if(e.keyCode == 37){//left arrow
         this.changeCurrentPhoto(this.idPhoto -1)
+        this.showInfo = true;
         return;
       }
       if(e.keyCode == 13){//enter key
