@@ -1,5 +1,5 @@
 <template>
-  <div class="photo">
+  <div class="photo" :id="'photo_'+photo.id">
     <div class="photo__container">
       <img  :id="idName"
             class="photo__container__shadow " 
@@ -45,6 +45,7 @@ export default {
     photo: Object,
     isBlocked:Boolean,
     displayInfo:Boolean,
+    observer: Object,
     isCurrent: {
       type: Boolean,
       default: false
@@ -63,7 +64,7 @@ export default {
       //translate: 'translate(0px)',
       translateY: 0,
       translateX: 0,
-      observer: null,
+      //observer: null,
       active : false,
     }
   },
@@ -210,27 +211,31 @@ export default {
       this.hideInfo();
       this.$emit('hideFullImg')
     },
-    intersect : function(entries){
-      const image = entries[0];
-      if (image.isIntersecting && !this.isBlocked) {
-        this.$emit("changeCurrentId", this.photo.id);
-      } 
-    },
+    // intersect : function(entries){
+    //   const image = entries[0];
+    //   if (image.isIntersecting && !this.isBlocked) {
+    //     this.$emit("changeCurrentId", this.photo.id);
+    //   } 
+    // },
     initObserver: function(){
-      let observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1.0]
-      };
+      // const area = document.getElementById('middle-area')
+      // let observerOptions = {
+      //   root: area,
+      //   rootMargin: "500px",
+      //   threshold: [0, 0.25, 0.5, 0.75, 1.0]
+      // };
 
-      this.observer = new IntersectionObserver((entries)=>{
-        const image = entries[0];
-        if (image.isIntersecting && image.intersectionRatio > 0.9999) {
-          this.$emit("changeCurrentId", this.photo.id);
-        } 
-      }, observerOptions);
-
-      this.observer.observe(this.$el);
+      // this.observer = new IntersectionObserver((entries)=>{
+      //   const image = entries[0];
+      //   console.log("intersect "+this.photo.id)
+      //   console.log(image.intersectionRatio)
+      //   if (image.isIntersecting && image.intersectionRatio > 0.9999) {
+      //     this.$emit("changeCurrentId", this.photo.id);
+      //   } 
+      // }, observerOptions);
+      //console.log(this.observer)
+      //this.observer.observe(this.$el);
+      this.$emit('observe', this.$el);
     }
   },
   mounted () {
@@ -238,7 +243,7 @@ export default {
     this.initObserver();
   },
   destroy(){
-    this.observer.disconnect();
+    //this.observer.disconnect();
   }
 }
 </script>

@@ -11,7 +11,7 @@
     </photo-full>
     <div class="gallery__content" ref="content">
       <h1 class="gallery__content__title" :class="myClass">{{ title }}</h1>
-      <div class="middle"></div>
+      <!-- <div id="middle-area" class="middle"></div> -->
      
       <photos
         v-bind:photos ="photos"
@@ -127,16 +127,17 @@ export default {
     @extend .full;
     &__content{
       
-      &>.middle{
-        width: 2px;
-        position: absolute;
-        height: 100vh;
-        top:0;
-        transform: translateX(-50%);
-        left: 50%;
-        background-color: red;
-        display: none;
-      }
+      // &>.middle{
+      //   width: 400px;
+      //   position: absolute;
+      //   height: 100vh;
+      //   top:0;
+      //   transform: translateX(-50%);
+      //   left: 50%;
+      //   background-color: red;
+      //   z-index:6;
+      //   //display: none;
+      // }
       &__title{
         font-weight: 400;
         display: flex;

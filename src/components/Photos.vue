@@ -11,6 +11,7 @@
         :isCurrent= "p.id === currentId"
         :isBlocked="isBlocked"
         :displayInfo="p.id === idShowInfo"
+        @observe = "observe"
         @changeCurrentId = "changeId"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
@@ -38,6 +39,7 @@ export default {
       photoWidth:0,
       width:0,
       id : 0,
+      currentRatio:0,
       offset:0,
       sentBlocked: false
     }
@@ -46,6 +48,9 @@ export default {
     'photo': Photo,
   },
   computed:{
+    // observer(){
+    //   return new IntersectionObserver((e)=>{})
+    // },
     idShowInfo(){
       return (this.showInfo) ? this.id : -1;
     },
@@ -61,17 +66,28 @@ export default {
         'transform' : `translate(-${this.offset}px, -50%)`,
       }
       return s
-    }
-  },
-  watch: {
-    currentId: function(newId){
-      if(this.id != newId){
-        this.scrollToCurrentPhoto()
-        this.id = newId 
-      }
-    }
+    },
+    observer(){
+      let observerOptions = {
+        root: null,
+        rootMargin: `0px -${window.innerWidth*0.5-400}px`,
+        threshold: [1.0]
+      };
+
+      return new IntersectionObserver(this.intersection, observerOptions);
+    },
   },
   methods:{
+    observe:function (el){
+      this.observer.observe(el);
+    },
+    intersection:function(entries){
+      const image = entries[0];
+      const id = Number(image.target.id.replace("photo_", ""))
+      if(image.intersectionRatio < 0.99)
+        return;
+      this.changeId(id);
+    },
     showFullImg:function(id){
       this.$emit('showFullImg', id)
     },
@@ -124,11 +140,21 @@ export default {
     window.addEventListener('resize', this.initWidth);
   },
   mounted(){
-      this.initWidth();
+    this.initWidth();
+    //this.initObserver();
   },
   destroyed () {
     window.removeEventListener('wheel', this.handleScroll);
     window.removeEventListener('resize', this.initWidth);
+    this.observer.disconnect();
+  },
+  watch: {
+    currentId: function(newId){
+      if(this.id != newId){
+        this.scrollToCurrentPhoto()
+        this.id = newId 
+      }
+    }
   }
 }
 </script>
