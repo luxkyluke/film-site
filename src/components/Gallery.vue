@@ -18,7 +18,7 @@
         v-bind:currentId = "idPhoto"
         v-on:changeCurrentId ="changeCurrentPhoto"
         :isBocked = "fullImgActivated"
-        :showInfo = "showInfoImg"
+        :showInfo = "showInfo"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
         @openFullImg="openFullImg"
@@ -48,7 +48,7 @@ export default {
       title: 'Film Photography',
       idPhoto : 0,
       fullImgVisible:false,
-      showInfoImg:false,
+      showInfo:false,
       idFullImg : 0,
       fullImgActivated:false
     }
@@ -79,6 +79,7 @@ export default {
     },
     hideFullImg:function(){
       this.fullImgVisible = false || this.fullImgActivated;
+      this.showInfo = false;
     },
     openFullImg:function(id){
       this.idFullImg = id;
@@ -89,16 +90,19 @@ export default {
       this.fullImgActivated = false;
       this.hideFullImg();
       TweenMax.to(this.$refs.content, 0.75, {css:{opacity:1, display:'block'}})
+      //this.showInfo = true;
     },
     handleKeyUp:function(e){
       if(e.keyCode == 39){//right arrow
         this.changeCurrentPhoto(this.idPhoto +1)
-        this.showInfo = true;
+        this.showInfo =  true;
+        this.showFullImg(this.idPhoto)
         return;
       }
       if(e.keyCode == 37){//left arrow
         this.changeCurrentPhoto(this.idPhoto -1)
-        this.showInfo = true;
+        this.showInfo =  true;
+        this.showFullImg(this.idPhoto)
         return;
       }
       if(e.keyCode == 13){//enter key

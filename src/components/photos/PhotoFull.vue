@@ -139,8 +139,8 @@ export default {
     }
   },
   mounted(){
-    //this.height = this.$refs.img.clientHeight
-    //this.width =  this.$refs.img.clientWidth
+    this.height = this.$refs.img.clientHeight
+    this.width =  this.$refs.img.clientWidth
   },
   watch:{
     isVisible:function(isVisible){
@@ -153,12 +153,10 @@ export default {
       if(isActive){
         this.height = this.$refs.img.clientHeight
         this.width = this.$refs.img.clientWidth
-        console.log("active")
         window.addEventListener('keyup', this.handleKeyUp);
         window.addEventListener('mousemove', this.handleMouseMove);
       }
       else{
-        console.log("desactive")
         this.mouse={x:0, y:0}
         window.removeEventListener('mousemove', this.handleMouseMove);
         window.removeEventListener('keyup', this.handleKeyUp);
@@ -199,8 +197,9 @@ export default {
     }
   
     &.active{
+
       .photo-full__content{
-        @include transition(transform 300ms ease-in-out 500ms)
+        @include transition(transform 300ms ease-in-out)
         .icon{
           @include transform(translateX(0px))
         }
@@ -208,7 +207,7 @@ export default {
     }
 
     &.visible{
-      @include transition(opacity 500ms ease-in-out)
+      @include transition(opacity 500ms ease-in-out 150ms)
       opacity:1
     }
 

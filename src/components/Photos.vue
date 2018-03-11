@@ -10,7 +10,7 @@
         :photo="p"
         :isCurrent= "p.id === currentId"
         :isBlocked="isBlocked"
-        :displayInfo="p.id === idInfo"
+        :displayInfo="p.id === idShowInfo"
         @changeCurrentId = "changeId"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
@@ -38,7 +38,6 @@ export default {
       photoWidth:0,
       width:0,
       id : 0,
-      idInfo:-1,
       offset:0,
       sentBlocked: false
     }
@@ -47,6 +46,9 @@ export default {
     'photo': Photo,
   },
   computed:{
+    idShowInfo(){
+      return (this.showInfo) ? this.id : -1;
+    },
     scrollArea(){
       return this.width - window.innerWidth;
     },
@@ -67,12 +69,6 @@ export default {
         this.scrollToCurrentPhoto()
         this.id = newId 
       }
-    },
-    showInfo:function(show){
-      if(show){
-        this.idInfo = this.id
-      }else
-        this.idInfo = -1
     }
   },
   methods:{
@@ -109,6 +105,10 @@ export default {
     handleScroll: function(e){
       if(this.isBlocked)
         return;
+      if(this.showInfo)
+        this.$emit('hideFullImg')
+
+
       let delta = e.deltaY
       if(Utility.isFirefox())
         delta *= 20
