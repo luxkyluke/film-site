@@ -64,6 +64,7 @@ export default {
       //translate: 'translate(0px)',
       translateY: 0,
       translateX: 0,
+      translateValue : 0,
       //observer: null,
       active : false,
       activeDuringBlock : false,
@@ -96,8 +97,9 @@ export default {
 
       if(this.photo.portrait)
         y=value;
-      else
+      else{
         x=this.translateX;
+      }
 
       return `translate3d(${x}px, ${y}px, 0)`;
     },
@@ -200,8 +202,11 @@ export default {
         'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
         '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
         '-webkit-transform': 'translate3d(0px)',
-        'transform': 'translate3d(0px)'
+        'transform': 'translate3d(0px, 0, 0)'
       }
+      // this.translateValue = this.translateX;
+      // this.translateX = 0;
+      // console.log(this.translateX)
       this.active = true;
     },
     hideInfo:function(){
@@ -214,6 +219,8 @@ export default {
         '-webkit-transform': this.translate,
         'transform': this.translate
       }
+      // this.translateX = this.translateValue;
+      // console.log(this.translateX)
       this.active = false;
     },
     mouseOver : function(){
