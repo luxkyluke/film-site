@@ -56,7 +56,7 @@ export default {
   },
   data (){
     return {
-      img : imgPortrait,
+      img : imgTest,
       myStyle : null,
       idName : "photo_img_"+this.photo.id,
       clip : null,
@@ -66,6 +66,7 @@ export default {
       translateX: 0,
       //observer: null,
       active : false,
+      activeDuringBlock : false,
     }
   },
   computed: {
@@ -111,6 +112,16 @@ export default {
       }else{
         this.hideInfo()
       }
+    },
+    isBlocked:function(isBlocked){
+      if(isBlocked && this.active){
+        this.mouseLeave();
+        return
+      }
+      if(!isBlocked && this.activeDuringBlock){
+        this.mouseOver();
+      }
+
     }
   },
   methods:{
@@ -180,21 +191,23 @@ export default {
       }
     },
     showInfo:function(){
-      if(this.isBlocked)
+      if(this.isBlocked){
+        this.activeDuringBlock = true;
         return;
-      //setTimeout(() =>{
+      }
+
       this.myStyle = {
         'clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
         '-webkit-clip-path':`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-        '-webkit-transform': 'translate(0px)',
+        '-webkit-transform': 'translate3d(0px)',
         'transform': 'translate3d(0px)'
       }
       this.active = true;
-      //}, 200)
     },
     hideInfo:function(){
-      if(this.isBlocked)
-        return;
+      if(this.isBlocked){
+        this.activeDuringBlock = false;
+      }
       this.myStyle = {
         'clip-path':this.clip,
         '-webkit-clip-path':this.clip,
@@ -204,37 +217,21 @@ export default {
       this.active = false;
     },
     mouseOver : function(){
+      if(this.isBlocked){
+        this.activeDuringBlock = true;
+        return;
+      }
       this.showInfo();
       this.$emit("showFullImg", this.photo.id);
     },
     mouseLeave : function(){
+      if(this.isBlocked){
+        this.activeDuringBlock = false;
+      }
       this.hideInfo();
       this.$emit('hideFullImg')
     },
-    // intersect : function(entries){
-    //   const image = entries[0];
-    //   if (image.isIntersecting && !this.isBlocked) {
-    //     this.$emit("changeCurrentId", this.photo.id);
-    //   } 
-    // },
     initObserver: function(){
-      // const area = document.getElementById('middle-area')
-      // let observerOptions = {
-      //   root: area,
-      //   rootMargin: "500px",
-      //   threshold: [0, 0.25, 0.5, 0.75, 1.0]
-      // };
-
-      // this.observer = new IntersectionObserver((entries)=>{
-      //   const image = entries[0];
-      //   console.log("intersect "+this.photo.id)
-      //   console.log(image.intersectionRatio)
-      //   if (image.isIntersecting && image.intersectionRatio > 0.9999) {
-      //     this.$emit("changeCurrentId", this.photo.id);
-      //   } 
-      // }, observerOptions);
-      //console.log(this.observer)
-      //this.observer.observe(this.$el);
       this.$emit('observe', this.$el);
     }
   },
@@ -257,7 +254,6 @@ export default {
     height:100%;  
     display:inline-block;
     @include transition(all 350ms ease-in-out);
-
     &__container{
       @extend .full;
          display: flex;

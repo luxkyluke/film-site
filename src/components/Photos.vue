@@ -9,7 +9,7 @@
         v-bind:key= "p.id"
         :photo="p"
         :isCurrent= "p.id === currentId"
-        :isBlocked="isBlocked"
+        :isBlocked="isBlocked || disablePhotoOnScroll"
         :displayInfo="p.id === idShowInfo"
         @observe = "observe"
         @changeCurrentId = "changeId"
@@ -41,7 +41,8 @@ export default {
       id : 0,
       currentRatio:0,
       offset:0,
-      sentBlocked: false
+      sentBlocked: false,
+      disablePhotoOnScroll: false,
     }
   },
   components: {
@@ -62,8 +63,8 @@ export default {
     },
     myStyle (){
       let s ={  
-        '-webkit-transform': `translate(-${this.offset}px, -50%)`,
-        'transform' : `translate(-${this.offset}px, -50%)`,
+        '-webkit-transform': `translate3d(-${this.offset}px, -50%, 0)`,
+        'transform' : `translate3d(-${this.offset}px, -50%, 0)`,
       }
       return s
     },
@@ -119,6 +120,7 @@ export default {
       }
     },
     handleScroll: function(e){
+      //this.sentBlocked = true;
       if(this.isBlocked)
         return;
       if(this.showInfo)
@@ -129,6 +131,12 @@ export default {
       if(Utility.isFirefox())
         delta *= 20
       this.offset = Utility.clamp(this.offset+delta, 0, this.scrollArea)
+      if(!this.disablePhotoOnScroll)
+        this.disablePhotoOnScroll = true;
+    },
+    handleMouseMove:function (){
+      if(this.disablePhotoOnScroll)
+        this.disablePhotoOnScroll = false;
     },
     initWidth: function(){
       this.width =  this.$el.clientWidth
@@ -137,6 +145,7 @@ export default {
   },
   created () {
     window.addEventListener('wheel', this.handleScroll);
+    window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('resize', this.initWidth);
   },
   mounted(){
@@ -144,6 +153,7 @@ export default {
     //this.initObserver();
   },
   destroyed () {
+    window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('wheel', this.handleScroll);
     window.removeEventListener('resize', this.initWidth);
     this.observer.disconnect();

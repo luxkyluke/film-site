@@ -4,92 +4,220 @@
 		"selected_items":
 		[
 			[
-				"curre",
-				"currentId"
+				"photo",
+				"photoWidth"
 			],
 			[
-				"del",
-				"delta"
+				"is",
+				"isIntersecting"
 			],
 			[
-				"center",
-				"centerBox"
+				"o",
+				"observer"
+			],
+			[
+				"init",
+				"initObserver"
+			],
+			[
+				"sha",
+				"shadowClass"
+			],
+			[
+				"phoot",
+				"photo__container__img"
+			],
+			[
+				"class",
+				"classInfo"
+			],
+			[
+				"dis",
+				"displayInfo"
+			],
+			[
+				"sho",
+				"showInfoPhoto"
+			],
+			[
+				"hide",
+				"hideInfo"
+			],
+			[
+				"rat",
+				"ratioWindow"
+			],
+			[
+				"ra",
+				"ratioImg"
+			],
+			[
+				"id",
+				"idPhoto"
 			],
 			[
 				"chan",
 				"changeCurrentPhoto"
 			],
 			[
-				"cur",
-				"currentPhotoId"
+				"inner",
+				"innerHeight"
 			],
 			[
-				"ce",
-				"centerBox"
+				"tan",
+				"transform"
 			],
 			[
-				"obe",
-				"observerOptions"
-			],
-			[
-				"wind",
-				"windowWidth"
-			],
-			[
-				"pho",
-				"photoWidth"
-			],
-			[
-				"poem",
-				"poemId"
-			],
-			[
-				"getP",
-				"getPoemTxt"
-			],
-			[
-				"getW",
-				"getWantedWord"
+				"inn",
+				"innerWidth"
 			],
 			[
 				"wi",
 				"width"
 			],
 			[
-				"img",
-				"imgTest"
+				"pox",
+				"posX"
 			],
 			[
-				"tran",
-				"translateX"
+				"active",
+				"isActive"
 			],
 			[
-				"translateV",
-				"translateValue"
+				"inne",
+				"innerHeight"
+			],
+			[
+				"Wi",
+				"width"
 			],
 			[
 				"po",
 				"portrait"
 			],
 			[
-				"cli",
-				"clipStyle"
+				"trans",
+				"translateX"
 			],
 			[
-				"cl",
+				"trna",
+				"transform"
+			],
+			[
+				"close",
+				"closeFullImg"
+			],
+			[
+				"clos",
+				"closeFullImg"
+			],
+			[
+				"info",
+				"infoActive"
+			],
+			[
+				"phot",
+				"photoClass"
+			],
+			[
+				"full",
+				"fullImgActivated"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"a",
+				"fullImgActivated"
+			],
+			[
+				"ful",
+				"fullImgActivated"
+			],
+			[
+				"curre",
+				"currentImg"
+			],
+			[
+				"cu",
+				"currentId"
+			],
+			[
+				"cur",
+				"currentImg"
+			],
+			[
+				"pho",
+				"photoClass"
+			],
+			[
+				"tr",
+				"transform"
+			],
+			[
+				"tran",
+				"transform"
+			],
+			[
+				"act",
+				"active"
+			],
+			[
+				"mouse",
+				"mouseOver"
+			],
+			[
+				"clas",
+				"classInfo"
+			],
+			[
+				"dec",
+				"text-decoration"
+			],
+			[
+				"ic",
+				"iconFilm"
+			],
+			[
+				"Pho",
+				"PhotoInfo"
+			],
+			[
+				"comp",
+				"component"
+			],
+			[
+				"icon",
+				"iconFilm"
+			],
+			[
+				"cr",
+				"currentId"
+			],
+			[
+				"slide",
+				"idSlider"
+			],
+			[
+				"wind",
+				"windowWidth"
+			],
+			[
+				"win",
+				"windowWidth"
+			],
+			[
+				"clip",
 				"clip"
 			],
 			[
-				"trans",
-				"translate"
+				"cli",
+				"clientWidth"
 			],
 			[
-				"class",
-				"classPortrait"
-			],
-			[
-				"prot",
-				"portrait"
+				"Photo",
+				"PhotoContainer"
 			],
 			[
 				"sin",
@@ -116,10 +244,6 @@
 				"minWidth"
 			],
 			[
-				"comp",
-				"components"
-			],
-			[
 				"proje",
 				"projectId"
 			],
@@ -128,16 +252,8 @@
 				"backgroundImg"
 			],
 			[
-				"clas",
-				"className"
-			],
-			[
 				"classN",
 				"className"
-			],
-			[
-				"a",
-				"absolute"
 			],
 			[
 				"cla",
@@ -280,10 +396,6 @@
 				"translateX"
 			],
 			[
-				"tr",
-				"transform: "
-			],
-			[
 				"op",
 				"opacity"
 			],
@@ -356,10 +468,6 @@
 				"console"
 			],
 			[
-				"o",
-				"offsetLeft"
-			],
-			[
 				"z",
 				"z-index"
 			],
@@ -406,114 +514,6 @@
 			[
 				"Bande",
 				"Bandeau"
-			],
-			[
-				"project__",
-				"project__header__left"
-			],
-			[
-				"click",
-				"clickProject"
-			],
-			[
-				"hanl",
-				"handleClick"
-			],
-			[
-				"ba",
-				"backgroundColorFilter"
-			],
-			[
-				"handleIm",
-				"handleImgError"
-			],
-			[
-				"lisT",
-				"listItems"
-			],
-			[
-				"pad",
-				"padding"
-			],
-			[
-				"ma",
-				"margin"
-			],
-			[
-				"black",
-				"blackArrow"
-			],
-			[
-				"aling",
-				"align-items: "
-			],
-			[
-				"align",
-				"align-self: "
-			],
-			[
-				"flex",
-				"flex-direction"
-			],
-			[
-				"font-",
-				"font-weight: "
-			],
-			[
-				"text-tr",
-				"text-decoration"
-			],
-			[
-				"top",
-				"top\t = 'inherit' Style CSS"
-			],
-			[
-				"console",
-				"console.log"
-			],
-			[
-				"sha",
-				"text-shadow: "
-			],
-			[
-				"preve",
-				"preventDefault\t(): void Event"
-			],
-			[
-				"onMou",
-				"onmousemove\t: EventHandler Window"
-			],
-			[
-				"impro",
-				"import"
-			],
-			[
-				"setTi",
-				"setTimeout\t( handler: any, timeout?: long, arguments_..: any ): long Window"
-			],
-			[
-				"he",
-				"height\t = 'inherit' Style CSS"
-			],
-			[
-				"w",
-				"width"
-			],
-			[
-				"canv",
-				"canvas"
-			],
-			[
-				"can",
-				"canvas\tTag"
-			],
-			[
-				"FREQ",
-				"FREQ-SHIFT"
-			],
-			[
-				"aff",
-				"affSuppBtn"
 			]
 		]
 	},
@@ -524,6 +524,7 @@
 			"settings":
 			{
 				"buffer_size": 271,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -531,71 +532,125 @@
 			"file": "src/App.vue",
 			"settings":
 			{
-				"buffer_size": 432,
+				"buffer_size": 488,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/router/index.js",
+			"settings":
+			{
+				"buffer_size": 290,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/components/Gallery.vue",
 			"settings":
 			{
-				"buffer_size": 1444,
+				"buffer_size": 3758,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/Slider.vue",
-			"settings":
-			{
-				"buffer_size": 2080,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/components/Photos.vue",
 			"settings":
 			{
-				"buffer_size": 1689,
+				"buffer_size": 4156,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/components/photos/Photo.vue",
 			"settings":
 			{
-				"buffer_size": 5291,
+				"buffer_size": 6671,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/photos/PhotoFull.vue",
+			"settings":
+			{
+				"buffer_size": 5989,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/Slider.vue",
+			"settings":
+			{
+				"buffer_size": 1988,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/slider/SliderSquare.vue",
+			"settings":
+			{
+				"buffer_size": 1165,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/addons/utility.js",
 			"settings":
 			{
-				"buffer_size": 272,
+				"buffer_size": 331,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/photos/PhotoInfo.vue",
+			"settings":
+			{
+				"buffer_size": 3021,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/api/PhotoApi.js",
 			"settings":
 			{
-				"buffer_size": 987,
+				"buffer_size": 1521,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/sass/_mixins.scss",
+			"file": "src/sass/main.scss",
 			"settings":
 			{
-				"buffer_size": 1371,
-				"line_ending": "Windows"
+				"buffer_size": 523,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/sass/_fonts.scss",
+			"settings":
+			{
+				"buffer_size": 153,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/sass/_constantes.scss",
+			"settings":
+			{
+				"buffer_size": 59,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -606,14 +661,10 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 354.0,
-		"last_filter": "inst",
+		"height": 167.0,
+		"last_filter": "remoc",
 		"selected_items":
 		[
-			[
-				"inst",
-				"Package Control: Install Package"
-			],
 			[
 				"remoc",
 				"Package Control: Remove Package"
@@ -629,6 +680,10 @@
 			[
 				"",
 				"Package Control: Advanced Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
 			],
 			[
 				"range",
@@ -682,34 +737,30 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src",
-		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/api",
-		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/components",
-		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photos"
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/addons",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/api",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photos",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/slider",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/router",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/sass",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/test"
 	],
 	"file_history":
 	[
-		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/Photos.vue",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_datexec1__td_17208_57.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_createVisualsTransforms__td_17208_74.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_poemSelector__td_2160_54.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_selectCenters__td_17208_65.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_selectCenters__td_17208_59.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_selectedPoem__td_17208_58.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_poemSelector__td_17208_56.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_createVisualsTransforms__td_17208_67.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_selectCenters__td_11104_43.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_selectedPoem__td_5760_43.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_17208_43.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_5760_44.py",
-		"/D/Documents/IMAC3/ProjetPrePro/python/PoemsExperiments/src/main.py",
-		"/D/Documents/IMAC3/ProjetPerso/Site/film-site/src/addons/utility.js",
-		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/utility.js",
-		"/C/Users/TonioDeMoreno/Desktop/tshjf.vbs",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_1676_44.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text1__td_4496_50.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/dat_text2__td_4496_52.py",
-		"/C/Users/TonioDeMoreno/AppData/Local/Temp/touchtmp/td_4496_51.str",
+		"/usr/local/lib/python3.6/site-packages/pip/index.py",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photos/PhotoFull.vue",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/build/utils.js",
+		"/Applications/TouchDesigner099.app/Contents/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/numpy/setup.py",
+		"/Applications/TouchDesigner099.app/Contents/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/scipy/setup.py",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/Slider.vue",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photos/PhotoInfo.vue",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/build/webpack.base.conf.js",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/Icon.vue",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/slider/SliderSquare.vue",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photos/Photo.vue",
+		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/src/components/photoGallery/PhotoContainer.vue",
 		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/film-site/README.md",
 		"/Users/antoine/Documents/IMAC3/ProjetPerso/Site/maquette/film-site/.eslintrc.js",
 		"/Users/antoine/Documents/Portfolio/Site_v2/src/utilities/utility.js",
@@ -793,6 +844,7 @@
 		"/D/Documents/Portfolio/SitePorfolio/src/app/components/projects/ProjectMin.jsx",
 		"/D/Documents/Portfolio/SitePorfolio/maquettes/exports/Rectangle 24.svg",
 		"/D/Documents/Portfolio/SitePorfolio/data/monaco_porcelaine/imgonline-com-ua-ColorPalette-luT6JnGabEr.jpg",
+		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/utility.js",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/components/project/Footer.jsx",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/Animation.js",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/components/assets/Button.jsx",
@@ -816,17 +868,26 @@
 		"/D/Documents/Portfolio/SitePorfolio/node_modules/har-schema/lib/page.json",
 		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/color-thief.js",
 		"/D/wamp64/www/FleurDePapier/JsProject/js/Accroche.js",
-		"/D/wamp64/www/FleurDePapier/JsProject/js/Bouton.js"
+		"/D/wamp64/www/FleurDePapier/JsProject/js/Bouton.js",
+		"/D/Documents/Portfolio/SitePorfolio/src/img/icons/eye_close.svg",
+		"/D/Documents/Portfolio/SitePorfolio/src/app/utilities/constantes.js",
+		"/D/Documents/Portfolio/SitePorfolio/src/app/components/Banniere.jsx",
+		"/D/Documents/Portfolio/SitePorfolio/src/app/components/projects/Logo.jsx",
+		"/D/Documents/Portfolio/SitePorfolio/src/sass/_constantes.scss",
+		"/D/Documents/Portfolio/SitePorfolio/src/img/icons/arrow_down_black.svg",
+		"/D/Documents/Portfolio/SitePorfolio/src/sass/_footer.scss",
+		"/D/Documents/Portfolio/SitePorfolio/src/sass/_mixins.scss"
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 29.0
 	},
 	"find_in_files":
 	{
 		"height": 194.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -834,44 +895,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"wheel",
-			"changeCurrentPhoto",
-			"observerOptions",
-			"isCurrent",
-			"photoWidth",
-			"centers",
-			"nbCenters",
-			"centers",
-			"project1",
-			"speech",
-			"print",
-			"mappedWords",
-			"mot",
-			"getWantedWord",
-			"wheel",
-			"scroll",
-			"true",
-			"translate3d",
-			"Alpes",
-			"false",
-			"0% 100%,",
-			" 0% 100%",
-			"null",
-			"true",
-			"5",
-			"false",
-			"translateValue",
-			"true",
-			"classPortrait",
+			"sentBlocked",
+			"isBlocked",
+			"sentBlocked",
+			"obser",
+			"portrait",
+			"Observer",
+			"observer",
+			"Observer",
+			"observer",
+			"observe",
+			"observer",
+			"Observer",
+			"observer",
+			"Observer",
+			"observer",
+			"Observer",
+			"observer",
+			"initObserver",
+			"Observer",
+			"observer",
+			"Observer",
+			"observer",
+			"Observer",
+			"observer",
+			"Observer",
+			"observer",
+			"initObserver",
+			"changeCurrentId",
+			"area",
+			"initObserver",
+			"500px",
+			";\n",
+			"idShowInfo",
+			"showInfo",
+			"ShowInfo",
+			"showInfo",
+			"idShowInfo",
+			"showInfo",
+			"idShowInfo",
+			"showInfo",
+			"showInfoImg",
+			"photoId",
+			"this",
+			"idInfo",
+			"idShowInfo",
+			"showInfoImg",
+			"hideFullImg",
+			"displayInfo",
+			"handleMouseMove",
+			"50px",
+			"20px",
+			"active",
+			"myStyle",
+			"query",
+			"img",
+			"portrait",
+			"myClass",
+			"myStyle",
 			"transform",
-			"mouseOver",
-			"mouseover",
-			"mouseOver",
-			"clipStyle",
-			"transforms",
-			"clip",
-			"uniquename",
-			"console"
+			"myStyle",
+			"myClass",
+			"photo",
+			"myClass",
+			"changeCurrentPhoto",
+			"showInfoImg",
+			"displayInfo",
+			"showInfo",
+			"showInfoImg",
+			"showInfoPhoto",
+			"portrait",
+			"isMoving",
+			"remapX",
+			"relativePointerX",
+			"remap",
+			"relativePointer",
+			"remap",
+			"relativePointer",
+			"< ",
+			"myStyle",
+			"this.width",
+			"width",
+			"Width",
+			"width",
+			"Width",
+			"width",
+			"myStyle",
+			"remap",
+			"relativePointer",
+			"remap",
+			"relativePointer",
+			"closeFullImg",
+			"\n        ",
+			"conso",
+			"idSlider",
+			"emit",
+			"this.currentId",
+			"this.id",
+			"Id",
+			"id",
+			"CurrentId",
+			"currentId",
+			"idPhoto",
+			"changeCurrentId",
+			"conso",
+			"changeCurrentPhoto",
+			"portrait",
+			"isActive",
+			"handleMouseMove",
+			"next",
+			" -(",
+			"next",
+			"t",
+			"translate",
+			"t",
+			"trans",
+			"pointer",
+			"x",
+			"-mar",
+			"1.5",
+			"showFullImg",
+			"yNext",
+			"xNext",
+			"100",
+			"200",
+			"clientH",
+			"trans",
+			"height",
+			"s.H"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -889,7 +1040,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -905,8 +1056,8 @@
 						"selection":
 						[
 							[
-								271,
-								271
+								262,
+								262
 							]
 						],
 						"settings":
@@ -917,7 +1068,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -926,15 +1077,132 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 432,
+						"buffer_size": 488,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								147,
-								147
+								235,
+								235
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/router/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 290,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/components/Gallery.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3758,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3354,
+								3354
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1213.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/components/Photos.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2946,
+								2946
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2115.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/photos/Photo.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1355,
+								1355
 							]
 						],
 						"settings":
@@ -947,30 +1215,118 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/components/Gallery.vue",
+					"buffer": 6,
+					"file": "src/components/photos/PhotoFull.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1444,
+						"buffer_size": 5989,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1008,
+								1008
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
 							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 524.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/components/Slider.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1988,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1291,
+								1291
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/components/slider/SliderSquare.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1165,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								149
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/addons/utility.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 331,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								295,
+								295
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -981,20 +1337,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/components/Slider.vue",
+					"buffer": 10,
+					"file": "src/components/photos/PhotoInfo.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2080,
+						"buffer_size": 3021,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1309,
-								1309
+								1452,
+								1452
 							]
 						],
 						"settings":
@@ -1004,98 +1360,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 521.0,
+						"translation.y": 167.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/components/Photos.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1689,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								641,
-								641
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 439.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/components/photos/Photo.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5291,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4123,
-								4123
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3464.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/addons/utility.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 272,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								169,
-								169
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1105,33 +1373,45 @@
 			"sheets":
 			[
 				{
-					"buffer": 7,
+					"buffer": 11,
 					"file": "src/api/PhotoApi.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 987,
+						"buffer_size": 1521,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								145,
-								145
+								234,
+								234
 							],
 							[
-								265,
-								265
+								443,
+								443
 							],
 							[
-								382,
-								382
+								649,
+								649
+							],
+							[
+								850,
+								850
+							],
+							[
+								1059,
+								1059
+							],
+							[
+								1265,
+								1265
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -1139,37 +1419,92 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/sass/_mixins.scss",
+					"buffer": 12,
+					"file": "src/sass/main.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1371,
+						"buffer_size": 523,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7,
-								7
+								191,
+								102
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/sass/_fonts.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax"
+						},
+						"translation.x": 20.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "src/sass/_constantes.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 59,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59,
+								59
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
@@ -1177,7 +1512,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 29.0
 	},
 	"input":
 	{
@@ -1203,7 +1538,7 @@
 		"cols":
 		[
 			0.0,
-			0.697306791569,
+			0.688497676615,
 			1.0
 		],
 		"rows":
@@ -1221,7 +1556,7 @@
 	"project": "film.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 54.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1231,24 +1566,28 @@
 		"selected_items":
 		[
 			[
-				"slu",
-				"src\\components\\Slider.vue"
-			],
-			[
-				"gall",
-				"src\\components\\Gallery.vue"
-			],
-			[
-				"photos",
-				"src\\components\\Photos.vue"
-			],
-			[
-				"mi",
-				"src\\sass\\_mixins.scss"
-			],
-			[
 				"utili",
-				"src/utilities/utility.js"
+				"src/addons/utility.js"
+			],
+			[
+				"uti",
+				"build/utils.js"
+			],
+			[
+				"sli",
+				"src/components/Slider.vue"
+			],
+			[
+				"slider",
+				"src/components/Slider.vue"
+			],
+			[
+				"cons",
+				"src/sass/_constantes.scss"
+			],
+			[
+				"font",
+				"src/sass/_fonts.scss"
 			],
 			[
 				"project",
@@ -1317,10 +1656,6 @@
 			[
 				"",
 				"Portfolio-site/src/app/components/Header.jsx"
-			],
-			[
-				"font",
-				"Portfolio-site/src/sass/_fonts.scss"
 			],
 			[
 				"menu",
@@ -1647,10 +1982,6 @@
 				"src\\app\\vues\\UserProfil.js"
 			],
 			[
-				"uti",
-				"src\\sass\\_utility.scss"
-			],
-			[
 				"cha",
 				"api\\model\\challenge.php"
 			],
@@ -1741,6 +2072,10 @@
 			[
 				"le",
 				"include/Level.h"
+			],
+			[
+				"tool",
+				"src/sdl_tools.c"
 			]
 		],
 		"width": 0.0

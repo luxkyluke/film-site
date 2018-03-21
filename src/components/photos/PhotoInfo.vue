@@ -62,7 +62,7 @@ export default {
     height : 250px;
     padding: 40px;
     position:absolute;
-    @include transform(translateX(-60%));
+    @include transform(translate3d(-60%, 0, 0));
     @include transition(all 300ms ease-in-out);
     bottom:0;
     opacity:0;
@@ -73,11 +73,11 @@ export default {
       bottom: 0;
       right: 0;
       margin: 15px;
-      @include transform(translateX(60%));
+      @include transform(translate3d(60%, 0, 0));
       @include transition(all 200ms ease-in-out);
 
       &.active{
-        @include transform(translateX(0%));
+        @include transform(translate3d(0%, 0, 0));
       }
 
     }
@@ -95,7 +95,7 @@ export default {
 
     &.active{
       @include transition(all 250ms ease-out 400ms);
-      @include transform(translateX(-40%));
+      @include transform(translate3d(-40%, 0, 0));
       opacity: 1;
     }
 

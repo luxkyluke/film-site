@@ -7,7 +7,7 @@ const utility = {
         return value;
     },
     isFirefox(){
-    	return typeof InstallTrigger !== 'undefined';
+    	return (window.navigator.appVersion.indexOf("Win")!=-1) ? typeof InstallTrigger !== 'undefined' : false;
     }
 }
 

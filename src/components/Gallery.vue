@@ -126,18 +126,6 @@ export default {
   .gallery{
     @extend .full;
     &__content{
-      
-      // &>.middle{
-      //   width: 400px;
-      //   position: absolute;
-      //   height: 100vh;
-      //   top:0;
-      //   transform: translateX(-50%);
-      //   left: 50%;
-      //   background-color: red;
-      //   z-index:6;
-      //   //display: none;
-      // }
       &__title{
         font-weight: 400;
         display: flex;
@@ -149,7 +137,7 @@ export default {
         width: 33.33vw;
         height: 100vh;
         position: absolute;
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
         left : 50%;
         top:0;
         background-color:rgba(255, 0, 0, 0.5);

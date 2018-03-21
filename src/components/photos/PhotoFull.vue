@@ -34,7 +34,7 @@ export default {
   name: 'PhotoFull',
   data () {
     return{
-      img :imgPortrait,
+      img :imgTest,
       infoActive:false,
       cross, 
       info,
@@ -105,8 +105,8 @@ export default {
       }
 
       const style = {
-        '-webkit-transform': `translate(-${trans.x}px, -${trans.y}px)`,
-        'transform': `translate(-${trans.x}px, -${trans.y}px)`
+        '-webkit-transform': `translate3d(-${trans.x}px, -${trans.y}px, 0)`,
+        'transform': `translate3d(-${trans.x}px, -${trans.y}px, 0)`
       }
 
       return style
@@ -188,7 +188,7 @@ export default {
         margin: 30px;
         position: absolute;
         right: 0;
-        @include transform(translateX(150px))
+        @include transform(translate3d(150px, 0, 0))
       }
      
       &__info{
@@ -201,7 +201,7 @@ export default {
       .photo-full__content{
         @include transition(transform 300ms ease-in-out)
         .icon{
-          @include transform(translateX(0px))
+          @include transform(translate3d(0px, 0, 0))
         }
       }
     }
