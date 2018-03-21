@@ -8,13 +8,14 @@
       />
       <img  :id="idName"
             class="photo__container__img" 
-            :src="img"
+            v-lazy="photo.src"
+            lazy="loading"
             :style="myStyle"
             :class="myClass"
             ref="image"
       />
       <img  class="photo__container__area" 
-            :src="img"
+            :src="photo.src"
             :style="myStyle"
             :class="myClass"
             @mouseover="mouseOver"
@@ -56,12 +57,11 @@ export default {
   },
   data (){
     return {
-      img : imgTest,
       myStyle : null,
       idName : "photo_img_"+this.photo.id,
       clip : null,
       shadow,
-      //translate: 'translate(0px)',
+      isMasked:false,
       translateY: 0,
       translateX: 0,
       translateValue : 0,
@@ -123,7 +123,6 @@ export default {
       if(!isBlocked && this.activeDuringBlock){
         this.mouseOver();
       }
-
     }
   },
   methods:{
@@ -140,7 +139,7 @@ export default {
 
       if(position === "begin"){
          //si c'est un portrait on inverse
-        if(height > width){ 
+        if(this.photo.portrait){ 
           w = height;
           h = width;
           this.translateY = height-width;
@@ -153,7 +152,7 @@ export default {
 
       w = width;
       h = height;
-      if(height>width){// si portrait
+      if(this.photo.portrait){// si portrait
         let min, max;
         if(position === "middle"){ // si portrait et middle
           min = (h-w)*0.5;
@@ -183,6 +182,8 @@ export default {
     },
     mask :function (){
       const img = this.$refs.image;
+      if (img.clientWidth < 50 || img.clientHeight<50)
+        return false;
       const clip = this.getClip(img);
       this.clip = clip;
       this.myStyle = {
@@ -191,6 +192,7 @@ export default {
         '-webkit-transform': this.translate,
         'transform': this.translate
       }
+      return true;
     },
     showInfo:function(){
       if(this.isBlocked){
@@ -240,10 +242,16 @@ export default {
     },
     initObserver: function(){
       this.$emit('observe', this.$el);
+    },
+    handleLoaded: function({ el, src }) {
+      if(this.mask()){
+        this.$Lazyload.$off('loading', this.handleLoaded)
+      }
     }
   },
   mounted () {
-    setTimeout(this.mask, 300);
+    
+    this.$Lazyload.$on('loading', this.handleLoaded)
     this.initObserver();
   },
   destroy(){
@@ -256,6 +264,7 @@ export default {
 <style lang="scss">
   @import '~sass/main.scss';
   
+
   .photo{
     width:500px;
     height:100%;  
@@ -284,7 +293,9 @@ export default {
         cursor: pointer;
         position:absolute;
 
-        
+        &[lazy=loading]{
+          @include blur(5px);
+        }
 
         &.portrait{
           width:25vh;
@@ -295,6 +306,7 @@ export default {
           align-self:flex-end;
         }
       }
+
       &__area{
         @extend .photo__container__img;
         z-index:2;

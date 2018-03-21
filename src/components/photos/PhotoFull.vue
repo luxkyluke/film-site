@@ -1,7 +1,14 @@
 <template>
   <div class="photo-full" :class="myClass">
         
-    <img class="photo-full__img" :class="photoClass" :src="img" ref="img" :style="myStyle"/>
+    <img 
+      class="photo-full__img" 
+      :class="photoClass" 
+      v-lazy="photo.src"
+      lazy="loading"
+      ref="img" 
+      :style="myStyle"
+    />
     
     <div class="photo-full__filter" ></div>
     <div class="photo-full__content" ref="content" @click="closeInfo" > 
@@ -34,7 +41,6 @@ export default {
   name: 'PhotoFull',
   data () {
     return{
-      img :imgTest,
       infoActive:false,
       cross, 
       info,
@@ -177,6 +183,7 @@ export default {
     opacity:0;
     @include transition(opacity 300ms ease-in-out)
     
+
     &__content{
       @extend .full;
       position: absolute;
@@ -231,6 +238,10 @@ export default {
       position: absolute;
       @include transition(transform 200ms linear)
 
+      &[lazy=loading]{
+        @include blur(8px);
+      }
+  
       &.portrait{
         width: 100%;
         height: auto;

@@ -3,16 +3,7 @@ const PhotoApi = {
   photos:
     [
       {
-        src: '/data/alpes.jpg',
-        name: 'Alpes',
-        camera:'Pentax K1000',
-        film:'Ilford Pan 400',
-        lens:'50mm f/1.4',
-        mask: "begin",
-        portrait: false
-      },
-      {
-        src: '/data/alpes.jpg',
+        src: './static/data/alpes.jpg',
         name: 'Alpes',
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
@@ -21,25 +12,8 @@ const PhotoApi = {
         portrait: false
       },
       {
-        src: '/data/alpes.jpg',
-        name: 'Alpes',
-        camera:'Pentax K1000',
-        film:'Ilford Pan 400',
-        lens:'50mm f/1.4',
-        mask: "end",
-        portrait: false
-      },{
-        src: '/data/alpes.jpg',
-        name: 'Alpes',
-        camera:'Pentax K1000',
-        film:'Ilford Pan 400',
-        lens:'50mm f/1.4',
-        mask: "begin",
-        portrait: false
-      },
-      {
-        src: '/data/alpes.jpg',
-        name: 'Alpes',
+        src: './static/data/arabesco.jpg',
+        name: 'Arabesco',
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
@@ -47,14 +21,68 @@ const PhotoApi = {
         portrait: false
       },
       {
-        src: '/data/alpes.jpg',
-        name: 'Alpes',
+        src: './static/data/azulejos.jpg',
+        name: 'Azulejos',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
+        mask: "middle",
+        portrait: false
+      },
+      {
+        src: './static/data/blau.jpg',
+        name: 'Blau',
+        camera:'Pentax K1000',
+        film:'AGFA Vista Plus 400',
+        lens:'50mm f/1.4',
+        mask: "middle",
+        portrait: false
+      },
+      {
+        src: './static/data/caminho.jpg',
+        name: 'Caminho',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
+        mask: "beggin",
+        portrait: false
+      },
+      {
+        src: './static/data/chafarica.jpg',
+        name: 'Chafarica',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',
+        mask: "begin",
+        portrait: false
+      },
+      {
+        src: './static/data/ciel.jpg',
+        name: 'Ciel',
+        camera:'Minolta XG-M',
+        film:'AGFA Vista Plus 400',
+        lens:'50mm f/2',
+        mask: "middle",
+        portrait: true
+      },
+      {
+        src: './static/data/constance.jpg',
+        name: 'Constance',
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "end",
         portrait: false
-      }
+      },
+      {
+        src: './static/data/éclat.jpg',
+        name: 'Éclat',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',  
+        mask: "end",
+        portrait: false
+      },
     ],
   nbPhoto: function () { return this.photos.length },
   all: function () { 
