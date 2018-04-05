@@ -212,9 +212,9 @@ export default {
       this.active = true;
     },
     hideInfo:function(){
-      if(this.isBlocked){
+      //if(this.isBlocked){
         this.activeDuringBlock = false;
-      }
+      //}
       this.myStyle = {
         'clip-path':this.clip,
         '-webkit-clip-path':this.clip,

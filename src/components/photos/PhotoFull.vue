@@ -142,23 +142,27 @@ export default {
         x : e.clientX,
         y : e.clientY,
       }
+    },
+    handleLoaded : function(){
+      const h= this.$refs.img.clientHeight
+      const w= this.$refs.img.clientWidth
+      if (w < 50 || h < 50)
+        return
+      this.height = h
+      this.width = w
+      this.$Lazyload.$off('loading', this.handleLoaded)
     }
   },
   mounted(){
-    this.height = this.$refs.img.clientHeight
-    this.width =  this.$refs.img.clientWidth
+    this.$Lazyload.$on('loading', this.handleLoaded)
   },
+
   watch:{
-    isVisible:function(isVisible){
-      if(isVisible){
-        this.height = this.$refs.img.clientHeight
-        this.width = this.$refs.img.clientWidth
-      }
+    photo:function(photo){
+      this.$Lazyload.$on('loading', this.handleLoaded)
     },
     isActive:function(isActive){
       if(isActive){
-        this.height = this.$refs.img.clientHeight
-        this.width = this.$refs.img.clientWidth
         window.addEventListener('keyup', this.handleKeyUp);
         window.addEventListener('mousemove', this.handleMouseMove);
       }

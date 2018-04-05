@@ -75,12 +75,21 @@ const PhotoApi = {
         portrait: false
       },
       {
-        src: './static/data/éclat.jpg',
+        src: './static/data/eclat.jpg',
         name: 'Éclat',
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',  
         mask: "end",
+        portrait: false
+      },
+      {
+        src: './static/data/emplettes.jpg',
+        name: 'Emplette',
+        camera:'Pentax K1000',
+        film:'Ilford Pan 400',
+        lens:'50mm f/1.4',  
+        mask: "middle",
         portrait: false
       },
     ],
