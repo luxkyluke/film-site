@@ -132,6 +132,7 @@ export default {
         justify-content:center;
         margin-top: $generalMargin;
         font-size:2.5em;
+        text-shadow:#000 2px 2px 8px;
       }
       &__center{
         width: 33.33vw;

@@ -2,7 +2,7 @@
   <div class="slider">
     <div class="slider__list">
       <slider-square
-          v-for="p in sizedPhotos"
+        v-for="p in sizedPhotos"
         v-bind:id="p.id"
         v-bind:key="p.id"
         :size = "p.size"
@@ -23,25 +23,26 @@ export default {
   },
   data () {
     return {
-      defaultSize: 'default-size',
-      smallSize: 'small-size',
-      bigSize: 'big-size',
-      maxSize: 'maxi-size'
+      interId : this.currentId
     }
   },
   components: {
     'slider-square': SliderSquare
   },
   computed: {
+    id : function(){
+      return this.interId
+    },
+
     // ajoute la propriété size à l'objet photo en fonction de l'id current
     sizedPhotos: function () {
       return this.photos.map((p, i) => {
         let size = 'default-size'
-        if (i === this.currentId - 1 || i === this.currentId + 1) {
+        if (i === this.id - 1 || i === this.id + 1) {
           size = 'big-size'
-        } else if (i === this.currentId - 2 || i === this.currentId + 2) {
+        } else if (i === this.id - 2 || i === this.id + 2) {
           size = 'small-size'
-        } else if (i === this.currentId) {
+        } else if (i === this.id) {
           size = 'maxi-size'
         }
         p.size = size
@@ -50,22 +51,26 @@ export default {
     }
   },
   methods: {    
-    changeCurrentId: function(id) {
-      if(id === this.currentId)
-        return;
-      //interpolation entre les 2 ids 
+    changeCurrentId: function(newId) {
       const oldId = this.id;
-      let delta = id - oldId;
-      const coef = delta>0 ? 1 : -1;
-      delta = Math.abs(delta);
-      const speed = 50-delta*0.4;
+      let testIterId = {id:this.id}
+      TweenLite.to(testIterId, .7, {
+        id:newId, 
+        onUpdate:(tween, id)=>{
+          this.interId = tween.target[id]
+        },  
+        onUpdateParams:["{self}", 'id'],
+        ease:Quint.easeInOut, 
+        roundProps:"id"
+      });  
 
-      for (let i=0; i<delta; i++){
-        setTimeout(() =>{
-          this.id += coef;
-        }, speed*i);
-      }
-      this.$emit("changeId", id);
+      this.$emit("changeId", newId);
+    }
+  },
+  watch:{
+    currentId: function(newId){
+      if(this.id !== newId)
+        this.interId = newId
     }
   }
 }
