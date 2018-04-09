@@ -30,6 +30,9 @@
         v-on:changeId = "changeCurrentPhoto"
       ></slider>
     </div>
+    <div class="gallery__copyright">
+      <a class="gallery__copyright__label" target="blank" href="http://antoinedemiere.com/#/about"><span>by</span> Antoine Demière</a>
+    </div>
   </div>
 </template>
 
@@ -142,6 +145,23 @@ export default {
         left : 50%;
         top:0;
         background-color:rgba(255, 0, 0, 0.5);
+      }
+    }
+    &__copyright{
+      position : absolute;
+      right : 30px;
+      bottom: 30px;
+      margin:0;
+      padding: 0;
+      &__label{
+        font-family: Montserrat;
+        color:inherit;
+        font-size: 1em;
+        font-weight: 600;
+        & > span{
+          font-size: 0.7em;
+          
+        }
       }
     }
   }

@@ -60,7 +60,7 @@ export default {
           this.interId = tween.target[id]
         },  
         onUpdateParams:["{self}", 'id'],
-        ease:Quint.easeInOut, 
+        ease:Quint.easeOut, 
         roundProps:"id"
       });  
 
