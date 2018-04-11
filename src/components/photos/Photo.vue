@@ -246,11 +246,11 @@ export default {
     handleLoaded: function({ el, src }) {
       if(this.mask()){
         this.$Lazyload.$off('loading', this.handleLoaded)
+        this.$emit('imgLoaded', this.photo.id)
       }
     }
   },
   mounted () {
-    
     this.$Lazyload.$on('loading', this.handleLoaded)
     this.initObserver();
   },

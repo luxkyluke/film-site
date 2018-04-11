@@ -16,6 +16,7 @@
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
         @click="openImg"
+        @imgLoaded = "imgLoaded"
       ></photo>
   </div>
 </template>
@@ -43,6 +44,7 @@ export default {
       offset:0,
       sentBlocked: false,
       disablePhotoOnScroll: false,
+      nbLoadedImg : 0
     }
   },
   components: {
@@ -141,6 +143,12 @@ export default {
     initWidth: function(){
       this.width =  this.$el.clientWidth
       this.photoWidth = this.$el.querySelector('.photo').clientWidth
+    },
+    imgLoaded:function(id){
+      this.nbLoadedImg +=1;
+      console.log(this.nbLoadedImg)
+      if(this.nbLoadedImg > 5)
+        this.$emit('photosLoaded')
     }
   },
   created () {

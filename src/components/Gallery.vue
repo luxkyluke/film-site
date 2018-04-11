@@ -1,7 +1,8 @@
 
 <template>
   <div class="gallery" >
-     <photo-full
+    
+    <photo-full
       :photo="this.currentImg"
       :isVisible="fullImgVisible"
       :isActive="fullImgActivated"
@@ -11,9 +12,9 @@
     </photo-full>
     <div class="gallery__content" ref="content">
       <h1 class="gallery__content__title" :class="myClass">{{ title }}</h1>
-      <!-- <div id="middle-area" class="middle"></div> -->
-     
+      <loader v-if="!hideLoader" class="gallery__loader"></loader>
       <photos
+        v-if="hideLoader"
         v-bind:photos ="photos"
         v-bind:currentId = "idPhoto"
         v-on:changeCurrentId ="changeCurrentPhoto"
@@ -22,9 +23,10 @@
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
         @openFullImg="openFullImg"
-        
+        @photosLoaded="handleLoaded"
       ></photos>
       <slider
+        v-if="hideLoader"
         v-bind:photos ="photos"
         v-bind:currentId = "idPhoto"
         v-on:changeId = "changeCurrentPhoto"
@@ -39,6 +41,7 @@
 <script>
 import Photos from '@/components/Photos'
 import Slider from '@/components/Slider'
+import Loader from '@/components/Loader'
 import PhotoFull from '@/components/photos/PhotoFull'
 import PhotoApi from '@/api/PhotoApi.js'
 import Utility from '@/addons/utility.js'
@@ -53,7 +56,8 @@ export default {
       fullImgVisible:false,
       showInfo:false,
       idFullImg : 0,
-      fullImgActivated:false
+      fullImgActivated:false,
+      hideLoader : false
     }
   },
   computed:{
@@ -68,6 +72,7 @@ export default {
     'photos': Photos,
     'slider': Slider,
     'photo-full':PhotoFull,
+    'loader':Loader
   },
   methods:{
     changeCurrentPhoto : function (i) {
@@ -112,6 +117,10 @@ export default {
         this.openFullImg(this.idPhoto)
         return;
       }
+    },
+    handleLoaded:function(){
+      console.log("LOADED")
+      this.hideLoader = true;
     }
   },
   created(){
@@ -128,6 +137,9 @@ export default {
   @import '~sass/main';
   .gallery{
     @extend .full;
+    &__loader{
+      @extend .center_center;
+    }
     &__content{
       &__title{
         font-weight: 400;
