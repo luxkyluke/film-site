@@ -146,8 +146,7 @@ export default {
     },
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
-      console.log(this.nbLoadedImg)
-      if(this.nbLoadedImg > 5)
+      if(this.nbLoadedImg > 4)
         this.$emit('photosLoaded')
     }
   },

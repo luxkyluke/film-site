@@ -102,6 +102,7 @@ export default {
       const relativePointerX = this.mouse.x/window.innerWidth
       const remapX = relativePointerX*140/100 - 0.2
       next.x = Utility.clamp(remapX * (this.width-window.innerWidth), 0, this.width-window.innerWidth)
+
       return next;
     },
     myStyle(){
@@ -114,7 +115,6 @@ export default {
         '-webkit-transform': `translate3d(-${trans.x}px, -${trans.y}px, 0)`,
         'transform': `translate3d(-${trans.x}px, -${trans.y}px, 0)`
       }
-
       return style
     }
   },
@@ -146,7 +146,7 @@ export default {
     handleLoaded : function(){
       const h= this.$refs.img.clientHeight
       const w= this.$refs.img.clientWidth
-      if (w < 50 || h < 50)
+      if (w < 100|| h < 100)
         return
       this.height = h
       this.width = w
@@ -154,7 +154,7 @@ export default {
     }
   },
   mounted(){
-    this.$Lazyload.$on('loading', this.handleLoaded)
+    this.$Lazyload.$on('loaded', this.handleLoaded)
   },
 
   watch:{
@@ -163,8 +163,12 @@ export default {
     },
     isActive:function(isActive){
       if(isActive){
+        this.height = this.$refs.img.clientHeight
+        this.width =  this.$refs.img.clientWidth
+        console.log(this.width)
         window.addEventListener('keyup', this.handleKeyUp);
         window.addEventListener('mousemove', this.handleMouseMove);
+        console.log("MOUSE LISTENER")
       }
       else{
         this.mouse={x:0, y:0}

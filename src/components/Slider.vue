@@ -82,7 +82,7 @@ export default {
   .slider{
     @extend .center;
     position: fixed;
-    bottom: $generalMargin;
+    bottom: 12vh;
 
     &__list{
       display: flex;

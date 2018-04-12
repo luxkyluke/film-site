@@ -11,10 +11,12 @@
     >
     </photo-full>
     <div class="gallery__content" ref="content">
-      <h1 class="gallery__content__title" :class="myClass">{{ title }}</h1>
-      <loader v-if="!hideLoader" class="gallery__loader"></loader>
+      <h1 class="gallery__content__title" :class="titleClass">{{ title }}</h1>
+      <h2 class="gallery__content__subtitle" :class="titleClass">{{ subtitle }}</h2>
+      <loader :class="(this.hideLoader) ? 'hide' : ''" class="gallery__content__loader"></loader>
       <photos
-        v-if="hideLoader"
+        class="gallery__content__photos"
+        :class="(this.hideLoader) ? '' : 'hide'"
         v-bind:photos ="photos"
         v-bind:currentId = "idPhoto"
         v-on:changeCurrentId ="changeCurrentPhoto"
@@ -26,14 +28,15 @@
         @photosLoaded="handleLoaded"
       ></photos>
       <slider
-        v-if="hideLoader"
+        class="gallery__content__slider"
+        :class="(this.hideLoader) ? '' : 'hide'"
         v-bind:photos ="photos"
         v-bind:currentId = "idPhoto"
         v-on:changeId = "changeCurrentPhoto"
       ></slider>
-    </div>
-    <div class="gallery__copyright">
-      <a class="gallery__copyright__label" target="blank" href="http://antoinedemiere.com/#/about"><span>by</span> Antoine Demière</a>
+      <div class="gallery__copyright">
+        <a class="gallery__copyright__label" target="_blank" href="http://antoinedemiere.com/#/about"><span>by</span> Antoine Demière</a>
+      </div>
     </div>
   </div>
 </template>
@@ -52,6 +55,7 @@ export default {
     return {
       photos: PhotoApi.all(),
       title: 'Film Photography',
+      subtitle: 'The 35 photographs of my travel film',
       idPhoto : 0,
       fullImgVisible:false,
       showInfo:false,
@@ -64,8 +68,9 @@ export default {
     currentImg(){
       return this.photos[this.idFullImg]
     },
-    myClass(){
-      return (this.fullImgActivated) ? "hide" : ""
+    titleClass(){
+      return ''
+      // return (this.fullImgActivated) ? "hide" : ""
     }
   },
   components: {
@@ -119,7 +124,6 @@ export default {
       }
     },
     handleLoaded:function(){
-      console.log("LOADED")
       this.hideLoader = true;
     }
   },
@@ -137,23 +141,36 @@ export default {
   @import '~sass/main';
   .gallery{
     @extend .full;
-    &__loader{
-      @extend .center_center;
-    }
     &__content{
+      &__loader{
+        @extend .center_center;
+      }
+      &__photos, &__slider, &__loader{
+        @include transition(opacity 500ms);
+      }
+      & .hide{
+        opacity : 0;
+      }
       &__title{
         font-weight: 400;
         display: flex;
         justify-content:center;
-        margin-top: $generalMargin;
+        margin: 7vh 0 0.4em 0;
         font-size:2.5em;
         text-shadow:#000 2px 2px 8px;
+      }
+      &__subtitle{
+        @extend .gallery__content__title;
+        color : #bbbbbb;
+        margin: 0;
+        font-size: 1.5em;
+        font-family: "Montserrat"
       }
       &__center{
         width: 33.33vw;
         height: 100vh;
         position: absolute;
-        transform: translate3d(-50%, 0, 0);
+        @include transform(translate3d(-50%, 0, 0));
         left : 50%;
         top:0;
         background-color:rgba(255, 0, 0, 0.5);
@@ -167,7 +184,6 @@ export default {
       padding: 0;
       &__label{
         font-family: Montserrat;
-        color:inherit;
         font-size: 1em;
         font-weight: 600;
         & > span{

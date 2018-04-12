@@ -8,6 +8,8 @@ const PhotoApi = {
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
+        location:'France',
+        locationLink:'https://www.google.com/maps/place/st-gervais',
         mask: "middle",
         portrait: false
       },
@@ -17,6 +19,8 @@ const PhotoApi = {
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
+        location:'Portugal',
+        locationLink:'https://www.google.com/maps/place/lisboa',
         mask: "middle",
         portrait: false
       },
@@ -26,7 +30,7 @@ const PhotoApi = {
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
-        mask: "middle",
+        mask: "end",
         portrait: false
       },
       {
