@@ -20,7 +20,7 @@
         v-bind:photos ="photos"
         v-bind:currentId = "idPhoto"
         v-on:changeCurrentId ="changeCurrentPhoto"
-        :isBocked = "fullImgActivated"
+        :isBlocked = "isBocked"
         :showInfo = "showInfo"
         @showFullImg="showFullImg"
         @hideFullImg="hideFullImg"
@@ -65,6 +65,9 @@ export default {
     }
   },
   computed:{
+    isBocked(){
+      return this.fullImgActivated || !this.hideLoader;
+    },
     currentImg(){
       return this.photos[this.idFullImg]
     },
@@ -140,6 +143,7 @@ export default {
 <style lang="scss" >
   @import '~sass/main';
   .gallery{
+    @extend .unselectable;
     @extend .full;
     &__content{
       &__loader{

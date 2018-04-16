@@ -92,12 +92,16 @@ export default {
       this.changeId(id);
     },
     showFullImg:function(id){
+      if(this.isBlocked)
+        return;
       this.$emit('showFullImg', id)
     },
     hideFullImg:function(){
       this.$emit('hideFullImg')
     },
     openImg:function(id){
+      if(this.isBlocked)
+        return;
       this.$emit('openFullImg', id)
     },
     scrollToCurrentPhoto () {

@@ -77,6 +77,7 @@ export default {
     myClass (){
       let c = (this.photo.portrait) ? "portrait" : "";
       c +=(this.isEven) ? " even" : " odd";
+      c +=(this.isBlocked) ? " blocked" : "";
       return c;
     },
     classInfo(){
@@ -291,6 +292,9 @@ export default {
         height:25vh;
         width:auto;
         cursor: pointer;
+        &.blocked{
+          cursor:inherit;
+        }
         position:absolute;
 
         &[lazy=loading]{
