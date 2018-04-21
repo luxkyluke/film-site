@@ -249,14 +249,19 @@ export default {
         this.$Lazyload.$off('loading', this.handleLoaded)
         this.$emit('imgLoaded', this.photo.id)
       }
+    },
+    handleResize:function(){
+      this.mask();
+      this.initObserver();
     }
   },
   mounted () {
     this.$Lazyload.$on('loading', this.handleLoaded)
+    window.addEventListener('resize', this.handleResize)    
     this.initObserver();
   },
   destroy(){
-    //this.observer.disconnect();
+    window.removeEventListener('resize', this.handleResize)    
   }
 }
 </script>

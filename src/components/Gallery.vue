@@ -171,11 +171,11 @@ export default {
         font-family: "Montserrat"
       }
       &__center{
-        width: 33.33vw;
+        width:500px;
         height: 100vh;
-        position: absolute;
+        position: fixed;
         @include transform(translate3d(-50%, 0, 0));
-        left : 50%;
+        left : 5%;
         top:0;
         background-color:rgba(255, 0, 0, 0.5);
       }

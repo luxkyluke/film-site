@@ -44,7 +44,8 @@ export default {
       offset:0,
       sentBlocked: false,
       disablePhotoOnScroll: false,
-      nbLoadedImg : 0
+      nbLoadedImg : 0,
+      observer:null
     }
   },
   components: {
@@ -70,24 +71,29 @@ export default {
       }
       return s
     },
-    observer(){
+    
+  },
+  methods:{
+    getObserver(){
+      const margin = Math.max(window.innerWidth*0.5-400, 0)
       let observerOptions = {
         root: null,
-        rootMargin: `0px -${window.innerWidth*0.5-400}px`,
+        rootMargin: `0px -${margin}px`,
         threshold: [1.0]
       };
 
       return new IntersectionObserver(this.intersection, observerOptions);
     },
-  },
-  methods:{
     observe:function (el){
+      if(!this.observer){
+        this.observer = this.getObserver();
+      }
       this.observer.observe(el);
     },
     intersection:function(entries){
       const image = entries[0];
       const id = Number(image.target.id.replace("photo_", ""))
-      if(image.intersectionRatio < 0.99)
+      if(image.intersectionRatio < 0.999)
         return;
       this.changeId(id);
     },
@@ -139,14 +145,24 @@ export default {
       this.offset = Utility.clamp(this.offset+delta, 0, this.scrollArea)
       if(!this.disablePhotoOnScroll)
         this.disablePhotoOnScroll = true;
+
+      // const mod = this.offset % this.photoWidth;
+      // if(mod < 10 || mod > this.photoWidth-10){
+      //   const id = Math.floor(this.offset / this.photoWidth)
+      //   console.log(id)
+      //   if(this.id !== id)
+      //     this.changeId(id);
+      // }
     },
     handleMouseMove:function (){
       if(this.disablePhotoOnScroll)
         this.disablePhotoOnScroll = false;
     },
-    initWidth: function(){
+    getWidths: function(){
       this.width =  this.$el.clientWidth
       this.photoWidth = this.$el.querySelector('.photo').clientWidth
+      console.log(this.observer)
+      this.observer = null;
     },
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
@@ -157,16 +173,16 @@ export default {
   created () {
     window.addEventListener('wheel', this.handleScroll);
     window.addEventListener('mousemove', this.handleMouseMove);
-    window.addEventListener('resize', this.initWidth);
+    window.addEventListener('resize', this.getWidths);
   },
   mounted(){
-    this.initWidth();
+    this.getWidths();
     //this.initObserver();
   },
   destroyed () {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('wheel', this.handleScroll);
-    window.removeEventListener('resize', this.initWidth);
+    window.removeEventListener('resize', this.getWidths);
     this.observer.disconnect();
   },
   watch: {

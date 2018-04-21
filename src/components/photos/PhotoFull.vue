@@ -165,10 +165,8 @@ export default {
       if(isActive){
         this.height = this.$refs.img.clientHeight
         this.width =  this.$refs.img.clientWidth
-        console.log(this.width)
         window.addEventListener('keyup', this.handleKeyUp);
         window.addEventListener('mousemove', this.handleMouseMove);
-        console.log("MOUSE LISTENER")
       }
       else{
         this.mouse={x:0, y:0}
