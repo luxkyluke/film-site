@@ -183,7 +183,7 @@ export default {
     },
     mask :function (){
       const img = this.$refs.image;
-      if (img.clientWidth < 50 || img.clientHeight<50)
+      if (img.clientWidth < 10 || img.clientHeight<10)
         return false;
       const clip = this.getClip(img);
       this.clip = clip;

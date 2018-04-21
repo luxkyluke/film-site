@@ -45,7 +45,8 @@ export default {
       sentBlocked: false,
       disablePhotoOnScroll: false,
       nbLoadedImg : 0,
-      observer:null
+      observer:null,
+      isMounted:false
     }
   },
   components: {
@@ -75,7 +76,7 @@ export default {
   },
   methods:{
     getObserver(){
-      const margin = Math.max(window.innerWidth*0.5-400, 0)
+      const margin = Math.max(window.innerWidth*0.5-this.photoWidth-100, 0)
       let observerOptions = {
         root: null,
         rootMargin: `0px -${margin}px`,
@@ -86,6 +87,7 @@ export default {
     },
     observe:function (el){
       if(!this.observer){
+        console.log("NEW observer")
         this.observer = this.getObserver();
       }
       this.observer.observe(el);
@@ -161,8 +163,10 @@ export default {
     getWidths: function(){
       this.width =  this.$el.clientWidth
       this.photoWidth = this.$el.querySelector('.photo').clientWidth
-      console.log(this.observer)
-      this.observer = null;
+      if(this.isMounted){
+        this.observer.disconnect();
+        this.observer = null;
+      }
     },
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
@@ -177,6 +181,7 @@ export default {
   },
   mounted(){
     this.getWidths();
+    this.isMounted = true;
     //this.initObserver();
   },
   destroyed () {
