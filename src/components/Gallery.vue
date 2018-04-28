@@ -11,29 +11,33 @@
     >
     </photo-full>
     <div class="gallery__content" ref="content">
-      <h1 class="gallery__content__title" :class="titleClass">{{ title }}</h1>
-      <h2 class="gallery__content__subtitle" :class="titleClass">{{ subtitle }}</h2>
+        <div class="gallery__content__texte">
+          <h1 class="gallery__content__title" :class="titleClass">{{ title }}</h1>
+          <h2 class="gallery__content__subtitle" :class="titleClass">{{ subtitle }}</h2>
+        </div>
+      <div id="scrollablePhotos" class="gallery__content__wrapper">
+        <photos
+          class="gallery__content__photos"
+          :class="(this.hideLoader) ? '' : 'hide'"
+          v-bind:photos ="photos"
+          v-bind:currentId = "idPhoto"
+          v-on:changeCurrentId ="changeCurrentPhoto"
+          :isBlocked = "isBocked"
+          :showInfo = "showInfo"
+          @showFullImg="showFullImg"
+          @hideFullImg="hideFullImg"
+          @openFullImg="openFullImg"
+          @photosLoaded="handleLoaded"
+        ></photos>
+      </div>
+        <slider
+          class="gallery__content__slider"
+          :class="(this.hideLoader) ? '' : 'hide'"
+          v-bind:photos ="photos"
+          v-bind:currentId = "idPhoto"
+          v-on:changeId = "changeCurrentPhoto"
+        ></slider>
       <loader :class="(this.hideLoader) ? 'hide' : ''" class="gallery__content__loader"></loader>
-      <photos
-        class="gallery__content__photos"
-        :class="(this.hideLoader) ? '' : 'hide'"
-        v-bind:photos ="photos"
-        v-bind:currentId = "idPhoto"
-        v-on:changeCurrentId ="changeCurrentPhoto"
-        :isBlocked = "isBocked"
-        :showInfo = "showInfo"
-        @showFullImg="showFullImg"
-        @hideFullImg="hideFullImg"
-        @openFullImg="openFullImg"
-        @photosLoaded="handleLoaded"
-      ></photos>
-      <slider
-        class="gallery__content__slider"
-        :class="(this.hideLoader) ? '' : 'hide'"
-        v-bind:photos ="photos"
-        v-bind:currentId = "idPhoto"
-        v-on:changeId = "changeCurrentPhoto"
-      ></slider>
       <div class="gallery__copyright">
         <a class="gallery__copyright__label" target="_blank" href="http://antoinedemiere.com/#/about"><span>by</span> Antoine Demière</a>
       </div>
@@ -55,7 +59,7 @@ export default {
     return {
       photos: PhotoApi.all(),
       title: 'Film Photography',
-      subtitle: 'The 35 photographs of my travel film',
+      subtitle: '35 photographs of my travel film',
       idPhoto : 0,
       fullImgVisible:false,
       showInfo:false,
@@ -145,15 +149,32 @@ export default {
   .gallery{
     @extend .unselectable;
     @extend .full;
+    position: fixed;
     &__content{
+      &__wrapper{
+        overflow:scroll;
+        height: 100vh;
+        display: flex;
+        flex-direction:column;
+        justify-content:space-around;
+      }
       &__loader{
         @extend .center_center;
       }
       &__photos, &__slider, &__loader{
         @include transition(opacity 500ms);
+         display: flex;
+        justify-content:center;
       }
       & .hide{
         opacity : 0;
+      }
+      &__texte{
+        position:fixed;
+        text-align:center;
+        display: flex;    
+        flex-direction: column;
+        width: 100%;
       }
       &__title{
         font-weight: 400;
@@ -188,13 +209,19 @@ export default {
       padding: 0;
       &__label{
         font-family: Montserrat;
-        font-size: 1em;
+        font-size: 1rem;
         font-weight: 600;
         & > span{
-          font-size: 0.7em;
+          font-size: 0.7rem;
           
         }
       }
+    }
+  }
+
+  @include tablet{
+    .gallery__content{
+      font-size: 90%;
     }
   }
 </style>

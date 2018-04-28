@@ -25,6 +25,8 @@ export default {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		color: #fff;
+    	overflow:hidden;
+
 	}
 
   	h1{

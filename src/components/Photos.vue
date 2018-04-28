@@ -60,16 +60,23 @@ export default {
       return (this.showInfo) ? this.id : -1;
     },
     scrollArea(){
-      return this.width - window.innerWidth;
+      return this.photoWidth*this.photos.length - window.innerWidth + this.padding*2;
     },
     padding(){
-      return (this.width-this.photoWidth*this.photos.length)*0.5
+      return window.innerWidth*0.3333333
+      // return (this.width-this.photoWidth*this.photos.length)*0.5
     },
     myStyle (){
+      // if(Utility.isTablet())
+      //   return;
       let s ={  
-        '-webkit-transform': `translate3d(-${this.offset}px, -50%, 0)`,
-        'transform' : `translate3d(-${this.offset}px, -50%, 0)`,
+        '-webkit-transform': `translate3d(-${this.offset}px, 0, 0)`,
+        'transform' : `translate3d(-${this.offset}px, 0, 0)`,
       }
+      // let s ={  
+      //   '-webkit-transform': `translate3d(-${this.offset}px, -50%, 0)`,
+      //   'transform' : `translate3d(-${this.offset}px, -50%, 0)`,
+      // }
       return s
     },
     
@@ -87,7 +94,6 @@ export default {
     },
     observe:function (el){
       if(!this.observer){
-        console.log("NEW observer")
         this.observer = this.getObserver();
       }
       this.observer.observe(el);
@@ -114,10 +120,17 @@ export default {
     },
     scrollToCurrentPhoto () {
       const offsetCurrentPhoto = this.padding + this.currentId*this.photoWidth
-      const delta = this.offset - offsetCurrentPhoto
       const offsetMiddle = window.innerWidth*0.5 - this.photoWidth*0.5
+      let delta = this.offset - offsetCurrentPhoto
+      
 
+      if(Utility.isTablet()){
+        delta = document.getElementById('scrollablePhotos').offsetLeft;
+        console.log(delta)
+      }
       const nextVal = this.offset - delta - offsetMiddle
+
+
       TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeOut, 
         onStart:this.disableChangeId, onComplete:this.enableChangeId});  
     },
@@ -163,7 +176,7 @@ export default {
     getWidths: function(){
       this.width =  this.$el.clientWidth
       this.photoWidth = this.$el.querySelector('.photo').clientWidth
-      if(this.isMounted){
+      if(this.isMounted && this.observer){
         this.observer.disconnect();
         this.observer = null;
       }
@@ -205,11 +218,16 @@ export default {
 <style lang="scss">
   @import '~sass/main.scss';
   .photos{
-    height:50vh;
+    overflow:visible;
+    height:55vh;
     white-space: nowrap;
-    top: 50%;
-    position: absolute;
+    // top: 50%;
+    // position: absolute;
     padding: 0 33.33%;
+    display: block;
+  }
+
+  @mixin tablet{
   }
 
 </style>

@@ -248,17 +248,19 @@ export default {
       if(this.mask()){
         this.$Lazyload.$off('loading', this.handleLoaded)
         this.$emit('imgLoaded', this.photo.id)
+        this.initObserver();
       }
     },
     handleResize:function(){
-      this.mask();
-      this.initObserver();
+      setTimeout(()=>{
+        this.mask();
+        this.initObserver();
+      }, 200)
     }
   },
   mounted () {
     this.$Lazyload.$on('loading', this.handleLoaded)
     window.addEventListener('resize', this.handleResize)    
-    this.initObserver();
   },
   destroy(){
     window.removeEventListener('resize', this.handleResize)    
@@ -276,6 +278,7 @@ export default {
     height:100%;  
     display:inline-block;
     @include transition(all 350ms ease-in-out);
+    // padding: 5vh 0;
     &__container{
       @extend .full;
          display: flex;

@@ -21,6 +21,9 @@ const utility = {
                 s+=e+"/"
         })
         return s
+    },
+    isTablet(){
+        return (window.innerWidth < 1060 || window.innerHeight < 800)
     }
 }
 
