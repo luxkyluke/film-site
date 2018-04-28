@@ -1,7 +1,7 @@
 {
   "name": "film-site",
   "version": "1.0.0",
-  "description": "my film photography portfolio ",
+  "description": "my film photography portfolio",
   "author": "antoine demiere",
   "private": true,
   "scripts": {
