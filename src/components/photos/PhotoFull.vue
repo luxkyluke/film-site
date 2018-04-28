@@ -10,7 +10,7 @@
       :style="myStyle"
     />
     
-    <div class="photo-full__filter" ></div>
+    <div class="photo-full__filter" :style="filterStyle"></div>
     <div class="photo-full__content" ref="content" @click="closeInfo" > 
       <img class="photo-full__content__cross icon" :src="cross" @click="closeFullImg"></img>
       <photo-info
@@ -48,6 +48,7 @@ export default {
       width:0,
       height:0,
       isMoving : false,
+      filterHide:false
     }
   },
   props:{
@@ -60,6 +61,9 @@ export default {
     'photo-info': PhotoInfo,
   },
   computed:{
+    filterStyle(){
+      return (this.filterHide) ? {'display':'none'} : {}
+    },
     myClass (){
       let c = "";
       c+= (this.isActive ) ? " active" : ""
@@ -76,6 +80,10 @@ export default {
     translate(){
       let trans={x:0, y:0};
       
+      if(Utility.isTablet()){
+        return trans;
+      }
+
       if(this.photo.mask === "begin")
         return trans;
 
@@ -127,6 +135,7 @@ export default {
       this.infoActive = false
     },
     closeFullImg:function(){
+      this.filterHide = false
       this.infoActive = false
       this.isMoving = false
       this.$emit('closeFullImg')
@@ -165,13 +174,20 @@ export default {
       if(isActive){
         this.height = this.$refs.img.clientHeight
         this.width =  this.$refs.img.clientWidth
-        window.addEventListener('keyup', this.handleKeyUp);
-        window.addEventListener('mousemove', this.handleMouseMove);
+        setTimeout( () => {
+          this.filterHide = true
+        }, 300)
+        if(!Utility.isTablet()){
+          window.addEventListener('keyup', this.handleKeyUp);
+          window.addEventListener('mousemove', this.handleMouseMove);
+        }
       }
       else{
         this.mouse={x:0, y:0}
-        window.removeEventListener('mousemove', this.handleMouseMove);
-        window.removeEventListener('keyup', this.handleKeyUp);
+        if(!Utility.isTablet()){
+          window.removeEventListener('mousemove', this.handleMouseMove);
+          window.removeEventListener('keyup', this.handleKeyUp);
+        }
       }
     }
   }
@@ -191,26 +207,26 @@ export default {
     
 
     &__content{
-      @extend .full;
-      position: absolute;
+      // @extend .full;
+      position: fixed;
   
       .icon{
         @include transition(transform 300ms ease-in-out)
         width: $iconWidth;
         cursor:pointer;
         margin: 30px;
-        position: absolute;
+        position: fixed;
         right: 0;
         @include transform(translate3d(150px, 0, 0))
       }
      
       &__info{
+        position: fixed;
         bottom:0;
       }
     }
   
     &.active{
-
       .photo-full__content{
         @include transition(transform 300ms ease-in-out)
         .icon{
@@ -252,6 +268,13 @@ export default {
         width: 100%;
         height: auto;
       }
+    }
+  }
+
+
+  @include tablet{
+    .photo-full{
+      overflow:scroll;
     }
   }
 </style>

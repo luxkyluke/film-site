@@ -152,7 +152,7 @@ export default {
     position: fixed;
     &__content{
       &__wrapper{
-        overflow:scroll;
+        overflow:hidden;
         height: 100vh;
         display: flex;
         flex-direction:column;
@@ -222,6 +222,9 @@ export default {
   @include tablet{
     .gallery__content{
       font-size: 90%;
+      &__wrapper{
+        overflow:scroll;
+      }
     }
   }
 </style>

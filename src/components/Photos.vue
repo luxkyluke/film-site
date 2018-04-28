@@ -218,16 +218,24 @@ export default {
 <style lang="scss">
   @import '~sass/main.scss';
   .photos{
-    overflow:visible;
+    // overflow:hidden;
     height:55vh;
     white-space: nowrap;
     // top: 50%;
     // position: absolute;
-    padding: 0 33.33%;
+    padding: 0 33.33% ;
     display: block;
   }
 
-  @mixin tablet{
+ @include tablet{
+    .photos{
+      padding: 0 15%;
+    }
   }
 
+  @include mobile{
+    .photos{
+      padding: 0 10%;
+    }
+  }
 </style>

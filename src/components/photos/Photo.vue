@@ -29,7 +29,12 @@
         @mouseleave="mouseLeave"
         :isActive = "active"
         :isFull="false"
-      ></photo-info>
+      ></photo-info><!-- 
+      <photo-like
+        :nb="photo.nbLike"
+        @increaseLike="increaseLike"
+        @decreaseLike="decreaseLike"
+      ></photo-like> -->
     </div>
   </div>
 </template>
@@ -39,6 +44,7 @@ import imgTest from '@/assets/test.jpg'
 import imgPortrait from '@/assets/test2.jpg'
 import shadow from '@/assets/shadow.png'
 import PhotoInfo from './PhotoInfo'
+import PhotoLike from './PhotoLike'
 
 export default {
   name: 'Photo',
@@ -54,6 +60,7 @@ export default {
   },
   components: {
     'photo-info': PhotoInfo,
+    'photo-like': PhotoLike,
   },
   data (){
     return {
@@ -127,6 +134,13 @@ export default {
     }
   },
   methods:{
+    increaseLike:function(){
+      console.log("like++")
+    },
+    decreaseLike:function(){
+      console.log("like--")
+    },
+
     click: function(){
       if(!this.isBlocked)
         this.$emit('click', this.photo.id)
@@ -324,6 +338,19 @@ export default {
         z-index:2;
         opacity:0;
       }
+    }
+  }
+
+  @include tablet{
+    .photo{
+      width:350px;
+    }
+  }
+
+
+  @include mobile{
+    .photo{
+      width: 300px;
     }
   }
 </style>

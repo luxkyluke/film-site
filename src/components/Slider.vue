@@ -1,6 +1,14 @@
 <template>
   <div class="slider">
     <div class="slider__list">
+      <!-- <input 
+        type="range" 
+        min="0" 
+        :max="photos.length-1" 
+        value="0" 
+        class="slider__slider" 
+        @change="handleChangeIdSlider" 
+      > -->
       <slider-square
         v-for="p in sizedPhotos"
         v-bind:id="p.id"
@@ -65,6 +73,9 @@ export default {
       });  
 
       this.$emit("changeId", newId);
+    },
+    handleChangeIdSlider:function(e){
+      console.log(e.target.value)
     }
   },
   watch:{
@@ -83,6 +94,13 @@ export default {
     @extend .center;
     position: fixed;
     bottom: 12vh;
+    
+    &__slider{
+      // -webkit-appearance: none;
+      width:102%;
+      position:absolute;
+      margin: 0 -3px;
+    }
 
     &__list{
       display: flex;

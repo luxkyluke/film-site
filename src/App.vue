@@ -26,7 +26,6 @@ export default {
 		-moz-osx-font-smoothing: grayscale;
 		color: #fff;
     	overflow:hidden;
-
 	}
 
   	h1{
