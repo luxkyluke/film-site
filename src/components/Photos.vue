@@ -46,7 +46,8 @@ export default {
       disablePhotoOnScroll: false,
       nbLoadedImg : 0,
       observer:null,
-      isMounted:false
+      isMounted:false,
+      scrollOffset:0,
     }
   },
   components: {
@@ -63,7 +64,7 @@ export default {
       return this.photoWidth*this.photos.length - window.innerWidth + this.padding*2;
     },
     padding(){
-      return window.innerWidth*0.3333333
+      return (!Utility.isTablet()) ? window.innerWidth*0.3333333 : window.innerWidth*0.15
       // return (this.width-this.photoWidth*this.photos.length)*0.5
     },
     myStyle (){
@@ -121,18 +122,19 @@ export default {
     scrollToCurrentPhoto () {
       const offsetCurrentPhoto = this.padding + this.currentId*this.photoWidth
       const offsetMiddle = window.innerWidth*0.5 - this.photoWidth*0.5
-      let delta = this.offset - offsetCurrentPhoto
-      
+      const scrollElem = document.getElementById('scrollablePhotos')
+      const offset =  (!Utility.isTablet()) ? this.offset : scrollElem.scrollLeft;
+
+      let delta = offset - offsetCurrentPhoto
+      const nextVal = offset - delta - offsetMiddle
 
       if(Utility.isTablet()){
-        delta = document.getElementById('scrollablePhotos').offsetLeft;
-        console.log(delta)
+        TweenMax.to(scrollElem, 1, {scrollLeft:Math.abs(nextVal), ease:Quint.easeOut, 
+          onStart:this.disableChangeId, onComplete:this.enableChangeId});  
+        return;
       }
-      const nextVal = this.offset - delta - offsetMiddle
-
-
       TweenMax.to(this, 1, {offset:nextVal, ease:Quint.easeOut, 
-        onStart:this.disableChangeId, onComplete:this.enableChangeId});  
+          onStart:this.disableChangeId, onComplete:this.enableChangeId});  
     },
     disableChangeId:function(){
       this.sentBlocked = true;
@@ -185,12 +187,20 @@ export default {
       this.nbLoadedImg +=1;
       if(this.nbLoadedImg > 4)
         this.$emit('photosLoaded')
+    },
+    handleResize(){
+      this.getWidths()
+      if(!Utility.tablet)
+        document.getElementById('scrollablePhotos').scrollLeft = 0
+      else{
+        this.offset = 0
+      }
     }
   },
   created () {
     window.addEventListener('wheel', this.handleScroll);
     window.addEventListener('mousemove', this.handleMouseMove);
-    window.addEventListener('resize', this.getWidths);
+    window.addEventListener('resize', this.handleResize);
   },
   mounted(){
     this.getWidths();
@@ -200,7 +210,7 @@ export default {
   destroyed () {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('wheel', this.handleScroll);
-    window.removeEventListener('resize', this.getWidths);
+    window.removeEventListener('resize', this.handleResize);
     this.observer.disconnect();
   },
   watch: {

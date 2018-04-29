@@ -31,20 +31,26 @@ export default {
 	$colorDefault : #949494;
 	$colorHover : $colorMax;
 
-  	.link:hover > .slider-square{
-  		background-color:$colorHover;
-  		&.default-size{
-			height:20px;
-  		}
-  		&.small-size{
-			height:25px;
-  		}
-  		&.big-size{
-			height:35px;
-  		}
-  		&.maxi-size{
-  			background-color:$colorMax;
-  		}
+	@include laptop{
+	  	.link:hover > .slider-square{
+	  		background-color:$colorHover;
+	  		&.default-size{
+				height:20px;
+	  		}
+	  		&.small-size{
+				height:25px;
+	  		}
+	  		&.big-size{
+				height:35px;
+	  		}
+	  		&.maxi-size{
+	  			background-color:$colorMax;
+	  		}
+		}
+	}
+	
+	.test{
+		position:absolute;
 	}
 
 	.slider-square{

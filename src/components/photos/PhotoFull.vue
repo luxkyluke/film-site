@@ -209,7 +209,11 @@ export default {
     &__content{
       // @extend .full;
       position: fixed;
-  
+      
+      .photo-info{
+        position: fixed;
+      }
+
       .icon{
         @include transition(transform 300ms ease-in-out)
         width: $iconWidth;
@@ -245,13 +249,12 @@ export default {
     }
 
     &__filter{
-      @include transition(opacity 500ms ease-in-out)
-
+      @include transition(opacity 500ms ease-in-out);
       opacity:1;
       @extend .full;
       position: fixed;
       top:0;
-      background-image: radial-gradient(circle at 50% -10%, rgba(37, 37, 37, 0.3) 0%, rgba(37, 37, 37, 0.7) 65%, $bodyBG 80%)
+      background-image: radial-gradient(circle at 50% -10%, rgba(37, 37, 37, 0.3) 0%, rgba(37, 37, 37, 0.7) 65%, $bodyBG 80%);
     }
 
     &__img{

@@ -39,7 +39,7 @@ $mq-mobile-portrait : 450px !default;
 }
 
 @mixin laptop {
-    @media (max-width: $mq-laptop) {
+    @media (min-width: $mq-tablet) {
         @content;
     }
 }
