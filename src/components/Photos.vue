@@ -54,9 +54,6 @@ export default {
     'photo': Photo,
   },
   computed:{
-    // observer(){
-    //   return new IntersectionObserver((e)=>{})
-    // },
     idShowInfo(){
       return (this.showInfo) ? this.id : -1;
     },
@@ -65,19 +62,12 @@ export default {
     },
     padding(){
       return (!Utility.isTablet()) ? window.innerWidth*0.3333333 : window.innerWidth*0.15
-      // return (this.width-this.photoWidth*this.photos.length)*0.5
     },
     myStyle (){
-      // if(Utility.isTablet())
-      //   return;
       let s ={  
         '-webkit-transform': `translate3d(-${this.offset}px, 0, 0)`,
         'transform' : `translate3d(-${this.offset}px, 0, 0)`,
       }
-      // let s ={  
-      //   '-webkit-transform': `translate3d(-${this.offset}px, -50%, 0)`,
-      //   'transform' : `translate3d(-${this.offset}px, -50%, 0)`,
-      // }
       return s
     },
     
@@ -129,7 +119,7 @@ export default {
       const nextVal = offset - delta - offsetMiddle
 
       if(Utility.isTablet()){
-        TweenMax.to(scrollElem, 1, {scrollLeft:Math.abs(nextVal), ease:Quint.easeOut, 
+        TweenMax.to(scrollElem, 1, {scrollLeft:Math.abs(Math.max(nextVal, 0)), ease:Quint.easeOut, 
           onStart:this.disableChangeId, onComplete:this.enableChangeId});  
         return;
       }
@@ -149,7 +139,6 @@ export default {
       }
     },
     handleScroll: function(e){
-      //this.sentBlocked = true;
       if(this.isBlocked)
         return;
       if(this.showInfo)
@@ -162,14 +151,6 @@ export default {
       this.offset = Utility.clamp(this.offset+delta, 0, this.scrollArea)
       if(!this.disablePhotoOnScroll)
         this.disablePhotoOnScroll = true;
-
-      // const mod = this.offset % this.photoWidth;
-      // if(mod < 10 || mod > this.photoWidth-10){
-      //   const id = Math.floor(this.offset / this.photoWidth)
-      //   console.log(id)
-      //   if(this.id !== id)
-      //     this.changeId(id);
-      // }
     },
     handleMouseMove:function (){
       if(this.disablePhotoOnScroll)
@@ -185,7 +166,8 @@ export default {
     },
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
-      if(this.nbLoadedImg > 4)
+      const minLoaded = 1//(Utility.isTablet) ? 2 : 4;
+      if(this.nbLoadedImg > minLoaded)
         this.$emit('photosLoaded')
     },
     handleResize(){
@@ -228,11 +210,9 @@ export default {
 <style lang="scss">
   @import '~sass/main.scss';
   .photos{
-    // overflow:hidden;
+    margin-top:5vh;
     height:55vh;
     white-space: nowrap;
-    // top: 50%;
-    // position: absolute;
     padding: 0 33.33% ;
     display: block;
   }

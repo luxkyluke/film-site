@@ -76,4 +76,10 @@ export default {
 			height:40px;
 		}
 	}
+
+	@media (max-width: 350px){
+		.slider-square{
+			margin:	0 3.5px;
+		}
+	}
 </style>

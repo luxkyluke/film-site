@@ -93,7 +93,7 @@ export default {
   .slider{
     @extend .center;
     position: fixed;
-    bottom: 12vh;
+    bottom: 7vh;
     
     &__slider{
       // -webkit-appearance: none;
@@ -106,6 +106,12 @@ export default {
       display: flex;
       align-items: center;
       min-height: 40px;
+    }
+  }
+
+  @media (max-height: $mq-mobile-portrait){
+    .slider{
+      bottom:4vh;
     }
   }
 </style>

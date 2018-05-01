@@ -301,7 +301,7 @@ export default {
       
       &__shadow{
         @extend .photo__container__img;
-        box-shadow: rgba(0, 0, 0, 0.6) 40px 40px 120px ;
+        box-shadow: rgba(0, 0, 0, 0.8) 40px 40px 120px ;
         @include transition(opacity 350ms ease-in-out);
         opacity: 1;
         &.hide{
@@ -311,7 +311,7 @@ export default {
 
       &__img{
         @include transition(all 350ms ease-in-out);
-        height:25vh;
+        height:25vmax;
         width:auto;
         cursor: pointer;
         &.blocked{
@@ -324,7 +324,7 @@ export default {
         }
 
         &.portrait{
-          width:25vh;
+          width:25vmax;
           height: auto;
         }
 
@@ -341,16 +341,16 @@ export default {
     }
   }
 
-  @include tablet{
+  @media (max-width: $mq-tablet), (max-height: $mq-tablet-portrait) {
     .photo{
-      width:350px;
+      width:60vmin;
     }
   }
 
-
-  @include mobile{
-    .photo{
-      width: 300px;
-    }
-  }
+  
+    // @media (max-width: $mq-mobile), (max-height: $mq-mobile-portrait) {
+  //   .photo{
+  //     width: 60vmin;
+  //   }
+  // }
 </style>

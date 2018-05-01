@@ -204,7 +204,7 @@ const PhotoApi = {
         location:'Portugal',
         locationLink:'https://www.google.com/maps/place/porto,+Portugal',
         lens:'50mm f/1.4',
-        mask: "end",
+        mask: "middle",
         portrait: false
       },
       {
@@ -279,7 +279,7 @@ const PhotoApi = {
         location:'État-Unis',
         locationLink:'https://www.google.com/maps/place/Parc+national+de+Yosemite/@37.8534972,-119.6911932,11z/data=!3m1!4b1!4m5!3m4!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!8m2!3d37.8651011!4d-119.5383294',
         lens:'50mm f/1.4',
-        mask: "middle",
+        mask: "end",
         portrait: false
       },
       {
@@ -376,7 +376,7 @@ const PhotoApi = {
         lens:'50mm f/1.4',
         location:'État-Unis',
         locationLink:'https://www.google.com/maps/place/Parc+national+de+Yosemite/@37.8534972,-119.6911932,11z/data=!3m1!4b1!4m5!3m4!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!8m2!3d37.8651011!4d-119.5383294',
-        mask: "middle",
+        mask: "begin",
         portrait: false
       },
     ],

@@ -12,7 +12,6 @@
     
     <div class="photo-full__filter" :style="filterStyle"></div>
     <div class="photo-full__content" ref="content" @click="closeInfo" > 
-      <img class="photo-full__content__cross icon" :src="cross" @click="closeFullImg"></img>
       <photo-info
         :photo="photo"
         :isActive = "infoActive"
@@ -23,6 +22,7 @@
         :src="info"
         @click="clickInfo"
       ></img>
+      <img class="photo-full__content__cross icon" :src="cross" @click="closeFullImg"></img>
     </div>
     
   </div>
@@ -72,9 +72,9 @@ export default {
     },
     photoClass(){
       let c = this.position
-      const ratioImg = (this.height !== 0) ? this.width/this.height:0;
+      const ratioImg = (this.height !== 0) ? this.width/this.height : 0;
       const ratioWindow = window.innerWidth / window.innerHeight
-      c += (this.photo.portrait || (ratioWindow+0.1)>ratioImg) ? " portrait" : ""
+      c += (this.photo.portrait && this.height < window.innerHeight || (ratioWindow+0.1) > ratioImg) ? " portrait" : ""
       return c;
     },
     translate(){
@@ -160,6 +160,10 @@ export default {
       this.height = h
       this.width = w
       this.$Lazyload.$off('loading', this.handleLoaded)
+    },
+    handleResize : function(){
+      this.height = this.$refs.img.clientHeight
+      this.width =  this.$refs.img.clientWidth
     }
   },
   mounted(){
@@ -181,6 +185,7 @@ export default {
           window.addEventListener('keyup', this.handleKeyUp);
           window.addEventListener('mousemove', this.handleMouseMove);
         }
+        window.addEventListener('resize', this.handleResize);
       }
       else{
         this.mouse={x:0, y:0}
@@ -188,6 +193,7 @@ export default {
           window.removeEventListener('mousemove', this.handleMouseMove);
           window.removeEventListener('keyup', this.handleKeyUp);
         }
+        window.removeEventListener('resize', this.handleResize);
       }
     }
   }

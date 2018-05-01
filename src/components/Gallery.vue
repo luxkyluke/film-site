@@ -39,7 +39,7 @@
         ></slider>
       <loader :class="(this.hideLoader) ? 'hide' : ''" class="gallery__content__loader"></loader>
       <div class="gallery__copyright">
-        <a class="gallery__copyright__label" target="_blank" href="http://antoinedemiere.com/#/about"><span>by</span> Antoine Demière</a>
+        <a class="gallery__copyright__label" target="_blank" href="http://www.antoinedemiere.com/#/about"><span>by</span> Antoine Demière</a>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       photos: PhotoApi.all(),
-      title: 'Film Photography',
+      title: 'Film Photographs',
       subtitle: '35 photographs of my travel film',
       idPhoto : 0,
       fullImgVisible:false,
@@ -202,8 +202,8 @@ export default {
       }
     }
     &__copyright{
-      position : absolute;
-      right : 30px;
+      position: absolute;
+      right: 30px;
       bottom: 30px;
       margin:0;
       padding: 0;
@@ -226,5 +226,38 @@ export default {
         overflow:scroll;
       }
     }
+  }
+
+  @include mobile{
+    .gallery__copyright{
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+
+  @media (max-width: $mq-mobile), (max-height: $mq-mobile-portrait){
+    .gallery__content{
+      &__texte{
+        font-size: 80%;
+      }
+    }
+    
+  }
+
+  @media (max-height: $mq-mobile-portrait){
+    .gallery__content{
+      &__title{
+        margin: 4vh 0 0.2em 0;
+      }
+      &__subtitle{
+        margin: 0;
+      }
+    }
+    
+    .gallery__copyright{
+      right: 10px;
+      bottom: 10px;
+    }
+    
   }
 </style>
