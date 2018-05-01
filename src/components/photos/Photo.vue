@@ -312,6 +312,7 @@ export default {
       &__img{
         @include transition(all 350ms ease-in-out);
         height:25vmax;
+        max-height: 290px;
         width:auto;
         cursor: pointer;
         &.blocked{
@@ -325,6 +326,8 @@ export default {
 
         &.portrait{
           width:25vmax;
+          max-height: inherit;
+          max-width: 290px;
           height: auto;
         }
 
