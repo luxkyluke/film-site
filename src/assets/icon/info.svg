@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53 53"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:3px;}.cls-2{font-size:35.52px;fill:#fff;font-family:Karla-Bold, Karla;font-weight:700;}</style></defs><title>info</title><g id="Calque_2" data-name="Calque 2"><g id="icons"><circle class="cls-1" cx="26.5" cy="26.5" r="25"/><text class="cls-2" transform="translate(31.7 14.71) rotate(180)">!</text></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 54.1 54.1" style="enable-background:new 0 0 54.1 54.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;}
+	.st2{font-family:'Karla-Bold';}
+	.st3{font-size:35.52px;}
+	.st4{fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st5{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st6{font-size:37.6512px;}
+</style>
+<title>info</title>
+<g id="Calque_2_1_">
+	<g id="icons">
+		<circle class="st0" cx="27.1" cy="27.1" r="25"/>
+		<text transform="matrix(-1 0 0 -1 32.275 15.2858)" class="st1 st2 st3">!</text>
+	</g>
+	<g id="Calque_2_2_">
+		<g id="icons_1_">
+			<circle class="st4" cx="27.1" cy="27.1" r="26.5"/>
+			<text transform="matrix(-1 0 0 -1 32.5866 14.5797)" class="st5 st2 st6">!</text>
+			<circle class="st4" cx="27.1" cy="27.1" r="23.4"/>
+		</g>
+	</g>
+</g>
+</svg>

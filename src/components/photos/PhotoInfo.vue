@@ -30,7 +30,7 @@
         <div class="photo-info__list__item__logo">
           <img class="icon" :src="iconCopy"></img>
         </div>
-        <div class="photo-info__list__item__label"><a target="_blank" href="http://antoinedemiere.com/#/about">Antoine Demière</a></div>
+        <div class="photo-info__list__item__label"><a target="_blank" href="http://www.antoinedemiere.com/#/about">Antoine Demière</a></div>
       </li>
     </ul>
   </div>
@@ -80,7 +80,7 @@ export default {
     position:absolute;
     @include transform(translate3d(-60%, 0, 0));
     @include transition(all 300ms ease-in-out);
-    bottom:0;
+    bottom:4vh;
     opacity:0;
     text-shadow: $bodyBG 2px 2px 3px;
 
@@ -111,10 +111,8 @@ export default {
   
     }
 
-
-
     &.even{
-      top:4vh;
+      top:5vh;
     }
 
     &.even.portrait{
@@ -138,10 +136,7 @@ export default {
     &__list{
       font-size: 1.25em;
       font-weight:400;
-
       padding:0;
-
-      
 
       &__item{
         list-style:none;
