@@ -275,6 +275,8 @@ export default {
   mounted () {
     this.$Lazyload.$on('loading', this.handleLoaded)
     window.addEventListener('resize', this.handleResize)    
+    this.$Lazyload.lazyLoadHandler()
+    console.log("mounted ", this.photo.id)
   },
   destroy(){
     window.removeEventListener('resize', this.handleResize)    
@@ -301,7 +303,7 @@ export default {
       
       &__shadow{
         @extend .photo__container__img;
-        box-shadow: rgba(0, 0, 0, 0.8) 40px 40px 120px ;
+        box-shadow: rgba(0, 0, 0, 0.7) 30px 30px 120px ;
         @include transition(opacity 350ms ease-in-out);
         opacity: 1;
         &.hide{

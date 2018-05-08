@@ -85,16 +85,18 @@ export default {
     text-shadow: $bodyBG 2px 2px 3px;
 
     &.full{
+
       width : 300px;
       height : 300px;
       background-color:rgba(0, 0, 0, 0.75);
       bottom: 0;
       right: 0;
       margin: 15px;
-      @include transform(translate3d(60%, 0, 0));
+      @include transform(translate3d(100%, 0, 0));
       @include transition(all 200ms ease-in-out);
 
       &.active{
+        @include transition(all 250ms ease-out);
         @include transform(translate3d(0%, 0, 0));
       }
 
@@ -161,6 +163,40 @@ export default {
           font-size: 1.2em;
         }
 
+      }
+    }
+
+  }
+
+  @include mobilepor{
+    .photo-info{
+      font-size: 80%;
+      &.full{
+        width : calc(100vmin - 110px);
+        height : calc(100vmin - 110px);
+      }
+      &__list{
+
+        &__item{
+          margin: 10px 0;
+        
+          &__logo{
+            text-align:center;
+            width: 7vmin;
+            height: 7vmin;
+
+            .icon{
+              height:100%;
+              width:auto;
+            }
+          }
+          &__label{
+            line-height: 20px;
+            width: 75%;
+            font-size: 1.2em;
+          }
+
+        }
       }
     }
 

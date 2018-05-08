@@ -74,13 +74,12 @@ export default {
   },
   methods:{
     getObserver(){
-      const margin = Math.max(window.innerWidth*0.5-this.photoWidth-100, 0)
+      const margin = Math.max(window.innerWidth*0.5-this.photoWidth*0.9, 0)
       let observerOptions = {
         root: null,
         rootMargin: `0px -${margin}px`,
-        threshold: [1.0]
+        threshold: [1.]
       };
-
       return new IntersectionObserver(this.intersection, observerOptions);
     },
     observe:function (el){
@@ -92,7 +91,7 @@ export default {
     intersection:function(entries){
       const image = entries[0];
       const id = Number(image.target.id.replace("photo_", ""))
-      if(image.intersectionRatio < 0.999)
+      if(image.intersectionRatio < 0.9999)
         return;
       this.changeId(id);
     },
@@ -167,6 +166,7 @@ export default {
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
       const minLoaded = 1//(Utility.isTablet) ? 2 : 4;
+      console.log("imageLoaded ", id)
       if(this.nbLoadedImg > minLoaded)
         this.$emit('photosLoaded')
     },
@@ -225,6 +225,7 @@ export default {
 
   @include mobile{
     .photos{
+      margin: 0;
       padding: 0 10%;
     }
   }

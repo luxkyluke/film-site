@@ -255,7 +255,7 @@ const PhotoApi = {
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         location:'France',
-        locationLink:'https://www.google.com/maps/place/chatelet,+France',
+        locationLink:'https://www.google.com/maps/place/Paris,+France',
         lens:'50mm f/1.4',
         mask: "middle",
         portrait: false

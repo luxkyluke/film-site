@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-full" :class="myClass">
+  <div class="photo-full" :class="myClass" @click="closeInfo" >
         
     <img 
       class="photo-full__img" 
@@ -11,11 +11,12 @@
     />
     
     <div class="photo-full__filter" :style="filterStyle"></div>
-    <div class="photo-full__content" ref="content" @click="closeInfo" > 
+    <div class="photo-full__content" ref="content" @click="stopPropagation"> 
       <photo-info
         :photo="photo"
         :isActive = "infoActive"
         :isFull="true"
+        
       ></photo-info>
       <img 
         class="photo-full__content__info icon" 
@@ -24,7 +25,9 @@
       ></img>
       <img class="photo-full__content__cross icon" :src="cross" @click="closeFullImg"></img>
     </div>
-    
+    <div class="photo-full__help">
+      <img class="photo-full__help-icon" :src="swipe" @click="closeFullImg"></img>
+    </div>
   </div>
 </template> 
 
@@ -35,6 +38,7 @@ import PhotoInfo from '@/components/photos/PhotoInfo'
 import Utility from '@/addons/utility.js'
 import cross from '@/assets/icon/cross.svg'
 import info from '@/assets/icon/info.svg'
+import swipe from '@/assets/icon/swipe.svg'
 
 export default {
 
@@ -44,6 +48,7 @@ export default {
       infoActive:false,
       cross, 
       info,
+      swipe,
       mouse:{x:0, y:0},
       width:0,
       height:0,
@@ -127,6 +132,9 @@ export default {
     }
   },
   methods:{
+    stopPropagation:function(e){
+      e.stopImmediatePropagation()
+    },
     clickInfo:function(e){
       e.stopPropagation();
       this.infoActive = !this.infoActive;

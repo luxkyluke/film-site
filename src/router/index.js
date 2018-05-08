@@ -8,11 +8,14 @@ import Utility from '@/addons/utility'
 Vue.use(Router)
 Vue.use(VueLazyload, {
     filter: {
-		progressive (listener, options) {
-			listener.el.setAttribute('lazy-progressive', 'true')
-			listener.loading = Utility.getBlur(listener.src)
-		}
-    }
+  		progressive (listener, options) {
+  			listener.el.setAttribute('lazy-progressive', 'false')
+  			listener.loading = Utility.getBlur(listener.src)
+  		},
+    },
+    listenEvents: [ 'scroll' ],
+    // observer:true,
+    // observerOptions :{ rootMargin: '10900000px', threshold: 0.1 } 
 })
 
 

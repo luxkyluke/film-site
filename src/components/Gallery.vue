@@ -223,7 +223,7 @@ export default {
     .gallery__content{
       font-size: 90%;
       &__wrapper{
-        overflow:scroll;
+        overflow-x:scroll;
       }
     }
   }
@@ -240,15 +240,15 @@ export default {
       &__texte{
         font-size: 80%;
       }
+      &__title{
+        margin: 4vh 0 0.2em 0;
+      }
     }
     
   }
 
-  @media (max-height: $mq-mobile-portrait){
+  @include mobilepor{
     .gallery__content{
-      &__title{
-        margin: 4vh 0 0.2em 0;
-      }
       &__subtitle{
         margin: 0;
       }
