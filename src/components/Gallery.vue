@@ -243,15 +243,16 @@ export default {
       &__title{
         margin: 4vh 0 0.2em 0;
       }
+      &__subtitle{
+        margin: 0;
+      }
     }
     
   }
 
   @include mobilepor{
     .gallery__content{
-      &__subtitle{
-        margin: 0;
-      }
+      
     }
     
     .gallery__copyright{

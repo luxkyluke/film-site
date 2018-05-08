@@ -25,8 +25,8 @@
       ></img>
       <img class="photo-full__content__cross icon" :src="cross" @click="closeFullImg"></img>
     </div>
-    <div class="photo-full__help">
-      <img class="photo-full__help-icon" :src="swipe" @click="closeFullImg"></img>
+    <div class="photo-full__help" ref="help">
+      <img class="photo-full__help__img" :src="swipe"></img>
     </div>
   </div>
 </template> 
@@ -53,7 +53,8 @@ export default {
       width:0,
       height:0,
       isMoving : false,
-      filterHide:false
+      filterHide:false,
+      neverHelped:true,
     }
   },
   props:{
@@ -141,12 +142,19 @@ export default {
     },
     closeInfo:function(){
       this.infoActive = false
+      this.hideHelp()
     },
     closeFullImg:function(){
       this.filterHide = false
       this.infoActive = false
       this.isMoving = false
       this.$emit('closeFullImg')
+    },
+    hideHelp:function(){
+      TweenMax.to(this.$refs.help, 0.3,  {opacity:0, display:'none'})
+    },
+    showHelp:function(){
+      TweenMax.to(this.$refs.help, 0.3,  {opacity:1, display:'flex'})
     },
     handleKeyUp:function(e){
       if(e.keyCode == 27) { // escape key maps to keycode `27`
@@ -172,12 +180,16 @@ export default {
     handleResize : function(){
       this.height = this.$refs.img.clientHeight
       this.width =  this.$refs.img.clientWidth
+      
+    },
+    handleTouch:function(){
+      this.hideHelp();
+      window.removeEventListener('touchstart', this.handleTouch);
     }
   },
   mounted(){
     this.$Lazyload.$on('loaded', this.handleLoaded)
   },
-
   watch:{
     photo:function(photo){
       this.$Lazyload.$on('loading', this.handleLoaded)
@@ -193,6 +205,12 @@ export default {
           window.addEventListener('keyup', this.handleKeyUp);
           window.addEventListener('mousemove', this.handleMouseMove);
         }
+        else if(this.neverHelped){
+          this.showHelp();
+          console.log('LISTEn')
+          window.addEventListener('touchstart', this.handleTouch);
+          this.neverHelped = false
+        }
         window.addEventListener('resize', this.handleResize);
       }
       else{
@@ -200,6 +218,9 @@ export default {
         if(!Utility.isTablet()){
           window.removeEventListener('mousemove', this.handleMouseMove);
           window.removeEventListener('keyup', this.handleKeyUp);
+        }
+        else{
+          window.removeEventListener('touchstart', this.handleTouch);
         }
         window.removeEventListener('resize', this.handleResize);
       }
@@ -286,12 +307,25 @@ export default {
         height: auto;
       }
     }
+
+    &__help{
+      top:50%;
+      @include transform(translate3d(0, -50%, 0))
+      position:fixed;
+      width: 100%;
+      display: none;
+      justify-content:center;
+    }
   }
 
 
   @include tablet{
+
     .photo-full{
       overflow:scroll;
+      &__help{
+        display: flex;
+      }
     }
   }
 </style>
