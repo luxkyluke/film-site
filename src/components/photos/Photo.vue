@@ -1,17 +1,23 @@
 <template>
   <div class="photo" :id="'photo_'+photo.id">
     <div class="photo__container">
-      <img  :id="idName"
-            class="photo__container__shadow " 
+      <img  class="photo__container__shadow " 
             :src="shadow"
             :class="shadowClass"
       />
-      <lazy-img  :id="idName"
+      <img  :id="idName"
             class="photo__container__img" 
             :src="photo.src"
             :style="myStyle"
             :class="myClass"
+            @load="handleLoadedImg"
             ref="image"
+      />
+      <img  class="photo__container__blur" 
+            :src="getBlur"
+            :style="myStyle"
+            :class="blurClass"
+            @load="handleLoadedBlur"
       />
       <img  class="photo__container__area" 
             :src="photo.src"
@@ -39,12 +45,12 @@
 </template>
 
 <script>
+import Utility from '@/addons/utility'
 import imgTest from '@/assets/test.jpg'
 import imgPortrait from '@/assets/test2.jpg'
 import shadow from '@/assets/shadow.png'
 import PhotoInfo from './PhotoInfo'
 import PhotoLike from './PhotoLike'
-import Lazyloader from './Lazyloader'
 
 export default {
   name: 'Photo',
@@ -61,7 +67,6 @@ export default {
   components: {
     'photo-info': PhotoInfo,
     'photo-like': PhotoLike,
-    'lazy-img': Lazyloader,
   },
   data (){
     return {
@@ -73,6 +78,7 @@ export default {
       translateY: 0,
       translateX: 0,
       translateValue : 0,
+      hideBlur : false,
       //observer: null,
       active : false,
       activeDuringBlock : false,
@@ -82,11 +88,17 @@ export default {
     isEven (){
       return this.photo.id%2 == 0;
     },
+    getBlur(){
+      return Utility.getBlur(this.photo.src);
+    },
     myClass (){
       let c = (this.photo.portrait) ? "portrait" : "";
       c +=(this.isEven) ? " even" : " odd";
       c +=(this.isBlocked) ? " blocked" : "";
       return c;
+    },
+    blurClass(){
+      return (this.hideBlur) ? this.myClass + ' hide' : this.myClass;
     },
     classInfo(){
       return (this.active) ? this.myClass + " active" : this.myClass
@@ -259,12 +271,13 @@ export default {
     initObserver: function(){
       this.$emit('observe', this.$el);
     },
-    handleLoaded: function({ el, src }) {
-      if(this.mask()){
-        this.$Lazyload.$off('loading', this.handleLoaded)
-        this.$emit('imgLoaded', this.photo.id)
-        this.initObserver();
-      }
+    handleLoadedBlur: function() {
+      this.mask()
+      this.initObserver();
+      this.$emit('imgLoaded', this.photo.id)
+    },
+    handleLoadedImg: function() {
+      this.hideBlur = true;
     },
     handleResize:function(){
       setTimeout(()=>{
@@ -274,10 +287,7 @@ export default {
     }
   },
   mounted () {
-    this.$Lazyload.$on('loading', this.handleLoaded)
-    window.addEventListener('resize', this.handleResize)    
-    this.$Lazyload.lazyLoadHandler()
-    console.log("mounted ", this.photo.id)
+    window.addEventListener('resize', this.handleResize)
   },
   destroy(){
     window.removeEventListener('resize', this.handleResize)    
@@ -289,7 +299,6 @@ export default {
 <style lang="scss">
   @import '~sass/main.scss';
   
-
   .photo{
     width:500px;
     height:100%;  
@@ -298,10 +307,9 @@ export default {
     // padding: 5vh 0;
     &__container{
       @extend .full;
-         display: flex;
+        display: flex;
         justify-content: center;
      
-      
       &__shadow{
         @extend .photo__container__img;
         box-shadow: rgba(0, 0, 0, 0.7) 30px 30px 120px ;
@@ -312,7 +320,15 @@ export default {
         }
       }
 
-      &__img, &__img img{
+      &__blur{
+        @extend .photo__container__img;
+        @include blur(5px);
+        &.hide{
+          opacity:0;
+        }
+      }
+
+      &__img{
         @include transition(all 350ms ease-in-out);
         height:25vmax;
         max-height: 290px;
@@ -322,10 +338,6 @@ export default {
           cursor:inherit;
         }
         position:absolute;
-
-        &[lazy=loading]{
-          @include blur(5px);
-        }
 
         &.portrait{
           width:25vmax;

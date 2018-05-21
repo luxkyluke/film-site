@@ -165,8 +165,7 @@ export default {
     },
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
-      const minLoaded = 1//(Utility.isTablet) ? 2 : 4;
-      console.log("imageLoaded ", id)
+      const minLoaded = this.photos.length-1;
       if(this.nbLoadedImg > minLoaded)
         this.$emit('photosLoaded')
     },
