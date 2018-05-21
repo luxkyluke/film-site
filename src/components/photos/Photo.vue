@@ -6,10 +6,9 @@
             :src="shadow"
             :class="shadowClass"
       />
-      <img  :id="idName"
+      <lazy-img  :id="idName"
             class="photo__container__img" 
-            v-lazy="photo.src"
-            lazy="loading"
+            :src="photo.src"
             :style="myStyle"
             :class="myClass"
             ref="image"
@@ -45,6 +44,7 @@ import imgPortrait from '@/assets/test2.jpg'
 import shadow from '@/assets/shadow.png'
 import PhotoInfo from './PhotoInfo'
 import PhotoLike from './PhotoLike'
+import Lazyloader from './Lazyloader'
 
 export default {
   name: 'Photo',
@@ -61,6 +61,7 @@ export default {
   components: {
     'photo-info': PhotoInfo,
     'photo-like': PhotoLike,
+    'lazy-img': Lazyloader,
   },
   data (){
     return {
@@ -311,7 +312,7 @@ export default {
         }
       }
 
-      &__img{
+      &__img, &__img img{
         @include transition(all 350ms ease-in-out);
         height:25vmax;
         max-height: 290px;
