@@ -62,7 +62,7 @@ export default {
   },
   computed:{
     myClass(){
-      let c = (!this.isFull) ? this.photoClass : "full"
+      let c = (!this.isFull) ? "gallery" : "full"
       c += (this.isActive) ? " active" : "";
       return c;
     }
@@ -83,6 +83,10 @@ export default {
     bottom:4vh;
     opacity:0;
     text-shadow: $bodyBG 2px 2px 3px;
+
+    &.gallery{
+      @include transform(translate3d(-80%, 0, 0));
+    }
 
     &.full{
 
@@ -125,6 +129,9 @@ export default {
     }
 
     &.active{
+      &.gallery{
+        @include transform(translate3d(-60%, 0, 0));
+      }
       @include transition(all 250ms ease-out 400ms);
       @include transform(translate3d(-40%, 0, 0));
       opacity: 1;
@@ -175,6 +182,7 @@ export default {
         width : calc(100vmin - 110px);
         height : calc(100vmin - 110px);
       }
+
       &__list{
 
         &__item{

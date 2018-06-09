@@ -16,7 +16,6 @@
         :photo="photo"
         :isActive = "infoActive"
         :isFull="true"
-        
       ></photo-info>
       <img 
         class="photo-full__content__info icon" 
@@ -24,6 +23,7 @@
         @click="clickInfo"
       ></img>
       <img class="photo-full__content__cross icon" :src="cross" @click="closeFullImg"></img>
+      <a :href="photo.insta" target=":blank"><img class="photo-full__content__heart icon" :src="heart"></img></a>
     </div>
     <div class="photo-full__help" ref="help">
       <img class="photo-full__help__img" :src="swipe"></img>
@@ -37,6 +37,7 @@ import imgPortrait from '@/assets/test2.jpg'
 import PhotoInfo from '@/components/photos/PhotoInfo'
 import Utility from '@/addons/utility.js'
 import cross from '@/assets/icon/cross.svg'
+import heart from '@/assets/icon/heart.svg'
 import info from '@/assets/icon/info.svg'
 import swipe from '@/assets/icon/swipe.svg'
 
@@ -47,6 +48,7 @@ export default {
     return{
       infoActive:false,
       cross, 
+      heart,
       info,
       swipe,
       mouse:{x:0, y:0},
@@ -262,6 +264,10 @@ export default {
       &__info{
         position: fixed;
         bottom:0;
+      }
+      &__heart.icon{
+        @include transform(translate3d(-150px, 0, 0))
+        left: 0;
       }
     }
   

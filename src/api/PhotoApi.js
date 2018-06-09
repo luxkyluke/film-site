@@ -11,6 +11,7 @@ const PhotoApi = {
         location:'France',
         locationLink:'https://www.google.com/maps/place/St-gervais,+France',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BjkHWdCFa7k",
         portrait: false
       },
       {
@@ -22,6 +23,7 @@ const PhotoApi = {
         location:'Portugal',
         locationLink:'https://www.google.com/maps/place/lisboa,+Portugal',
         mask: "middle",
+        insta:"https://www.instagram.com/p/Bh_9agJlFmI",
         portrait: false
       },
       {
@@ -33,6 +35,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Loulé,+Portugal',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/p/BjCWoWElqhF",
         portrait: false
       },
       {
@@ -44,6 +47,7 @@ const PhotoApi = {
         location:'Allemagne',
         locationLink:'https://www.google.com/maps/place/Berlin,+Allemagne',
         mask: "middle",
+        insta:"https://www.instagram.com/p/Bigm605FKoO",
         portrait: false
       },
       {
@@ -53,6 +57,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -64,6 +69,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Porto,+Portugal',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -75,6 +81,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Montréal,+Canada',
         lens:'50mm f/2',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: true
       },
       {
@@ -86,6 +93,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Reichenau,+Allemagne',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/p/BjzhCujFP4i/",
         portrait: false
       },
       {
@@ -97,6 +105,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Berlin,+Allemagne',
         lens:'50mm f/1.4',  
         mask: "end",
+        insta:"https://www.instagram.com/p/BibkMrelzp7",
         portrait: false
       },
       {
@@ -108,6 +117,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Ile-de-la-cité,+France',
         lens:'50mm f/1.4',  
         mask: "middle",
+        insta:"https://www.instagram.com/p/BhRLH20B05Z",
         portrait: false
       },
       {
@@ -119,6 +129,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/sarrazac,+France',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -130,6 +141,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/st-gervais,+France',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/p/Bh6x1QUFfpR",
         portrait: false
       },
       {
@@ -141,6 +153,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/los+angeles,+État-Unis',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/p/BhhGpylhAZk",
         portrait: false
       },
       {
@@ -152,6 +165,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/manhattan,+new+york,+État-Unis',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/p/Bjg5-TGFCts",
         portrait: true
       },
       {
@@ -163,6 +177,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/berlin,+Allemagne',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -174,6 +189,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/porto,+Portugal',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BhL2N_fhEas",
         portrait: false
       },
       {
@@ -185,15 +201,17 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/porto,+Portugal',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
         src: './static/data/penseuse.jpg',
-        name: 'penseuse',
+        name: 'Penseuse',
         camera:'Pentax K1000',
         film:'AGFA Vista Plus 400',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BjxRfOMFNDY",
         portrait: false
       },
       {
@@ -205,6 +223,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/porto,+Portugal',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -214,6 +233,7 @@ const PhotoApi = {
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere/",
         portrait: false
       },
       {
@@ -225,6 +245,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/porto,+Portugal',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere/",
         portrait: true
       },
       {
@@ -236,6 +257,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/berlin,+Allemagne',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BhL9gIeBlYQ",
         portrait: false
       },
       {
@@ -247,6 +269,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/manhattan,+new-york,+État-Unis',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -258,6 +281,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Paris,+France',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -269,6 +293,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Parc+national+de+Yosemite/@37.8534972,-119.6911932,11z/data=!3m1!4b1!4m5!3m4!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!8m2!3d37.8651011!4d-119.5383294',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -280,6 +305,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/Parc+national+de+Yosemite/@37.8534972,-119.6911932,11z/data=!3m1!4b1!4m5!3m4!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!8m2!3d37.8651011!4d-119.5383294',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/p/BjMVCcnFgX7",
         portrait: false
       },
       {
@@ -291,6 +317,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/sarrazac,+France',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BiFJ6NVlEk7",
         portrait: false
       },
       {
@@ -302,6 +329,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/sarrazac,+France',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -313,6 +341,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/sarrazac,+France',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BjXhhNalgPL",
         portrait: false
       },
       {
@@ -324,6 +353,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/los+angeles,+État-Unis',
         lens:'50mm f/1.4',
         mask: "begin",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
@@ -335,6 +365,7 @@ const PhotoApi = {
         locationLink:'https://www.google.com/maps/place/berlin,+Allemagne',
         lens:'50mm f/1.4',
         mask: "end",
+        insta:"https://www.instagram.com/p/BjVH8ISlnNq",
         portrait: false
       },
       {
@@ -344,6 +375,7 @@ const PhotoApi = {
         film:'AGFA Vista Plus 400',
         lens:'50mm f/1.4',
         mask: "middle",
+        insta:"https://www.instagram.com/p/BjIIRUUltA-",
         portrait: true
       },
       {
@@ -355,17 +387,19 @@ const PhotoApi = {
         location:'État-Unis',
         locationLink:'https://www.google.com/maps/place/Parc+national+de+Yosemite/@37.8534972,-119.6911932,11z/data=!3m1!4b1!4m5!3m4!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!8m2!3d37.8651011!4d-119.5383294',
         mask: "end",
+        insta:"https://www.instagram.com/antoinedemiere",
         portrait: false
       },
       {
         src: './static/data/wind.jpg',
-        name: 'Wind',
+        name: 'The Sail',
         camera:'Pentax K1000',
         film:'Ilford Pan 400',
         lens:'50mm f/1.4',
         location:'État-Unis',
         locationLink:'https://www.google.com/maps/place/los+angeles,+État-Unis',
         mask: "end",
+        insta:"https://www.instagram.com/p/Bizh2O-FhzS",
         portrait: false
       },
       {
@@ -377,6 +411,7 @@ const PhotoApi = {
         location:'État-Unis',
         locationLink:'https://www.google.com/maps/place/Parc+national+de+Yosemite/@37.8534972,-119.6911932,11z/data=!3m1!4b1!4m5!3m4!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!8m2!3d37.8651011!4d-119.5383294',
         mask: "begin",
+        insta:"https://www.instagram.com/p/Bi4ujoHl7I9",
         portrait: false
       },
     ],
