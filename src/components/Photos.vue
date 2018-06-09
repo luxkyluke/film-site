@@ -6,7 +6,8 @@
   >
     <photo
         v-for= "p in photos"
-        v-bind:key= "p.id"
+        :ref="'photo_'+p.id"
+        :key= "p.id"
         :photo="p"
         :isCurrent= "p.id === currentId"
         :isBlocked="isBlocked || disablePhotoOnScroll"
@@ -50,6 +51,10 @@ export default {
       isMounted:false,
       blursAreLoaded: false,
       scrollOffset:0,
+      prevPrevPhoto:null,
+      prevPhoto:null,
+      nextPhoto:null,
+      nextNextPhoto:null,
     }
   },
   components: {
@@ -101,9 +106,32 @@ export default {
       if(this.isBlocked)
         return;
       this.$emit('showFullImg', id)
+      this.prevPrevPhoto   = document.getElementById('photo_'+(id-2));
+      this.prevPhoto       = document.getElementById('photo_'+(id-1));
+      this.nextPhoto       = document.getElementById('photo_'+(id+1));
+      this.nextNextPhoto   = document.getElementById('photo_'+(id+2));
+
+      if(this.prevPrevPhoto)   TweenMax.to(this.prevPrevPhoto, 0.3, {x:'-75', ease:Quint.easeInOut});  
+      if(this.prevPhoto)       TweenMax.to(this.prevPhoto, 0.3, {x:'-75', ease:Quint.easeInOut});  
+      if(this.nextPhoto)       TweenMax.to(this.nextPhoto, 0.3, {x:'75', ease:Quint.easeInOut});  
+      if(this.nextNextPhoto)   TweenMax.to(this.nextNextPhoto, 0.3, {x:'75', ease:Quint.easeInOut});  
+
+      // const prevPrevPhoto = (id > 1) ? this.$refs['photo_'+(id-2)] : null;
+      // const prevPhoto = (id > 0) ? this.$refs['photo_'+(id-1)] : null;
+      // const nextPhoto = (id < this.photos.length) ? this.$refs['photo_'+(id+1)] : null;
+      // const nextNextPhoto = (id < this.photos.length-1) ? this.$refs['photo_'+(id+2)] : null;
+
+      // if(prevPrevPhoto) prevPrevPhoto.pushLeft()
+      // if(prevPhoto) prevPhoto.pushLeft()
+      // if(nextPhoto) nextPhoto.pushRight()
+      // if(nextNextPhoto) nextNextPhoto.pushRight()
     },
     hideFullImg:function(){
       this.$emit('hideFullImg')
+      if(this.prevPrevPhoto)   TweenMax.to(this.prevPrevPhoto, 0.3, {x:'0', ease:Quint.easeInOut});  
+      if(this.prevPhoto)       TweenMax.to(this.prevPhoto, 0.3, {x:'0', ease:Quint.easeInOut});  
+      if(this.nextPhoto)       TweenMax.to(this.nextPhoto, 0.3, {x:'0', ease:Quint.easeInOut});  
+      if(this.nextNextPhoto)   TweenMax.to(this.nextNextPhoto, 0.3, {x:'0', ease:Quint.easeInOut});  
     },
     openImg:function(id){
       if(this.isBlocked)

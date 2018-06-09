@@ -81,6 +81,7 @@ export default {
       translateX: 0,
       translateValue : 0,
       hideBlur : false,
+      resetOffset: 0,
       //observer: null,
       active : false,
       activeDuringBlock : false,
@@ -153,6 +154,17 @@ export default {
     }
   },
   methods:{
+    pushRight:function(){
+      this.resetOffset = this.offset
+      this.offset += 50;
+    },
+    pushLeft:function(){
+      this.resetOffset = this.offset
+      this.offset -= 50;
+    },
+    resetOffsetPosition:function(){
+      this.offset = resetOffset
+    },
     increaseLike:function(){
       console.log("like++")
     },
