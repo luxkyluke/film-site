@@ -11,6 +11,7 @@
         :isCurrent= "p.id === currentId"
         :isBlocked="isBlocked || disablePhotoOnScroll"
         :displayInfo="p.id === idShowInfo"
+        :blursAreLoaded="blursAreLoaded"
         @observe = "observe"
         @changeCurrentId = "changeId"
         @showFullImg="showFullImg"
@@ -47,6 +48,7 @@ export default {
       nbLoadedImg : 0,
       observer:null,
       isMounted:false,
+      blursAreLoaded: false,
       scrollOffset:0,
     }
   },
@@ -166,8 +168,10 @@ export default {
     imgLoaded:function(id){
       this.nbLoadedImg +=1;
       const minLoaded = this.photos.length-1;
-      if(this.nbLoadedImg > minLoaded)
+      if(this.nbLoadedImg > minLoaded){
         this.$emit('photosLoaded')
+        this.blursAreLoaded = true;
+      }
     },
     handleResize(){
       this.getWidths()

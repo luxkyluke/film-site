@@ -5,22 +5,23 @@
             :src="shadow"
             :class="shadowClass"
       />
-      <img  :id="idName"
+      <img  
+            :id="idName"
             class="photo__container__img" 
-            :src="photo.src"
+            :src="imgSrc"
             :style="myStyle"
             :class="myClass"
             @load="handleLoadedImg"
-            ref="image"
       />
       <img  class="photo__container__blur" 
             :src="getBlur"
             :style="myStyle"
             :class="blurClass"
             @load="handleLoadedBlur"
+            ref="image"
       />
       <img  class="photo__container__area" 
-            :src="photo.src"
+            :src="imgSrc"
             :style="myStyle"
             :class="myClass"
             @mouseover="mouseOver"
@@ -57,6 +58,7 @@ export default {
   props: {
     photo: Object,
     isBlocked:Boolean,
+    blursAreLoaded:Boolean,
     displayInfo:Boolean,
     observer: Object,
     isCurrent: {
@@ -102,6 +104,10 @@ export default {
     },
     classInfo(){
       return (this.active) ? this.myClass + " active" : this.myClass
+    },
+    imgSrc(){
+      console.log((this.blursAreLoaded));
+      return (this.blursAreLoaded) ? this.photo.src : ''
     },
     translate (){
       let x=0, y=0;
