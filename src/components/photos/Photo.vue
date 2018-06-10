@@ -138,7 +138,8 @@ export default {
   watch: {
     displayInfo: function(isDisplay){
       if(isDisplay){
-        this.showInfo()
+        this.showInfo();
+        
       }else{
         this.hideInfo()
       }
@@ -256,6 +257,9 @@ export default {
       // this.translateX = 0;
       // console.log(this.translateX)
       this.active = true;
+      // this.$emit("showFullImg", this.photo.id);
+      this.$emit("showFullImg", this.photo.id);
+      
     },
     hideInfo:function(){
       //if(this.isBlocked){
@@ -277,14 +281,13 @@ export default {
         return;
       }
       this.showInfo();
-      this.$emit("showFullImg", this.photo.id);
     },
     mouseLeave : function(){
       if(this.isBlocked){
         this.activeDuringBlock = false;
       }
-      this.hideInfo();
       this.$emit('hideFullImg')
+      this.hideInfo();
     },
     initObserver: function(){
       this.$emit('observe', this.$el);
