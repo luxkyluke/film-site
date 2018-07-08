@@ -174,6 +174,15 @@ export default {
     }
 
   }
+  
+  @include tablet{
+    .photo-info{
+      display:none;
+      &.full{
+        display: block;
+      }
+    }
+  }
 
   @include mobilepor{
     .photo-info{

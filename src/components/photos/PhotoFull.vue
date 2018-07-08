@@ -32,8 +32,6 @@
 </template> 
 
 <script>
-import imgTest from '@/assets/test.jpg'
-import imgPortrait from '@/assets/test2.jpg'
 import PhotoInfo from '@/components/photos/PhotoInfo'
 import Utility from '@/addons/utility.js'
 import cross from '@/assets/icon/cross.svg'
@@ -80,9 +78,9 @@ export default {
     },
     photoClass(){
       let c = this.position
-      const ratioImg = (this.height !== 0) ? this.width/this.height : 0;
-      const ratioWindow = window.innerWidth / window.innerHeight
-      c += (this.photo.portrait && this.height < window.innerHeight || (ratioWindow+0.1) > ratioImg) ? " portrait" : ""
+      const ratioImg = (this.width !== 0) ? this.height/this.width : 0;
+      const ratioWindow = window.innerHeight/ window.innerWidth
+      c += (this.photo.portrait && ratioWindow < ratioImg) ? " portrait" : ""
       return c;
     },
     translate(){
@@ -209,7 +207,6 @@ export default {
         }
         else if(this.neverHelped){
           this.showHelp();
-          console.log('LISTEn')
           window.addEventListener('touchstart', this.handleTouch);
           this.neverHelped = false
         }

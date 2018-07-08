@@ -47,8 +47,6 @@
 
 <script>
 import Utility from '@/addons/utility'
-import imgTest from '@/assets/test.jpg'
-import imgPortrait from '@/assets/test2.jpg'
 import shadow from '@/assets/shadow.png'
 import PhotoInfo from './PhotoInfo'
 import PhotoLike from './PhotoLike'
@@ -82,6 +80,8 @@ export default {
       translateValue : 0,
       hideBlur : false,
       resetOffset: 0,
+      width:0, 
+      height:0,
       //observer: null,
       active : false,
       activeDuringBlock : false,
@@ -95,6 +95,8 @@ export default {
       return Utility.getBlur(this.photo.src);
     },
     myClass (){
+      const imgRatio = this.height/this.width
+      const windowRatio = window.innerHeight/window.innerWidth
       let c = (this.photo.portrait) ? "portrait" : "";
       c +=(this.isEven) ? " even" : " odd";
       c +=(this.isBlocked) ? " blocked" : "";
@@ -107,7 +109,6 @@ export default {
       return (this.active) ? this.myClass + " active" : this.myClass
     },
     imgSrc(){
-      console.log((this.blursAreLoaded));
       return (this.blursAreLoaded) ? this.photo.src : ''
     },
     translate (){
@@ -178,18 +179,18 @@ export default {
         this.$emit('click', this.photo.id)
     },
     getClip: function(img){
-      const width = img.clientWidth;
-      const height = img.clientHeight;
+      this.width = img.clientWidth;
+      this.height = img.clientHeight;
       const position = this.photo.mask;
-      let w = width;
-      let h = height;
+      let w = this.width;
+      let h = this.height;
 
       if(position === "begin"){
          //si c'est un portrait on inverse
         if(this.photo.portrait){ 
-          w = height;
-          h = width;
-          this.translateY = height-width;
+          w = this.height;
+          h = this.width;
+          this.translateY = this.height-this.width;
         }else{
           this.translateX = (w-h)*0.5;
         }
@@ -197,8 +198,8 @@ export default {
         return tmp;
       }
 
-      w = width;
-      h = height;
+      w = this.width;
+      h = this.height;
       if(this.photo.portrait){// si portrait
         let min, max;
         if(position === "middle"){ // si portrait et middle

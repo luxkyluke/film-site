@@ -250,6 +250,13 @@ export default {
     .photos{
       margin: 0;
       padding: 0 10%;
+      margin-top: 20px;
+    }
+  }
+
+  @include mobilepor{
+    .photos{
+      margin:0;
     }
   }
 </style>

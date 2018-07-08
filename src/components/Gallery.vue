@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       photos: PhotoApi.all(),
-      title: 'Film Photographs',
+      title: 'Film Photography',
       subtitle: '35 photographs of my travel film',
       idPhoto : 0,
       fullImgVisible:false,
@@ -150,6 +150,7 @@ export default {
     @extend .unselectable;
     @extend .full;
     position: fixed;
+    top:0;
     &__content{
       &__wrapper{
         overflow:hidden;
@@ -202,7 +203,7 @@ export default {
       }
     }
     &__copyright{
-      position: absolute;
+      position: fixed;
       right: 30px;
       bottom: 30px;
       margin:0;
@@ -230,8 +231,8 @@ export default {
 
   @include mobile{
     .gallery__copyright{
-      right: 20px;
-      bottom: 20px;
+      right: 15px;
+      bottom: 10px;
     }
   }
 
