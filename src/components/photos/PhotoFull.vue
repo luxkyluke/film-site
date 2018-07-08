@@ -26,7 +26,7 @@
       <a :href="photo.insta" target=":blank"><img class="photo-full__content__heart icon" :src="heart"></img></a>
     </div>
     <div class="photo-full__help" ref="help">
-      <img class="photo-full__help__img" :src="swipe"></img>
+      <img class="photo-full__help__img" :src="move"></img>
     </div>
   </div>
 </template> 
@@ -37,7 +37,7 @@ import Utility from '@/addons/utility.js'
 import cross from '@/assets/icon/cross.svg'
 import heart from '@/assets/icon/heart.svg'
 import info from '@/assets/icon/info.svg'
-import swipe from '@/assets/icon/swipe.svg'
+import move from '@/assets/icon/move.svg'
 
 export default {
 
@@ -48,7 +48,7 @@ export default {
       cross, 
       heart,
       info,
-      swipe,
+      move,
       mouse:{x:0, y:0},
       width:0,
       height:0,
@@ -171,7 +171,11 @@ export default {
       TweenMax.to(this.$refs.help, 0.3,  {opacity:0, display:'none'})
     },
     showHelp:function(){
-      TweenMax.to(this.$refs.help, 0.3,  {opacity:1, display:'flex'})
+      setTimeout(() => {
+        console.log('jejejje')
+        if(this.neverHelped)
+          TweenMax.fromTo(this.$refs.help, 1,  {css:{opacity:0, display:'none'}}, {css:{opacity:1, display:'flex'}})
+      }, 2500)
     },
     handleKeyUp:function(e){
       if(e.keyCode == 27) { // escape key maps to keycode `27`
@@ -201,6 +205,7 @@ export default {
     },
     handleTouch:function(){
       this.hideHelp();
+      this.neverHelped = false
       window.removeEventListener('touchstart', this.handleTouch);
     }
   },
@@ -225,7 +230,7 @@ export default {
         else if(this.neverHelped){
           this.showHelp();
           window.addEventListener('touchstart', this.handleTouch);
-          this.neverHelped = false
+          
         }
         window.addEventListener('resize', this.handleResize);
       }
@@ -329,12 +334,15 @@ export default {
     }
 
     &__help{
-      top:50%;
-      @include transform(translate3d(0, -50%, 0))
+      bottom:15vh;
       position:fixed;
       width: 100%;
       display: none;
       justify-content:center;
+      
+      &__img{
+        width: 100px;
+      }
     }
   }
 
@@ -343,9 +351,7 @@ export default {
 
     .photo-full{
       overflow:scroll;
-      &__help{
-        display: flex;
-      }
+      
     }
   }
 </style>
