@@ -78,9 +78,26 @@ export default {
     },
     photoClass(){
       let c = this.position
-      const ratioImg = (this.width !== 0) ? this.height/this.width : 0;
-      const ratioWindow = window.innerHeight/ window.innerWidth
-      c += (this.photo.portrait && ratioWindow < ratioImg) ? " portrait" : ""
+      let iMax = this.width
+      let iMin = this.height
+      let wMax = window.innerWidth
+      let wMin = window.innerHeight
+      const windowPortrait = window.innerHeight > window.innerWidth
+
+      // if(this.photo.portrait){
+        
+      // }
+      //if portrait window
+      if(windowPortrait){
+        iMin = this.width
+        iMax = this.height
+        wMin = window.innerWidth
+        wMax = window.innerHeight
+      }
+      const ratioImg = (iMin !== 0) ? iMax/iMin : 0;
+      const ratioWindow = wMax/wMin
+
+      c += ( (!windowPortrait && ratioWindow > ratioImg) || (windowPortrait && ratioWindow < ratioImg))  ? " portrait" : ""
       return c;
     },
     translate(){
