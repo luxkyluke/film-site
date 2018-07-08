@@ -1,20 +1,19 @@
 <template>
   <div class="slider">
     <div class="slider__list">
-      <!-- <input 
+      <input 
         type="range" 
         min="0" 
         :max="photos.length-1" 
         value="0" 
         class="slider__slider" 
-        @change="handleChangeIdSlider" 
-      > -->
+        @input="handleChangeIdSlider" 
+      >
       <slider-square
         v-for="p in sizedPhotos"
         v-bind:id="p.id"
         v-bind:key="p.id"
         :size = "p.size"
-        v-on:changeId = "changeCurrentId"
       ></slider-square>
     </div>
   </div>
@@ -59,7 +58,12 @@ export default {
     }
   },
   methods: {    
-    changeCurrentId: function(newId) {
+    // changeCurrentId: function(newId) {
+      
+    // },
+    handleChangeIdSlider:function(e){
+      const newId = parseInt(e.target.value)
+
       const oldId = this.id;
       let testIterId = {id:this.id}
       TweenLite.to(testIterId, .7, {
@@ -73,9 +77,6 @@ export default {
       });  
 
       this.$emit("changeId", newId);
-    },
-    handleChangeIdSlider:function(e){
-      console.log(e.target.value)
     }
   },
   watch:{
@@ -96,10 +97,12 @@ export default {
     bottom: 7vh;
     
     &__slider{
-      // -webkit-appearance: none;
-      width:102%;
-      position:absolute;
+      width:103%;
+      position:fixed;
       margin: 0 -3px;
+      z-index: 6;
+      height: 100%;
+      opacity:0;
     }
 
     &__list{
